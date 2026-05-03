@@ -84,6 +84,17 @@
     letter-spacing:.15em;
     font-weight:600;
   }
+  .sample-link{
+    display:inline-flex;align-items:center;gap:5px;
+    font-family:'Inter';font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;font-weight:600;
+    color:var(--gold);border:1px solid var(--gold);
+    padding:3px 8px;text-decoration:none;
+    transition:background .15s,color .15s;
+  }
+  .sample-link:hover{background:var(--gold);color:#fff}
+  .sample-link::after{content:'↗';font-size:10px;letter-spacing:0}
+  .channel-handle-row{display:flex;align-items:center;gap:8px}
   .channel-rows{display:flex;flex-direction:column;gap:5px;margin-top:8px}
   .channel-row{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start}
   .channel-row-label{font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;padding-top:1px}
@@ -244,7 +255,10 @@
       <div class="channel-card">
         <div class="channel-header">
           <div class="channel-name"><em>Instagram.</em></div>
-          <div class="channel-handle">@KLOUD.SEOUL</div>
+          <div class="channel-handle-row">
+            <a class="sample-link" href="../examples/KLOUD_Instagram_Carousel_MoodBoard.html" target="_blank" rel="noopener">View Sample</a>
+            <div class="channel-handle">@KLOUD.SEOUL</div>
+          </div>
         </div>
         <div class="channel-rows">
           <div class="channel-row">
@@ -266,7 +280,10 @@
       <div class="channel-card">
         <div class="channel-header">
           <div class="channel-name"><em>Threads.</em></div>
-          <div class="channel-handle">@KLOUD.SEOUL</div>
+          <div class="channel-handle-row">
+            <a class="sample-link" href="../examples/KLOUD_Threads_MoodBoard_v2.html" target="_blank" rel="noopener">View Sample</a>
+            <div class="channel-handle">@KLOUD.SEOUL</div>
+          </div>
         </div>
         <div class="channel-rows">
           <div class="channel-row">
