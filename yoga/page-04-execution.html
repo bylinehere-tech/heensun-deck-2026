@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>KLOUD AT DAWN × ANDAR · Page 04 · Execution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700;ital,wght@1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F1E3D;--navy-deep:#0a1628;--gold:#B8945A;--gold-soft:#C5A572;--cream:#FAF7F2;--cream-deep:#F0EBE0;--cream-warm:#F5EBD8;--line:#D9D3C5;--ink:#1A1A1A;--gray:#6B6B6B;--gray-light:#A8A29A;--red-gate:#9a3838}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{width:1280px;height:720px;background:var(--cream);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);transform-origin:top center}
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+
+  .page-num{position:absolute;bottom:24px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500;z-index:10}
+  .footer-brand{position:absolute;bottom:24px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase;z-index:10}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:8px}
+  .slide-title{font-family:'Noto Sans KR';font-size:22px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:11px;font-weight:400;color:var(--gray);line-height:1.45;margin-top:3px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:18px 56px 8px}
+  .header-block{margin-bottom:7px}
+  .zone-tag{font-family:'Inter';font-size:9px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+
+  /* Gantt */
+  .gantt-section{margin-bottom:8px}
+  .gantt-wrap{background:#fff;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:6px 13px 8px}
+  .gantt-header-row,.gantt-week-row{display:flex;align-items:flex-end}
+  .gantt-name-spacer{width:130px;flex-shrink:0}
+  .gantt-axis{flex:1;display:grid;grid-template-columns:repeat(14,1fr)}
+  .gantt-month{font-family:'Cormorant Garamond';font-style:italic;font-size:13px;color:var(--navy);font-weight:600;text-align:center;padding-bottom:3px;border-bottom:1px solid var(--line)}
+  .gantt-month.april{grid-column:1 / span 4}
+  .gantt-month.may{grid-column:5 / span 4}
+  .gantt-month.june{grid-column:9 / span 3}
+  .gantt-month.july{grid-column:12 / span 3}
+
+  .gantt-week-row{padding-top:3px;padding-bottom:5px;border-bottom:1px solid var(--line);margin-bottom:5px}
+  .gantt-week-label{font-family:'Inter';font-size:7.5px;color:var(--gray);text-align:center;letter-spacing:.05em;border-right:1px solid var(--line);padding:0 1px}
+  .gantt-week-label:last-child{border-right:none}
+
+  .gantt-track{display:flex;align-items:center;height:18px;border-bottom:1px dashed var(--line);position:relative}
+  .gantt-track:last-of-type{border-bottom:none}
+  .gantt-track-name{width:130px;flex-shrink:0;font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--navy);text-transform:uppercase;font-weight:700;padding-right:8px}
+  .gantt-track-body{flex:1;position:relative;height:100%;background-image:linear-gradient(to right, var(--line) 0, var(--line) 1px, transparent 1px);background-size:calc(100% / 14) 100%;background-repeat:repeat-x}
+  .gantt-bar{position:absolute;top:50%;transform:translateY(-50%);height:13px;background:var(--gold-soft);border-radius:1px;display:flex;align-items:center;padding:0 6px;font-family:'Inter';font-size:7.5px;color:#fff;font-weight:700;letter-spacing:.05em;overflow:hidden;white-space:nowrap;box-sizing:border-box;z-index:2}
+  .gantt-bar.crit{background:var(--navy)}
+  .gantt-bar.season{background:var(--gold);height:15px}
+  .gantt-bar.post{background:linear-gradient(90deg,var(--gold) 0%, var(--gold-soft) 100%)}
+  .gantt-milestone{position:absolute;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:10px;height:10px;background:var(--red-gate);z-index:5}
+  .gantt-milestone-label{position:absolute;top:-2px;transform:translateX(-50%);font-family:'Inter';font-size:7px;color:var(--red-gate);font-weight:700;letter-spacing:.1em;white-space:nowrap;z-index:6}
+
+  .gate-table{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+  .gate-item{background:var(--cream-warm);padding:5px 10px;border-left:3px solid var(--red-gate);display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center}
+  .gate-tag{font-family:'Inter';font-size:8px;letter-spacing:.18em;color:var(--red-gate);text-transform:uppercase;font-weight:700}
+  .gate-name{font-family:'Noto Sans KR';font-size:9.5px;color:var(--navy);font-weight:700;letter-spacing:-.01em}
+  .gate-cond{font-family:'Noto Sans KR';font-size:8.5px;color:var(--ink);font-weight:400;letter-spacing:-.01em;line-height:1.3}
+  .gate-cond strong{color:var(--navy);font-weight:700}
+  .gate-fail{font-family:'Inter';font-size:7.5px;color:var(--gray);font-style:italic;letter-spacing:-.01em;text-align:right;line-height:1.3}
+
+  /* R&R */
+  .rnr-section{margin-bottom:8px}
+  .rnr-table{width:100%;border-collapse:collapse;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .rnr-table th{font-family:'Inter';font-size:8px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700;padding:4px 8px;text-align:left;border-bottom:1px solid var(--line);background:var(--cream-deep)}
+  .rnr-table th.center{text-align:center}
+  .rnr-table td{font-family:'Noto Sans KR';font-size:9px;color:var(--ink);padding:3px 8px;border-bottom:1px solid var(--line);line-height:1.3;letter-spacing:-.01em;vertical-align:middle}
+  .rnr-table tr:last-child td{border-bottom:none}
+  .rnr-area{font-family:'Inter';font-size:8px;letter-spacing:.18em;color:var(--navy);text-transform:uppercase;font-weight:700;width:130px}
+  .rnr-mark{text-align:center;font-family:'Cormorant Garamond';font-size:13px;color:var(--gold);font-weight:600;font-style:italic;width:48px}
+  .rnr-dash{text-align:center;color:var(--gray-light);font-family:'Inter';font-size:11px;width:48px}
+  .rnr-table td em{font-family:'Cormorant Garamond';font-style:italic;color:var(--navy);font-size:10px;font-weight:600}
+  .rnr-table td strong{color:var(--navy);font-weight:700}
+
+  /* Triple */
+  .triple-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px}
+  .triple-card{background:#fff;border-top:2px solid var(--gold-soft);padding:7px 12px 8px;display:flex;flex-direction:column}
+  .triple-card.decision{border-top:3px solid var(--gold)}
+  .triple-tag{font-family:'Inter';font-size:8px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .triple-name{font-family:'Cormorant Garamond';font-style:italic;font-size:15px;color:var(--navy);font-weight:600;line-height:1;margin-top:2px;letter-spacing:-.01em}
+  .triple-divider{height:1px;background:var(--line);margin:6px 0}
+
+  .cost-row{display:flex;justify-content:space-between;align-items:baseline;padding:1.5px 0;border-bottom:1px dashed var(--line)}
+  .cost-row:last-child{border-bottom:none}
+  .cost-label{font-family:'Noto Sans KR';font-size:8.5px;color:var(--ink);font-weight:500;letter-spacing:-.01em}
+  .cost-val{font-family:'Cormorant Garamond';font-style:italic;font-size:10.5px;color:var(--navy);font-weight:600}
+  .cost-row.total{border-top:1px solid var(--gold);border-bottom:none;padding-top:4px;margin-top:2px}
+  .cost-row.total .cost-label{font-family:'Inter';font-size:8px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .cost-row.total .cost-val{color:var(--gold);font-size:12px}
+
+  .risk-row{padding:2px 0;border-bottom:1px dashed var(--line)}
+  .risk-row:last-child{border-bottom:none}
+  .risk-name{font-family:'Noto Sans KR';font-size:8.5px;color:var(--navy);font-weight:700;letter-spacing:-.01em}
+  .risk-cont{font-family:'Noto Sans KR';font-size:8px;color:var(--gray);font-weight:400;letter-spacing:-.01em;line-height:1.3;margin-top:1px}
+  .risk-cont strong{color:var(--ink);font-weight:600}
+
+  .dec-row{display:grid;grid-template-columns:16px 1fr 50px;gap:6px;padding:1.5px 0;border-bottom:1px dashed var(--line);align-items:start}
+  .dec-row:last-child{border-bottom:none}
+  .dec-num{font-family:'Cormorant Garamond';font-size:11px;color:var(--gold);font-weight:300;font-style:italic;line-height:1.2}
+  .dec-text{font-family:'Noto Sans KR';font-size:8px;color:var(--ink);font-weight:500;line-height:1.3;letter-spacing:-.01em}
+  .dec-text strong{color:var(--navy);font-weight:700}
+  .dec-deadline{font-family:'Inter';font-size:7px;letter-spacing:.1em;color:var(--red-gate);text-align:right;font-weight:700;padding-top:2px}
+
+  .closing-line{margin-top:6px;padding:4px 0 0;text-align:center;border-top:1px solid var(--line);font-family:'Noto Sans KR';font-size:11px;color:var(--gray);letter-spacing:-.01em;font-weight:400}
+  .closing-line .quote{font-family:'Cormorant Garamond';font-style:italic;font-size:15px;color:var(--navy);font-weight:500;margin-right:10px}
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+<div class="slide">
+  <div class="pad" style="height:100%">
+    <div class="header-block">
+      <div class="section-tag">Campaign Brief · KLOUD AT DAWN × ANDAR — Page 04 / 04</div>
+      <h2 class="slide-title">Execution — 타임라인·역할·비용·결정.</h2>
+      <p class="slide-subtitle">5단계 마스터 타임라인에 <strong>Go/No-Go 게이트 2개</strong>를 박아두고, KLOUD ↔ ANDAR R&R을 7개 영역으로 분담. 비용 매칭 50:50, 4월 첫째 주까지 결정해야 할 6개 항목.</p>
+    </div>
+
+    <div class="gantt-section">
+      <div class="zone-tag">A · Master Timeline (5 Tracks · 14 Weeks · 2 Gates)</div>
+      <div class="gantt-wrap">
+        <div class="gantt-header-row">
+          <div class="gantt-name-spacer"></div>
+          <div class="gantt-axis">
+            <div class="gantt-month april"><em>April</em></div>
+            <div class="gantt-month may"><em>May</em></div>
+            <div class="gantt-month june"><em>June</em></div>
+            <div class="gantt-month july"><em>July</em></div>
+          </div>
+        </div>
+        <div class="gantt-week-row">
+          <div class="gantt-name-spacer"></div>
+          <div class="gantt-axis">
+            <div class="gantt-week-label">4/6</div><div class="gantt-week-label">4/13</div><div class="gantt-week-label">4/20</div><div class="gantt-week-label">4/27</div>
+            <div class="gantt-week-label">5/4</div><div class="gantt-week-label">5/9</div><div class="gantt-week-label">5/16</div><div class="gantt-week-label">5/23</div>
+            <div class="gantt-week-label">5/30</div><div class="gantt-week-label">6/6</div><div class="gantt-week-label">6/13</div>
+            <div class="gantt-week-label">6/22</div><div class="gantt-week-label">6/29</div><div class="gantt-week-label">7/13</div>
+          </div>
+        </div>
+
+        <div class="gantt-track">
+          <span class="gantt-track-name">01 · Pre-Prod</span>
+          <div class="gantt-track-body">
+            <div class="gantt-bar crit" style="left:0;width:21.43%">MOU · 강사 풀 · 풀 재오픈 확정</div>
+            <div class="gantt-milestone gate" style="left:21.43%"></div>
+            <div class="gantt-milestone-label" style="left:21.43%">GATE 1 · 4/27</div>
+          </div>
+        </div>
+        <div class="gantt-track">
+          <span class="gantt-track-name">02 · Creative</span>
+          <div class="gantt-track-body">
+            <div class="gantt-bar" style="left:14.29%;width:14.28%">Lookbook · 사이니지</div>
+            <div class="gantt-bar crit" style="left:64.29%;width:14.28%">Season Movie</div>
+          </div>
+        </div>
+        <div class="gantt-track">
+          <span class="gantt-track-name">03 · Mktg·Ticket</span>
+          <div class="gantt-track-body">
+            <div class="gantt-bar" style="left:14.29%;width:57.14%">PR → T1 EDM · T2 멤버 · T3 워크인 · 광고</div>
+            <div class="gantt-milestone gate" style="left:50%"></div>
+            <div class="gantt-milestone-label" style="left:50%">GATE 2 · 5/23</div>
+          </div>
+        </div>
+        <div class="gantt-track">
+          <span class="gantt-track-name">04 · Six-Week</span>
+          <div class="gantt-track-body">
+            <div class="gantt-bar season" style="left:35.71%;width:42.86%">W1 W2 W3 W4 W5 W6 — Saturday Sunrise Yoga</div>
+          </div>
+        </div>
+        <div class="gantt-track">
+          <span class="gantt-track-name">05 · Post·Roll</span>
+          <div class="gantt-track-body">
+            <div class="gantt-bar post" style="left:71.43%;width:21.43%">결산 · 시즌무비 공개 · 시즌2 발표</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gate-table">
+        <div class="gate-item">
+          <span class="gate-tag">Gate 1</span>
+          <div>
+            <div class="gate-name">4/27 · Operations Lock</div>
+            <div class="gate-cond">MOU 사인 + 강사 풀 3인 + 풀 재오픈 + <strong>객실 컴플 정책 락</strong></div>
+          </div>
+          <span class="gate-fail">미통과<br>→ 1주 연기</span>
+        </div>
+        <div class="gate-item">
+          <span class="gate-tag">Gate 2</span>
+          <div>
+            <div class="gate-name">5/23 · Tickets 50%</div>
+            <div class="gate-cond">워크인 누적 매진율 <strong>50% 도달</strong> 점검</div>
+          </div>
+          <span class="gate-fail">미통과<br>→ 부스팅 +50% · PR 2차</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rnr-section">
+      <div class="zone-tag">B · R&R Matrix — KLOUD × ANDAR</div>
+      <table class="rnr-table">
+        <thead>
+          <tr>
+            <th class="rnr-area" style="width:130px">Area</th>
+            <th class="center" style="width:48px">KLOUD</th>
+            <th class="center" style="width:48px">ANDAR</th>
+            <th>KLOUD · 희앤썬 책임</th>
+            <th>ANDAR 책임</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="rnr-area">Space · Ops</td><td class="rnr-mark">●</td><td class="rnr-dash">—</td><td>21F 공간 · 음향 · 사이니지 · 보안 · <strong>우천 인도어 전환</strong> · 1F 컨시어지</td><td>—</td></tr>
+          <tr><td class="rnr-area">Class Content</td><td class="rnr-dash">—</td><td class="rnr-mark">●</td><td>음향 dB 검수만</td><td><strong>마스터 강사 1+1</strong> · 시퀀스 큐레이션 · <em>백업 강사 풀 3인</em></td></tr>
+          <tr><td class="rnr-area">F&B</td><td class="rnr-mark">●</td><td class="rnr-dash">—</td><td>AC Kitchen Breakfast Bowl + 시즌 음료 (참가자 25 + 스태프)</td><td>음료 PPL 협업 브랜드 제안 가능</td></tr>
+          <tr><td class="rnr-area">Goods · Kit</td><td class="rnr-dash">—</td><td class="rnr-mark">●</td><td>키트 보관·배포·사이즈 운영</td><td><strong>룩 키트 + 매트 150세트</strong> · 인하우스 제품 단가 부담</td></tr>
+          <tr><td class="rnr-area">Ticketing</td><td class="rnr-mark">●</td><td class="rnr-mark">●</td><td>T1 인하우스 EDM · T3 호텔 자체 + 외부 플랫폼</td><td><strong>T2 카카오 + 앱 (48h 우선)</strong></td></tr>
+          <tr><td class="rnr-area">PR · Influencer</td><td class="rnr-mark">●</td><td class="rnr-mark">●</td><td>라이프스타일 PR · <em>인플루언서 6명 호텔 패키지 베네핏</em></td><td>패션·뷰티 PR · 인플루언서 안다르 룩 시드</td></tr>
+          <tr><td class="rnr-area">Content · Data</td><td class="rnr-mark">●</td><td class="rnr-mark">●</td><td>일출·21F 메인 컷 · 티켓·게스트 데이터 (PII 분리) · <strong>주 1회 통합 KPI 리포트</strong></td><td>룩북·제품·강사 컷 · 멤버·코드 사용 데이터</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="triple-grid">
+      <div class="triple-card">
+        <div class="triple-tag">C · Cost Split (50:50 매칭)</div>
+        <div class="triple-name"><em>External Spend.</em></div>
+        <div class="triple-divider"></div>
+        <div style="flex:1">
+          <div class="cost-row"><span class="cost-label">사이니지 · 인쇄</span><span class="cost-val"><em>80만</em></span></div>
+          <div class="cost-row"><span class="cost-label">콘텐츠 촬영 + 시즌 무비</span><span class="cost-val"><em>150만</em></span></div>
+          <div class="cost-row"><span class="cost-label">광고 부스팅 (IG + 네이버)</span><span class="cost-val"><em>600만</em></span></div>
+          <div class="cost-row total"><span class="cost-label">External Total</span><span class="cost-val"><em>₩830만</em></span></div>
+          <div class="cost-row" style="border:none;padding-top:3px"><span class="cost-label" style="font-size:8px;color:var(--gray)">각 사 부담 (가정)</span><span class="cost-val" style="font-size:11px">≈ 415만</span></div>
+        </div>
+      </div>
+      <div class="triple-card">
+        <div class="triple-tag">D · Risk · Contingency</div>
+        <div class="triple-name"><em>What If.</em></div>
+        <div class="triple-divider"></div>
+        <div style="flex:1">
+          <div class="risk-row"><div class="risk-name">21F 야외 우천 · 강풍</div><div class="risk-cont">인도어 전환 (18석) · <strong>D-1 18:00 SMS</strong></div></div>
+          <div class="risk-row"><div class="risk-name">새벽 데시벨 컴플레인</div><div class="risk-cont"><strong>60dB 이하</strong> · 보컬 음악 금지 · 인접 빌딩 사전 고지</div></div>
+          <div class="risk-row"><div class="risk-name">풀 재오픈 일정 변동</div><div class="risk-cont">호텔 운영팀 직접 확인 · Gate 1까지 락</div></div>
+          <div class="risk-row"><div class="risk-name">투숙객 노쇼</div><div class="risk-cont">D-2 17:00 미예약 시 <strong>워크인 풀 자동 전환</strong></div></div>
+        </div>
+      </div>
+      <div class="triple-card decision">
+        <div class="triple-tag">E · Decision Required ★</div>
+        <div class="triple-name"><em>Lock By W-12.</em></div>
+        <div class="triple-divider"></div>
+        <div style="flex:1">
+          <div class="dec-row"><span class="dec-num">01</span><span class="dec-text">안다르 컨택 라인 — <strong>브랜드 마케팅</strong> vs PR팀</span><span class="dec-deadline">W-12</span></div>
+          <div class="dec-row"><span class="dec-num">02</span><span class="dec-text">풀 재오픈 일정 — <strong>5/9 첫 회차 가능 여부</strong></span><span class="dec-deadline">W-12</span></div>
+          <div class="dec-row"><span class="dec-num">03</span><span class="dec-text">투숙객 컴플 정책 — Pool Suite/Premier 1매 vs 全 풀룸</span><span class="dec-deadline">W-10</span></div>
+          <div class="dec-row"><span class="dec-num">04</span><span class="dec-text">워크인 ₩99,000 컨펌 — <strong>강남 시세 갭 검증</strong></span><span class="dec-deadline">W-10</span></div>
+          <div class="dec-row"><span class="dec-num">05</span><span class="dec-text">시즌 무비 양사 사용권 범위 (광고 매체 한도)</span><span class="dec-deadline">W-8</span></div>
+          <div class="dec-row"><span class="dec-num">06</span><span class="dec-text">시즌 2 (Q3 Dusk) 우선협상 명문화 — MOU 잠금</span><span class="dec-deadline">W-8</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-line">
+      <span class="quote">"From Brief To Saturday Morning."</span>
+      <span class="sep">—</span>
+      <strong>4월 첫째 주 6개 결정으로 5/9 첫 일출이 시작된다.</strong>
+    </div>
+  </div>
+  <div class="footer-brand">희앤썬 · KLOUD AT DAWN × ANDAR · Internal Brief</div>
+  <div class="page-num">04 / 04</div>
+</div>
+</div>
+</body>
+</html>

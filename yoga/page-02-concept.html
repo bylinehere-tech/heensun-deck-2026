@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>KLOUD AT DAWN × ANDAR · Page 02 · Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700;ital,wght@1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0F1E3D;--navy-deep:#0a1628;--gold:#B8945A;--gold-soft:#C5A572;--cream:#FAF7F2;--cream-deep:#F0EBE0;--cream-warm:#F5EBD8;--line:#D9D3C5;--ink:#1A1A1A;--gray:#6B6B6B;--gray-light:#A8A29A}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{width:1280px;height:720px;background:var(--cream);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);transform-origin:top center}
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+
+  .pad{padding:34px 56px}
+  .footer-brand{position:absolute;bottom:24px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase;z-index:10}
+  .page-num{position:absolute;bottom:24px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500;z-index:10}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:8px}
+  .slide-title{font-family:'Noto Sans KR';font-size:30px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:12.5px;font-weight:400;color:var(--gray);line-height:1.5;margin-top:6px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+  .header-block{margin-bottom:14px}
+  .zone-tag{font-family:'Inter';font-size:9px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+
+  /* Two Sides */
+  .twosides-grid{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;margin-bottom:14px;height:218px}
+  .side-card{padding:18px 24px 18px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .side-card.loud{background:linear-gradient(135deg,#2a2858 0%,#1a1838 60%,#0a0828 100%);border-top:2px solid var(--gold-soft)}
+  .side-card.quiet{background:linear-gradient(135deg,#3a2c18 0%,#2a1f10 50%,#1a1408 100%);border-top:3px solid var(--gold)}
+  .side-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 15%, rgba(184,148,90,.18) 0%, transparent 55%);pointer-events:none}
+  .side-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+  .side-tag{font-family:'Inter';font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.85);text-transform:uppercase;font-weight:700}
+  .side-tag.new{color:var(--gold-soft)}
+  .side-time{font-family:'Cormorant Garamond';font-style:italic;font-size:14px;color:rgba(255,255,255,.95);font-weight:500}
+  .side-time strong{color:var(--gold-soft);font-weight:700;font-style:normal;font-size:11px;letter-spacing:.15em;margin-right:4px}
+  .side-name{font-family:'Cormorant Garamond';font-style:italic;font-size:42px;color:#fff;font-weight:600;line-height:1;letter-spacing:-.02em;position:relative;z-index:2}
+  .side-name .star{color:var(--gold-soft);font-size:24px;vertical-align:middle;margin-left:4px}
+  .side-hook{font-family:'Noto Sans KR';font-size:12px;color:rgba(255,255,255,.85);margin-top:8px;letter-spacing:-.01em;line-height:1.4;position:relative;z-index:2}
+  .side-hook em{font-family:'Cormorant Garamond';font-style:italic;color:var(--gold-soft);font-weight:600;font-size:13px}
+  .side-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-top:11px;border-top:1px solid rgba(255,255,255,.18);position:relative;z-index:2}
+  .side-meta-label{font-family:'Inter';font-size:7.5px;letter-spacing:.2em;color:rgba(255,255,255,.55);text-transform:uppercase;font-weight:700}
+  .side-meta-val{font-family:'Noto Sans KR';font-size:10px;color:#fff;font-weight:600;margin-top:2px;line-height:1.25;letter-spacing:-.01em}
+  .side-meta-val.gold{color:var(--gold-soft)}
+  .twosides-bridge{display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative}
+  .bridge-line{position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(to bottom, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%)}
+  .bridge-arrow{font-family:'Cormorant Garamond';font-style:italic;font-size:34px;color:var(--gold);background:var(--cream);padding:6px 0;z-index:2;line-height:1;font-weight:300}
+  .bridge-label{font-family:'Inter';font-size:8.5px;letter-spacing:.25em;color:var(--gold);font-weight:700;text-transform:uppercase;background:var(--cream);padding:4px 0;z-index:2;text-align:center;line-height:1.2}
+  .bridge-label .small{display:block;font-family:'Cormorant Garamond';font-style:italic;font-size:11px;letter-spacing:0;color:var(--navy);margin-top:2px;font-weight:600;text-transform:none}
+
+  /* 4P */
+  .strategic-fit{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px;height:80px}
+  .fit-cell{padding:11px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+  .fit-cell:last-child{border-right:none}
+  .fit-num{font-family:'Cormorant Garamond';font-style:italic;font-size:18px;color:var(--gold);font-weight:300;line-height:1;display:inline-block;margin-right:7px}
+  .fit-track{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;display:inline-block}
+  .fit-text{font-family:'Noto Sans KR';font-size:11px;color:var(--ink);font-weight:500;margin-top:5px;line-height:1.4;letter-spacing:-.01em}
+  .fit-text strong{color:var(--navy);font-weight:700}
+
+  /* Tier */
+  .tier-section{display:grid;grid-template-columns:1fr 1fr 1fr 280px;gap:11px;height:160px}
+  .tier-card{background:#fff;border-top:2px solid var(--gold-soft);padding:11px 15px 12px;display:flex;flex-direction:column}
+  .tier-card.t-walkin{border-top:3px solid var(--gold)}
+  .tier-tag{font-family:'Inter';font-size:8.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .tier-name{font-family:'Cormorant Garamond';font-style:italic;font-size:18px;color:var(--navy);font-weight:600;line-height:1;letter-spacing:-.01em;margin-top:3px}
+  .tier-ko{font-family:'Noto Sans KR';font-size:10.5px;color:var(--ink);font-weight:600;margin-top:3px;letter-spacing:-.01em}
+  .tier-divider{height:1px;background:var(--line);margin:8px 0}
+  .tier-spec{display:flex;flex-direction:column;gap:4px}
+  .tier-row{display:flex;align-items:baseline;gap:6px}
+  .tier-rl{font-family:'Inter';font-size:7.5px;letter-spacing:.2em;color:var(--gray);text-transform:uppercase;font-weight:600;width:40px;flex-shrink:0}
+  .tier-rv{font-family:'Noto Sans KR';font-size:9.5px;color:var(--ink);line-height:1.35;letter-spacing:-.01em}
+  .tier-rv strong{color:var(--navy);font-weight:700}
+  .tier-rv em{font-family:'Cormorant Garamond';font-style:italic;color:var(--navy);font-size:11px;font-weight:600}
+
+  .rev-card{background:var(--navy-deep);color:#fff;padding:12px 16px 13px;display:flex;flex-direction:column;border-top:2px solid var(--gold)}
+  .rev-tag{font-family:'Inter';font-size:8.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .rev-title{font-family:'Cormorant Garamond';font-style:italic;font-size:17px;color:#fff;font-weight:500;margin-top:2px}
+  .rev-rows{display:flex;flex-direction:column;gap:4px;margin-top:8px;padding-top:7px;border-top:1px solid rgba(255,255,255,.18)}
+  .rev-row{display:flex;justify-content:space-between;align-items:baseline}
+  .rev-row-label{font-family:'Inter';font-size:8.5px;letter-spacing:.1em;color:rgba(255,255,255,.7);text-transform:uppercase;font-weight:500}
+  .rev-row-val{font-family:'Cormorant Garamond';font-style:italic;font-size:12px;color:#fff;font-weight:500;letter-spacing:-.01em}
+  .rev-total{margin-top:7px;padding-top:6px;border-top:1px solid var(--gold);display:flex;justify-content:space-between;align-items:baseline}
+  .rev-total-label{font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .rev-total-val{font-family:'Cormorant Garamond';font-style:italic;font-size:18px;color:var(--gold);font-weight:600}
+
+  .closing-line{margin-top:14px;padding:9px 0 0;text-align:center;border-top:1px solid var(--line);font-family:'Noto Sans KR';font-size:13px;color:var(--gray);letter-spacing:-.01em;font-weight:400}
+  .closing-line .quote{font-family:'Cormorant Garamond';font-style:italic;font-size:20px;color:var(--navy);font-weight:500;margin-right:12px}
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+<div class="slide">
+  <div class="pad" style="height:100%;display:flex;flex-direction:column">
+    <div class="header-block">
+      <div class="section-tag">Campaign Brief · KLOUD AT DAWN × ANDAR — Page 02 / 04</div>
+      <h2 class="slide-title">Two Sides of KLOUD — 같은 21층, 두 개의 시간.</h2>
+      <p class="slide-subtitle">기존 라이브 재즈와 <strong>대칭되는 새벽 자산</strong>을 추가해 21층을 두 개의 시간대로 운영한다. 세 개의 좌석 티어로 매출 ₩11.85M, 4P 전략에 정합.</p>
+    </div>
+
+    <div class="twosides-grid">
+      <div class="side-card loud">
+        <div class="side-top">
+          <span class="side-tag">Loud Hours · Existing</span>
+          <span class="side-time"><strong>EVE</strong>19:00 – 23:00</span>
+        </div>
+        <div>
+          <div class="side-name"><em>Live Rooftop.</em></div>
+          <div class="side-hook">매주의 라이브 재즈, <em>The City At Its Peak.</em></div>
+        </div>
+        <div class="side-meta">
+          <div><div class="side-meta-label">Sound</div><div class="side-meta-val">라이브 재즈</div></div>
+          <div><div class="side-meta-label">Mood</div><div class="side-meta-val">도시의 정점</div></div>
+          <div><div class="side-meta-label">Asset</div><div class="side-meta-val">목·금·토 4회</div></div>
+          <div><div class="side-meta-label">Profile</div><div class="side-meta-val">출장 · 데이트</div></div>
+        </div>
+      </div>
+
+      <div class="twosides-bridge">
+        <div class="bridge-line"></div>
+        <div class="bridge-arrow">⇆</div>
+        <div class="bridge-label">Two<br>Sides<span class="small"><em>One Floor</em></span></div>
+      </div>
+
+      <div class="side-card quiet">
+        <div class="side-top">
+          <span class="side-tag new">Quiet Hours · New ★</span>
+          <span class="side-time"><strong>SAT</strong>06:00 – 08:00</span>
+        </div>
+        <div>
+          <div class="side-name"><em>Sunrise Yoga.</em><span class="star">★</span></div>
+          <div class="side-hook">도시가 깨기 전, <em>Before the City Wakes.</em></div>
+        </div>
+        <div class="side-meta">
+          <div><div class="side-meta-label">Sound</div><div class="side-meta-val">Ambient 60dB↓</div></div>
+          <div><div class="side-meta-label">Mood</div><div class="side-meta-val gold">Stillness</div></div>
+          <div><div class="side-meta-label">Asset</div><div class="side-meta-val">6주 시즌 시리즈</div></div>
+          <div><div class="side-meta-label">Profile</div><div class="side-meta-val">30–40 워킹우먼</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategic-fit">
+      <div class="fit-cell">
+        <div><span class="fit-num">01</span><span class="fit-track">On-site Experience</span></div>
+        <div class="fit-text">KLOUD 라이브 재즈와 <strong>대칭되는 시간대 자산</strong> — 동일 공간, 새 시간대.</div>
+      </div>
+      <div class="fit-cell">
+        <div><span class="fit-num">02</span><span class="fit-track">Digital Reach</span></div>
+        <div class="fit-text">안다르 IG 80만+ · 멤버 300만+를 <strong>KLOUD 자산으로 흡수</strong>.</div>
+      </div>
+      <div class="fit-cell">
+        <div><span class="fit-num">03</span><span class="fit-track">Campaign & Loyalty</span></div>
+        <div class="fit-text">투숙객 베네핏화 → <strong>풀 객실 패키지 가치 강화</strong>.</div>
+      </div>
+    </div>
+
+    <div class="tier-section">
+      <div class="tier-card">
+        <div class="tier-tag">Tier 01 · Inhouse Guest</div>
+        <div class="tier-name"><em>For The Stay.</em></div>
+        <div class="tier-ko">투숙객 — AC 호텔 / 팰리스</div>
+        <div class="tier-divider"></div>
+        <div class="tier-spec">
+          <div class="tier-row"><span class="tier-rl">좌석</span><span class="tier-rv"><strong>5/회 · 30/시즌</strong></span></div>
+          <div class="tier-row"><span class="tier-rl">단가</span><span class="tier-rv">게스트 <em>₩49,000</em></span></div>
+          <div class="tier-row"><span class="tier-rl">베네핏</span><span class="tier-rv">Pool 1매 컴플 · 키트</span></div>
+          <div class="tier-row"><span class="tier-rl">채널</span><span class="tier-rv">컨시어지 · EDM · Bonvoy</span></div>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-tag">Tier 02 · ANDAR Member</div>
+        <div class="tier-name"><em>For The Member.</em></div>
+        <div class="tier-ko">안다르 멤버 (48h 우선 오픈)</div>
+        <div class="tier-divider"></div>
+        <div class="tier-spec">
+          <div class="tier-row"><span class="tier-rl">좌석</span><span class="tier-rv"><strong>10/회 · 60/시즌</strong></span></div>
+          <div class="tier-row"><span class="tier-rl">단가</span><span class="tier-rv">멤버 <em>₩79,000</em></span></div>
+          <div class="tier-row"><span class="tier-rl">베네핏</span><span class="tier-rv">룩 키트 · 매트 · 음료</span></div>
+          <div class="tier-row"><span class="tier-rl">채널</span><span class="tier-rv">카카오 채널 · 안다르 앱</span></div>
+        </div>
+      </div>
+      <div class="tier-card t-walkin">
+        <div class="tier-tag">Tier 03 · Walk-in (Public) ★</div>
+        <div class="tier-name"><em>For The City.</em></div>
+        <div class="tier-ko">워크인 유료 — 공개 티켓팅</div>
+        <div class="tier-divider"></div>
+        <div class="tier-spec">
+          <div class="tier-row"><span class="tier-rl">좌석</span><span class="tier-rv"><strong>10/회 · 60/시즌</strong></span></div>
+          <div class="tier-row"><span class="tier-rl">단가</span><span class="tier-rv">정가 <em>₩99,000</em></span></div>
+          <div class="tier-row"><span class="tier-rl">베네핏</span><span class="tier-rv">키트 · 조식 (AC Kitchen)</span></div>
+          <div class="tier-row"><span class="tier-rl">채널</span><span class="tier-rv">호텔 자체 + 외부 + 네이버</span></div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-tag">Revenue Simulation</div>
+        <div class="rev-title"><em>Six-Week Box Office.</em></div>
+        <div class="rev-rows">
+          <div class="rev-row"><span class="rev-row-label">T1 Inhouse · 24 paid</span><span class="rev-row-val"><em>1,176K</em></span></div>
+          <div class="rev-row"><span class="rev-row-label">T2 Member · 60</span><span class="rev-row-val"><em>4,740K</em></span></div>
+          <div class="rev-row"><span class="rev-row-label">T3 Walk-in · 60</span><span class="rev-row-val"><em>5,940K</em></span></div>
+        </div>
+        <div class="rev-total">
+          <span class="rev-total-label">Sold-out</span>
+          <span class="rev-total-val"><em>₩11.85M</em></span>
+        </div>
+        <div class="rev-total" style="margin-top:4px;padding-top:4px;border-top:1px dashed rgba(255,255,255,.25)">
+          <span class="rev-total-label" style="color:rgba(255,255,255,.7)">80% 매진</span>
+          <span class="rev-total-val" style="color:#fff;font-size:14px">≈ ₩9.5M</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-line">
+      <span class="quote">"Two Sides, One Floor."</span>
+      <span class="sep">—</span>
+      <strong>같은 21층의 두 시간대로 매출과 브랜드 자산을 동시에 키운다.</strong>
+    </div>
+  </div>
+  <div class="footer-brand">희앤썬 · KLOUD AT DAWN × ANDAR · Internal Brief</div>
+  <div class="page-num">02 / 04</div>
+</div>
+</div>
+</body>
+</html>
