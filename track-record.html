@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Record — 희앤썬 그룹</title>
+<meta name="description" content="직접 기획·운영한 호스피탈리티 프로젝트 8건 — 본 제안의 운영 근거">
+<style>
+  :root {
+    --bg: #F5F2EC;
+    --ink: #1A1A1A;
+    --gray: #6B6B6B;
+    --gray-light: #8B8B8B;
+    --green: #1F3A2E;
+    --gold: #B8956A;
+    --border: #D8D5CD;
+    --border-soft: #E8E5DD;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .serif {
+    font-family: Georgia, "Times New Roman", "Noto Serif KR", serif;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+
+  /* ─────────── TOP BAR ─────────── */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 80px;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: var(--gray);
+    font-style: italic;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  /* ─────────── HERO ─────────── */
+  .hero {
+    margin-bottom: 72px;
+  }
+
+  .hero-title {
+    font-family: Georgia, "Times New Roman", "Noto Serif KR", serif;
+    font-size: 68px;
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 580px;
+    line-height: 1.75;
+  }
+
+  .hero-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--gray-light);
+    font-style: italic;
+    font-family: Georgia, serif;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  /* ─────────── SECTION META ─────────── */
+  .section-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 18px 0;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .section-range {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  /* ─────────── MAIN CARDS ─────────── */
+  .cards {
+    margin-bottom: 64px;
+  }
+
+  .card {
+    padding: 40px 0 36px;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 32px;
+  }
+
+  .card-num {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold);
+    padding-top: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .card-content { min-width: 0; }
+
+  .card-title {
+    font-size: 24px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: -0.012em;
+  }
+
+  .card-meta {
+    font-size: 12px;
+    color: var(--gray);
+    font-family: Georgia, serif;
+    font-style: italic;
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    max-width: 620px;
+  }
+
+  .card-bridge {
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border-left: 2px solid var(--green);
+    line-height: 1.55;
+    background: rgba(31, 58, 46, 0.025);
+  }
+
+  .card-bridge em {
+    font-style: italic;
+    font-family: Georgia, serif;
+  }
+
+  .card-refs {
+    font-size: 12px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .card-refs .refs-label {
+    color: var(--gray);
+    margin-right: 12px;
+    font-style: italic;
+    font-family: Georgia, serif;
+    font-size: 11px;
+  }
+
+  .card-refs a {
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 0.5px solid transparent;
+    margin-right: 16px;
+    transition: border-color 0.2s, color 0.2s;
+    font-size: 12px;
+    padding-bottom: 1px;
+  }
+
+  .card-refs a:hover {
+    border-bottom-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─────────── SUB SECTION ─────────── */
+  .sub-section {
+    margin-top: 64px;
+  }
+
+  .sub-section .section-meta {
+    margin-bottom: 0;
+  }
+
+  .sub-list {
+    margin-bottom: 64px;
+  }
+
+  .sub-item {
+    padding: 28px 0 26px;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 32px;
+  }
+
+  .sub-num {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    padding-top: 4px;
+  }
+
+  .sub-content { min-width: 0; }
+
+  .sub-title {
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.008em;
+  }
+
+  .sub-meta {
+    font-size: 11px;
+    color: var(--gray);
+    font-style: italic;
+    font-family: Georgia, serif;
+    margin-bottom: 12px;
+  }
+
+  .sub-desc {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 12px;
+    max-width: 600px;
+    line-height: 1.65;
+  }
+
+  .sub-bridge {
+    font-size: 12px;
+    color: var(--green);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .sub-bridge::before {
+    content: "→ ";
+    color: var(--green);
+  }
+
+  .sub-bridge em {
+    font-style: italic;
+    font-family: Georgia, serif;
+  }
+
+  .sub-refs {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  .sub-refs a {
+    color: var(--green);
+    text-decoration: none;
+    margin-right: 14px;
+    border-bottom: 0.5px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .sub-refs a:hover {
+    border-bottom-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─────────── BACK LINK ─────────── */
+  .back-section {
+    margin-top: 64px;
+    padding-top: 24px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--gray);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+    font-family: Georgia, serif;
+    font-style: italic;
+  }
+
+  .back-link:hover {
+    color: var(--green);
+  }
+
+  /* ─────────── FOOTER ─────────── */
+  .footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-left {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-right {
+    font-size: 12px;
+    color: var(--gray);
+    font-family: Georgia, serif;
+    font-style: italic;
+  }
+
+  /* ─────────── RESPONSIVE ─────────── */
+  @media (max-width: 720px) {
+    .container { padding: 36px 24px 60px; }
+    .top-bar { margin-bottom: 48px; }
+    .hero { margin-bottom: 48px; }
+    .hero-title { font-size: 44px; line-height: 1.08; }
+    .hero-desc { font-size: 15px; }
+    .card, .sub-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .card-num { padding-top: 0; font-size: 13px; }
+    .sub-num { padding-top: 0; font-size: 12px; }
+    .card-title { font-size: 20px; }
+    .sub-title { font-size: 16px; }
+    .footer { flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="tag">APPENDIX · TRACK RECORD</span>
+    <span class="tagline">More Than Hotels.</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Track <em>Record.</em></h1>
+    <p class="hero-desc">
+      기획부터 현장 운영까지 직접 총괄한 호스피탈리티 프로젝트들. 본 제안의 각 캠페인에 연결된 운영 근거를 함께 정리했습니다.
+    </p>
+    <p class="hero-note">
+      각 카드의 <strong style="color: var(--green); font-weight: 500;">→</strong> 한 줄은 본 제안의 어느 페이지에 연결되는지를 표시했습니다. 외부 보도 링크는 1차 출처 위주로 정리했습니다.
+    </p>
+  </section>
+
+  <!-- SECTION META · MAIN -->
+  <div class="section-meta">
+    <span class="section-range">01 — 05 · F&B 시그니처 + 라이프스타일 콜라보</span>
+    <span class="section-label">Projects</span>
+  </div>
+
+  <!-- MAIN CARDS -->
+  <div class="cards">
+
+    <!-- 01 -->
+    <article class="card">
+      <div class="card-num">01.</div>
+      <div class="card-content">
+        <h2 class="card-title">제주푸드앤와인페스티벌</h2>
+        <p class="card-meta">2025.05–06 · 제주신화월드 · 미식 페스티벌 메인 베뉴</p>
+        <p class="card-desc">
+          제주 전역에서 열린 미식 축제의 메인 베뉴 중 하나로, 갈라디너·와인 테이스팅·셰프 마스터클래스를 한 시즌 내러티브로 묶어 운영. F&B 이벤트가 단발 캠페인이 아닌 시리즈 자산으로 작동하게 만든 구조.
+        </p>
+        <div class="card-bridge">
+          → AC 키친 <em>European Culinary Journey</em> 4챕터 시리즈 운영의 직접 근거
+        </div>
+        <div class="card-refs">
+          <span class="refs-label">참고 ·</span>
+          <a href="https://jfwf-en.imweb.me/2025Program" target="_blank" rel="noopener noreferrer">공식 프로그램</a>
+          <a href="https://www.segye.com/newsView/20250511510792" target="_blank" rel="noopener noreferrer">세계일보</a>
+          <a href="https://themade.net/festival/view.php?id=3113036" target="_blank" rel="noopener noreferrer">the made</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="card">
+      <div class="card-num">02.</div>
+      <div class="card-content">
+        <h2 class="card-title">Viva Latino! 라틴 컬처위크 & 라틴 고메 페스티벌</h2>
+        <p class="card-meta">2025.06.13–30 · 스카이 온 파이브 · 대사관 셰프 협업 컬처 페스티벌</p>
+        <p class="card-desc">
+          주한 라틴아메리카 대사관 셰프들과 협업해 라틴 고메 뷔페·디너, 라틴 영화·예술 콘텐츠, 숙박 패키지를 결합한 컬처 페스티벌. 외교 공관과 호텔 F&B를 한 스토리에 묶은 다층 협업 구조.
+        </p>
+        <div class="card-bridge">
+          → AC 키친 시리즈 + KLOUD 글로벌 PR 통합 운영 모델의 직접 근거
+        </div>
+        <div class="card-refs">
+          <span class="refs-label">참고 ·</span>
+          <a href="https://www.instagram.com/p/DK1bqG0RMXH/" target="_blank" rel="noopener noreferrer">공식 인스타</a>
+          <a href="https://news.nate.com/view/20250615n08162" target="_blank" rel="noopener noreferrer">네이트뉴스</a>
+          <a href="http://www.travelinfo.co.kr/cmm/index_news.html?MODE=view&BD_CD=NEWS&MSEQ=61653&page=25&b_uid=7&m_uid=25" target="_blank" rel="noopener noreferrer">트래블인포</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="card">
+      <div class="card-num">03.</div>
+      <div class="card-content">
+        <h2 class="card-title">Yong Fu 리브랜딩 + 저스틴 퀙 갈라디너</h2>
+        <p class="card-meta">2024.09 + 2025.05–06 · 미쉐린 등재 용푸 · 부대업장 → 독립 브랜드 전환</p>
+        <p class="card-desc">
+          미쉐린 가이드 등재 중식 파인다이닝 용푸의 정체성 리브랜딩과 함께, 싱가포르 스타 셰프 저스틴 퀙 초청 와인 페어링 갈라디너로 미식 페스티벌의 하이라이트로 재포지셔닝. 부대업장을 독립 브랜드로 끌어올린 직접 사례.
+        </p>
+        <div class="card-bridge">
+          → AC 키친·KLOUD 부대업장 → 독립 프리미엄 브랜드 전환의 직접 근거
+        </div>
+        <div class="card-refs">
+          <span class="refs-label">참고 ·</span>
+          <a href="https://v.daum.net/v/Hmnb6tZwsY" target="_blank" rel="noopener noreferrer">다음뉴스</a>
+          <a href="https://www.newsprime.co.kr/ezview/article_main.html?no=685649" target="_blank" rel="noopener noreferrer">프라임경제</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="card">
+      <div class="card-num">04.</div>
+      <div class="card-content">
+        <h2 class="card-title">Sky Pool Party & Rooftop Dining</h2>
+        <p class="card-meta">2024–2025 여름 시즌 · 스카이 온 파이브 · 루프탑 + 풀 시그니처</p>
+        <p class="card-desc">
+          루프탑 다이닝과 야외 풀을 활용해 와인&다인, 라틴 고메 페스티벌, 시즌 나이트 파티를 운영. 미식·음악·수영장을 결합해 리조트형 시그니처 경험으로 자산화.
+        </p>
+        <div class="card-bridge">
+          → Pool Suite by AC + KLOUD 루프탑 시그니처 캠페인의 직접 근거
+        </div>
+        <div class="card-refs">
+          <span class="refs-label">참고 ·</span>
+          <a href="https://www.instagram.com/reel/DLCPLrlpCto/" target="_blank" rel="noopener noreferrer">스카이풀 릴스</a>
+          <a href="http://www.travelinfo.co.kr/cmm/index_news.html?MODE=view&BD_CD=NEWS&MSEQ=57886&b_uid=7&m_uid=25&page=22" target="_blank" rel="noopener noreferrer">트래블인포</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="card">
+      <div class="card-num">05.</div>
+      <div class="card-content">
+        <h2 class="card-title">르꼬끄 × 신화월드 러닝 프로그램</h2>
+        <p class="card-meta">2024–2025 · 제주신화월드 메리어트 · 라이프스타일 브랜드 콜라보</p>
+        <p class="card-desc">
+          르꼬끄 스포르티브와 협업해 메리어트 투숙객 대상 러닝 기어(러닝화·의류) 렌탈·코스 안내·러닝 챌린지를 결합한 러닝 특화 숙박 경험. 라이프스타일 브랜드와 호텔 체류를 한 프로그램으로 묶은 콜라보 구조.
+        </p>
+        <div class="card-bridge">
+          → 그룹 차원 라이프스타일 파트너십 모델 (24M 로드맵 직결)
+        </div>
+        <div class="card-refs">
+          <span class="refs-label">참고 ·</span>
+          <a href="https://www.shinhwaworld.com/eventhotel/40983.jhtml" target="_blank" rel="noopener noreferrer">공식 이벤트</a>
+          <a href="https://www.instagram.com/p/DMHNEWMT1fQ/" target="_blank" rel="noopener noreferrer">공식 인스타</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- SUB SECTION -->
+  <section class="sub-section">
+
+    <div class="section-meta">
+      <span class="section-range">06 — 08 · 가족 · 라이프스타일 · VIP</span>
+      <span class="section-label">Sub Cases</span>
+    </div>
+
+    <div class="sub-list">
+
+      <!-- 06 -->
+      <div class="sub-item">
+        <div class="sub-num">06.</div>
+        <div class="sub-content">
+          <h3 class="sub-title">신화키즈 리틀셰프 & 어린이날 키즈런</h3>
+          <p class="sub-meta">2018–2020 · 제주신화월드 · 가족 타깃 체험형 패키지</p>
+          <p class="sub-desc">
+            베이커리 총괄 셰프와 협업해 키즈 쿠킹 클래스를 운영하고, 어린이날 시즌에 맞춰 장시간 돌봄형 키즈 액티비티 패키지를 구성.
+          </p>
+          <p class="sub-bridge">AC 키친 키즈 라운지 + 가족 타깃 시그니처 운영 근거</p>
+          <p class="sub-refs">
+            <a href="http://www.headlinejeju.co.kr/news/articleView.html?idxno=334552" target="_blank" rel="noopener noreferrer">헤드라인제주</a>
+            <a href="https://sports.khan.co.kr/article/201805142254003" target="_blank" rel="noopener noreferrer">스포츠경향</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="sub-item">
+        <div class="sub-num">07.</div>
+        <div class="sub-content">
+          <h3 class="sub-title">신화테라스 비어가든 & JEMU BUSKING SHINHWA</h3>
+          <p class="sub-meta">2025 여름 · 제주신화월드 · F&B + 라이브 음악 페스티벌</p>
+          <p class="sub-desc">
+            제주 로컬 아티스트 32팀이 참가하는 관객 참여형 버스킹 콘테스트를 비어가든 베뉴와 결합해 운영. 음악·F&B·예술 전시(더 갤러리)를 한 베뉴에 묶은 시즌 프로그램.
+          </p>
+          <p class="sub-bridge">KLOUD <em>After 8</em> 라이브 음악 시그니처 운영 근거</p>
+          <p class="sub-refs">
+            <a href="https://www.shinhwaworld.com/eventhotel/41342.jhtml" target="_blank" rel="noopener noreferrer">공식 이벤트</a>
+            <a href="https://www.hankyung.com/article/2025073005391" target="_blank" rel="noopener noreferrer">한국경제</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="sub-item">
+        <div class="sub-num">08.</div>
+        <div class="sub-content">
+          <h3 class="sub-title">HAN Collection 리조트룩 스타일링 클래스</h3>
+          <p class="sub-meta">2023.06.22 · 그랜드하얏트 제주 · 럭셔리 라이프스타일 콜라보</p>
+          <p class="sub-desc">
+            드림타워 한컬렉션 입점 LIE 이청청 디자이너와 셀럽·VIP 20여 명을 초청, 그랜드하얏트 제주 라운지·레스토랑을 배경으로 브런치–이브닝 칵테일–샴페인 파티까지 이어지는 리조트룩 원데이 클래스.
+          </p>
+          <p class="sub-bridge">럭셔리 라이프스타일 콘텐츠 파트너십 + VIP 큐레이션 근거</p>
+          <p class="sub-refs">
+            <a href="https://www.donga.com/news/Culture/article/all/20230627/119962523/1" target="_blank" rel="noopener noreferrer">동아일보</a>
+            <a href="https://www.newsis.com/view/NISX20230627_0002353915" target="_blank" rel="noopener noreferrer">뉴시스</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BACK -->
+  <div class="back-section">
+    <a href="./" class="back-link">← Back to Deck</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-left">© 희앤썬 그룹 · APPENDIX · TRACK RECORD · Jay Moon</span>
+    <span class="footer-right">More Than Hotels.</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
