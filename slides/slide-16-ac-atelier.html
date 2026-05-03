@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 16 · AC Atelier · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:14px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:10px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:14px}
+
+  /* Track band — 3 Tracks */
+  .track-band{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    padding:13px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:14px;
+  }
+  .track-item{padding:0 6px}
+  .track-header{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+  .track-num{font-family:'Cormorant Garamond';font-size:18px;font-weight:400;color:var(--gold);line-height:1}
+  .track-en{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600}
+  .track-ko{font-family:'Noto Sans KR';font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:3px}
+  .track-def{font-family:'Noto Sans KR';font-size:11px;color:var(--gray);line-height:1.45;letter-spacing:-.01em;margin-bottom:4px}
+  .track-cadence{font-family:'Inter';font-size:9.5px;color:var(--gray-light);font-style:italic;letter-spacing:.05em}
+
+  /* 4 Annual Lines */
+  .lines-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    height:158px;
+    margin-bottom:14px;
+  }
+  .line-card{
+    background:#fff;
+    padding:14px 16px;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+  }
+  .line-num{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:5px}
+  .line-name{font-family:'Cormorant Garamond';font-style:italic;font-size:22px;color:var(--navy);font-weight:500;line-height:1.05;margin-bottom:6px;letter-spacing:-.01em}
+  .line-ko{font-family:'Noto Sans KR';font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-.01em;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+  .line-items{font-family:'Noto Sans KR';font-size:10.5px;color:var(--gray);line-height:1.55;letter-spacing:-.01em;flex:1}
+  .line-items strong{color:var(--navy);font-weight:600}
+
+  /* Seasonal Drop band */
+  .drop-band{
+    background:var(--navy);
+    padding:14px 22px 16px;
+    border-top:3px solid var(--gold);
+    margin-bottom:14px;
+  }
+  .drop-band-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:12px;
+  }
+  .drop-band-label{
+    font-family:'Inter';
+    font-size:9.5px;
+    letter-spacing:.22em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .drop-band-sub{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    color:var(--cream);
+    font-weight:500;
+  }
+  .drop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .drop-item{display:flex;align-items:center;gap:13px}
+  .drop-pkg{
+    width:78px;
+    height:88px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:9px 10px;
+    flex-shrink:0;
+    box-shadow:0 4px 14px rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .pkg-spring{background:linear-gradient(135deg,#f5cdcd 0%,#e8a8b2 100%);color:#5a3038}
+  .pkg-summer{background:linear-gradient(135deg,#a8d5e8 0%,#5a8aa8 100%);color:#fff}
+  .pkg-autumn{background:linear-gradient(135deg,#d8a888 0%,#a86848 100%);color:#4a2818}
+  .pkg-winter{background:linear-gradient(135deg,#6a3a48 0%,#382028 100%);color:#f5e0c8}
+  .pkg-season{font-family:'Inter';font-size:7px;letter-spacing:.25em;font-weight:700;line-height:1}
+  .pkg-name{font-family:'Cormorant Garamond';font-style:italic;font-size:16px;font-weight:500;margin-top:auto;line-height:1;letter-spacing:-.01em}
+  .pkg-stamp{font-family:'Inter';font-size:7px;letter-spacing:.18em;font-weight:600;margin-top:4px;opacity:.75;text-transform:uppercase}
+  .drop-meta{font-family:'Noto Sans KR';font-size:10px;color:var(--cream-deep);line-height:1.5;letter-spacing:-.01em}
+  .drop-meta strong{display:block;color:var(--cream);font-size:13px;font-weight:500;margin-bottom:2px;letter-spacing:-.01em;font-family:'Cormorant Garamond';font-style:italic}
+
+  /* Closing */
+  .closing-line{
+    padding:11px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 16 : AC ATELIER ========== -->
+<div class="slide" id="s16">
+  <div class="pad" style="height:100%">
+
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Marketing Strategy ③ Atelier</div>
+      <h2 class="slide-title">체류를 가져가는, 연간 컬렉션.</h2>
+      <p class="slide-subtitle">호텔 무드를 일상의 자산으로 — <strong>시그니처 굿즈 시리즈</strong>, 매 시즌 새로 발매되어 한 해의 기념물이 된다.</p>
+    </div>
+
+    <!-- Zone 1: 3 Tracks -->
+    <div class="track-band">
+      <div class="track-item">
+        <div class="track-header">
+          <span class="track-num">01</span>
+          <span class="track-en">Signature Series</span>
+        </div>
+        <div class="track-ko">시그니처 시리즈</div>
+        <div class="track-def">호텔 시그니처 굿즈 · 자산 라인 · Annual Edition</div>
+        <div class="track-cadence">Cadence · 연 1회 발매</div>
+      </div>
+      <div class="track-item">
+        <div class="track-header">
+          <span class="track-num">02</span>
+          <span class="track-en">Seasonal Drops</span>
+        </div>
+        <div class="track-ko">시즌 한정</div>
+        <div class="track-def">시즌별 한정 컬렉션 · 분기 발매 · 캠페인 결합</div>
+        <div class="track-cadence">Cadence · 분기 1회 (S/S/A/W)</div>
+      </div>
+      <div class="track-item">
+        <div class="track-header">
+          <span class="track-num">03</span>
+          <span class="track-en">Collab Capsule</span>
+        </div>
+        <div class="track-ko">콜라보 한정판</div>
+        <div class="track-def">KLOUD · Pool · Kitchen 단발 콜라보 캡슐</div>
+        <div class="track-cadence">Cadence · 연 2~3회 한정</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 4 Annual Lines -->
+    <div class="lines-grid">
+      <div class="line-card">
+        <div class="line-num">01</div>
+        <div class="line-name"><em>Scent.</em></div>
+        <div class="line-ko">향 컬렉션</div>
+        <div class="line-items">
+          <strong>Pool Suite</strong> · Floral<br>
+          <strong>KLOUD</strong> · Smoke · Wood<br>
+          <strong>AC Lobby</strong> · European Modern<br>
+          캔들 · 룸 스프레이 · 디퓨저
+        </div>
+      </div>
+      <div class="line-card">
+        <div class="line-num">02</div>
+        <div class="line-name"><em>Carry.</em></div>
+        <div class="line-ko">데일리 캐리</div>
+        <div class="line-items">
+          <strong>Eco Tote</strong> · 시즌 4 컬러<br>
+          <strong>Crossbody Pouch</strong> · 미니<br>
+          키링 · 카드 케이스<br>
+          트래블 파우치 · 휴대용
+        </div>
+      </div>
+      <div class="line-card">
+        <div class="line-num">03</div>
+        <div class="line-name"><em>Print.</em></div>
+        <div class="line-ko">인쇄 · 종이</div>
+        <div class="line-items">
+          <strong>Polaroid Card</strong> · 시즌 한정<br>
+          엽서 세트 · 4 시즌 4종<br>
+          한정 포스터 · 게스트 작가<br>
+          <strong>Folio Year-End</strong> 양장본
+        </div>
+      </div>
+      <div class="line-card">
+        <div class="line-num">04</div>
+        <div class="line-name"><em>Wear.</em></div>
+        <div class="line-ko">웨어 · 룸 라이프</div>
+        <div class="line-items">
+          가운 미니 · 슬리퍼<br>
+          시즌 양말 · 잠옷<br>
+          라운지웨어 · 시즌 컬러<br>
+          AC × KORRES 어메니티 듀오
+        </div>
+      </div>
+    </div>
+
+    <!-- Zone 3: Seasonal Drop Mockup -->
+    <div class="drop-band">
+      <div class="drop-band-header">
+        <span class="drop-band-label">Seasonal Drops — Quarterly Capsule</span>
+        <span class="drop-band-sub"><em>Made, kept, gifted.</em></span>
+      </div>
+      <div class="drop-grid">
+        <div class="drop-item">
+          <div class="drop-pkg pkg-spring">
+            <div class="pkg-season">SPRING</div>
+            <div class="pkg-name"><em>Bloom</em></div>
+            <div class="pkg-stamp">Drop</div>
+          </div>
+          <div class="drop-meta">
+            <strong><em>Bloom Drop</em></strong>
+            플로럴 캔들 + 스프링 티
+          </div>
+        </div>
+        <div class="drop-item">
+          <div class="drop-pkg pkg-summer">
+            <div class="pkg-season">SUMMER</div>
+            <div class="pkg-name"><em>Splash</em></div>
+            <div class="pkg-stamp">Drop</div>
+          </div>
+          <div class="drop-meta">
+            <strong><em>Splash Drop</em></strong>
+            풀 가방 + 시즌 토트
+          </div>
+        </div>
+        <div class="drop-item">
+          <div class="drop-pkg pkg-autumn">
+            <div class="pkg-season">AUTUMN</div>
+            <div class="pkg-name"><em>Encore</em></div>
+            <div class="pkg-stamp">Drop</div>
+          </div>
+          <div class="drop-meta">
+            <strong><em>Encore Drop</em></strong>
+            KLOUD LP + 위스키 잔
+          </div>
+        </div>
+        <div class="drop-item">
+          <div class="drop-pkg pkg-winter">
+            <div class="pkg-season">WINTER</div>
+            <div class="pkg-name"><em>Toast</em></div>
+            <div class="pkg-stamp">Drop</div>
+          </div>
+          <div class="drop-meta">
+            <strong><em>Toast Drop</em></strong>
+            Year-End 박스 (Folio + Scent)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Take the Stay Home."</span>
+      <span class="sep">—</span>
+      <strong>호텔이 일상의 자산이 된다.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">16</div>
+</div>
+
+</div>
+</body>
+</html>

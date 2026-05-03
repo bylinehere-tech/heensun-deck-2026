@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 22 · KLOUD Brand Definition · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:30px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:12px}
+
+  /* Zone 1: 5 KLOUD essence band */
+  .essence-band{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .essence-item{
+    padding:11px 14px;
+    border-right:1px solid var(--line);
+  }
+  .essence-item:last-child{border-right:none}
+  .essence-num{font-family:'Cormorant Garamond';font-size:20px;font-weight:300;color:var(--gold);line-height:1;display:inline-block;margin-right:7px;vertical-align:baseline}
+  .essence-en{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;display:inline-block}
+  .essence-ko{font-family:'Noto Sans KR';font-size:12.5px;font-weight:700;color:var(--navy);margin-top:5px;letter-spacing:-.01em}
+  .essence-desc{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em;margin-top:2px}
+  .essence-ko .star{color:var(--gold);font-weight:700}
+
+  /* Zone 2: 2 Signature cards */
+  .sig-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    height:340px;
+    margin-bottom:10px;
+  }
+
+  .sig-card{
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+    overflow:hidden;
+    border-top:2px solid var(--gold);
+  }
+  .sig-card.festa{border-top:3px solid var(--gold)}
+
+  .sig-hero{
+    position:relative;
+    padding:14px 22px;
+    height:96px;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    flex-shrink:0;
+  }
+  .hero-daily{background:linear-gradient(135deg,#2a2858 0%,#1a1838 60%,#0a0828 100%)}
+  .hero-festa{background:linear-gradient(135deg,#c8a878 0%,#6a3878 60%,#2a0848 100%)}
+
+  .sig-label-top{
+    position:absolute;top:13px;left:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.25em;
+    color:rgba(255,255,255,.95);text-transform:uppercase;font-weight:700;
+  }
+  .sig-rating{
+    position:absolute;top:13px;right:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.18em;
+    color:rgba(255,255,255,.85);font-weight:600;
+  }
+
+  .sig-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:30px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-.02em;
+    color:#fff;
+    margin-bottom:5px;
+  }
+  .sig-ko-hook{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:500;
+    color:rgba(255,255,255,.95);
+    letter-spacing:-.01em;
+    line-height:1.3;
+  }
+
+  .sig-body{
+    padding:13px 22px 12px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .sig-en-hook{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:18px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1.2;
+    margin-bottom:3px;
+  }
+  .sig-ko-sub{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.45;
+    letter-spacing:-.01em;
+    margin-bottom:9px;
+    padding-bottom:9px;
+    border-bottom:1px dashed var(--line);
+  }
+
+  .sig-rows{display:flex;flex-direction:column;gap:6px;flex:1}
+  .sig-row{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:start}
+  .sig-row-label{font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;padding-top:1px}
+  .sig-row-val{font-family:'Noto Sans KR';font-size:10.5px;color:var(--ink);line-height:1.45;letter-spacing:-.01em}
+  .sig-row-val em{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;color:var(--navy);font-size:11.5px}
+  .sig-row-val strong{color:var(--navy);font-weight:700}
+
+  .sig-formats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+  }
+  .format-badge{
+    background:var(--cream);
+    padding:6px 4px;
+    text-align:center;
+    border-top:1px solid var(--gold-soft);
+  }
+  .format-q{
+    font-family:'Cormorant Garamond';
+    font-size:13px;
+    color:var(--gold);
+    font-weight:500;
+    line-height:1;
+    font-style:italic;
+  }
+  .format-name{
+    font-family:'Noto Sans KR';
+    font-size:9.5px;
+    color:var(--navy);
+    font-weight:600;
+    margin-top:3px;
+    letter-spacing:-.01em;
+    line-height:1;
+  }
+
+  .sig-footer{
+    padding-top:9px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:9px;
+  }
+  .sig-footer-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gray);text-transform:uppercase;font-weight:600;
+  }
+  .sig-footer-tag{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    color:var(--navy);
+    font-weight:600;
+  }
+  .sig-footer-tag.star::after{content:' ★';color:var(--gold);font-style:normal;font-size:9.5px}
+
+  /* Closing */
+  .closing-line{
+    padding:9px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 22 : KLOUD BRAND DEFINITION ========== -->
+<div class="slide" id="s22">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">03 · F&B Brief — KLOUD · Brand Definition</div>
+      <h2 class="slide-title">강남 야경을 즐기는, 음악이 흐르는 루프탑.</h2>
+      <p class="slide-subtitle">매주 라이브 재즈와 시즌 콜라보 페스타 — <strong>21F 루프탑이 매일과 매 시즌 다시 열린다</strong>.</p>
+    </div>
+
+    <!-- Zone 1: 5 KLOUD essence -->
+    <div class="essence-band">
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">01</span>
+          <span class="essence-en">Floor 21</span>
+        </div>
+        <div class="essence-ko">21층 루프탑</div>
+        <div class="essence-desc">강남 유일 21F · N서울타워 뷰</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">02</span>
+          <span class="essence-en">Outdoor</span>
+        </div>
+        <div class="essence-ko">야외 테라스 <span class="star">★</span></div>
+        <div class="essence-desc">4-10월 성수기 OPEN</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">03</span>
+          <span class="essence-en">Live Jazz</span>
+        </div>
+        <div class="essence-ko">라이브 재즈</div>
+        <div class="essence-desc">매주 4회 라인업 회전</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">04</span>
+          <span class="essence-en">4 Layer</span>
+        </div>
+        <div class="essence-ko">4 Layer 사운드</div>
+        <div class="essence-desc">Live · Lounge · Cocktail · View</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">05</span>
+          <span class="essence-en">Top 50</span>
+        </div>
+        <div class="essence-ko">글로벌 인지</div>
+        <div class="essence-desc">Tourscanner Top 50 · 외국인 후크</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 2 Signature -->
+    <div class="sig-grid">
+
+      <!-- Daily Anchor -->
+      <div class="sig-card">
+        <div class="sig-hero hero-daily">
+          <span class="sig-label-top">Daily Anchor</span>
+          <span class="sig-rating">Weekly Lineup</span>
+          <div class="sig-name"><em>Live Rooftop Hours.</em></div>
+          <div class="sig-ko-hook">매주의 라이브 재즈, 21층 루프탑.</div>
+        </div>
+        <div class="sig-body">
+          <div class="sig-en-hook"><em>Loud, Every Week.</em></div>
+          <div class="sig-ko-sub">KLOUD의 USP를 매주 작동시키는 일상 자산 — 라이브 라인업이 회전하는 단골의 루프탑.</div>
+
+          <div class="sig-rows">
+            <div class="sig-row">
+              <div class="sig-row-label">운영</div>
+              <div class="sig-row-val">화·목·금·토 19~23시 라이브 / 일·월·수 라운지</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">시즌</div>
+              <div class="sig-row-val"><strong>4-10월 야외 테라스</strong> + 11-3월 인도어 라운지</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">타깃</div>
+              <div class="sig-row-val">강남 30~40대 라이프스타일 · 외국인 블레저</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">객단가</div>
+              <div class="sig-row-val">칵테일 25~35K · 페어링 80~120K</div>
+            </div>
+          </div>
+
+          <div class="sig-footer">
+            <span class="sig-footer-label">Outcome</span>
+            <span class="sig-footer-tag"><em>Daily Mood × ARPU</em></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seasonal Festa -->
+      <div class="sig-card festa">
+        <div class="sig-hero hero-festa">
+          <span class="sig-label-top">Seasonal Festa ★</span>
+          <span class="sig-rating">Quarterly Themed</span>
+          <div class="sig-name"><em>Themed Nights.</em></div>
+          <div class="sig-ko-hook">분기마다 새로 펼쳐지는 콜라보 이벤트.</div>
+        </div>
+        <div class="sig-body">
+          <div class="sig-en-hook"><em>A Theme, Every Quarter.</em></div>
+          <div class="sig-ko-sub">분기 1회 콜라보 페스티벌 — PR · UGC · 객단가를 한 번에 짓는 이벤트 시리즈.</div>
+
+          <div class="sig-rows">
+            <div class="sig-row">
+              <div class="sig-row-label">4 Format</div>
+              <div class="sig-row-val" style="padding-top:0">
+                <div class="sig-formats">
+                  <div class="format-badge"><div class="format-q">Flair</div><div class="format-name">Bartender</div></div>
+                  <div class="format-badge"><div class="format-q">Movie</div><div class="format-name">Night</div></div>
+                  <div class="format-badge"><div class="format-q">Silent</div><div class="format-name">DJ Party</div></div>
+                  <div class="format-badge"><div class="format-q">Sky</div><div class="format-name">Wine</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">콜라보</div>
+              <div class="sig-row-val">주류 브랜드 · 영화관 · <strong>헤드셋 브랜드</strong> · 와인+Kitchen</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">결합</div>
+              <div class="sig-row-val">Folio <em>At AC</em> · Atelier KLOUD Drop · UGC</div>
+            </div>
+          </div>
+
+          <div class="sig-footer">
+            <span class="sig-footer-label">Outcome</span>
+            <span class="sig-footer-tag star"><em>PR × LTV × ARPU</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Play It Loud, Daily and Themed."</span>
+      <span class="sep">—</span>
+      <strong>매일과 매 시즌, 21층의 음악.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">22</div>
+</div>
+
+</div>
+</body>
+</html>

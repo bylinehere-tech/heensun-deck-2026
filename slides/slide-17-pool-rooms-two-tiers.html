@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 17 · Pool Rooms · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:40px 56px}
+  .header-block{margin-bottom:12px}
+
+  /* Zone 1 — 5 essence band */
+  .essence-band{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .essence-item{
+    padding:12px 14px;
+    border-right:1px solid var(--line);
+  }
+  .essence-item:last-child{border-right:none}
+  .essence-num{font-family:'Cormorant Garamond';font-size:20px;font-weight:300;color:var(--gold);line-height:1;display:inline-block;margin-right:7px;vertical-align:baseline}
+  .essence-en{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;display:inline-block}
+  .essence-ko{font-family:'Noto Sans KR';font-size:12.5px;font-weight:700;color:var(--navy);margin-top:5px;letter-spacing:-.01em}
+  .essence-desc{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em;margin-top:2px}
+
+  /* Zone 2 — 2 tier cards */
+  .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;height:402px;margin-bottom:10px}
+
+  .tier-card{display:flex;flex-direction:column;overflow:hidden}
+  .tier-card.family{background:#fff;border-top:2px solid var(--gold)}
+  .tier-card.luxury{background:var(--navy);border-top:3px solid var(--gold);color:var(--cream)}
+
+  .tier-hero{
+    position:relative;
+    padding:14px 22px 14px;
+    height:104px;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    flex-shrink:0;
+  }
+  .hero-family{background:linear-gradient(135deg,#a8d5e8 0%,#5a8aa8 100%)}
+  .hero-luxury{background:linear-gradient(135deg,#B8945A 0%,#5a3a48 50%,#1a1838 100%)}
+
+  .tier-label-top{
+    position:absolute;top:13px;left:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.25em;
+    color:rgba(255,255,255,.95);text-transform:uppercase;font-weight:700;
+  }
+  .tier-inventory{
+    position:absolute;top:13px;right:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.18em;
+    color:rgba(255,255,255,.85);font-weight:600;
+  }
+  .tier-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:30px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-.02em;
+    color:#fff;
+    margin-bottom:5px;
+  }
+  .tier-ko-hook{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:500;
+    color:rgba(255,255,255,.95);
+    letter-spacing:-.01em;
+    line-height:1.3;
+  }
+
+  .tier-body{
+    padding:14px 20px 14px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .tier-card.luxury .tier-body{color:var(--cream)}
+
+  .tier-en-hook{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:18px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1.2;
+    letter-spacing:-.01em;
+    margin-bottom:3px;
+  }
+  .tier-card.luxury .tier-en-hook{color:var(--gold-soft)}
+
+  .tier-ko-sub{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.45;
+    letter-spacing:-.01em;
+    margin-bottom:9px;
+    padding-bottom:9px;
+    border-bottom:1px dashed var(--line);
+  }
+  .tier-card.luxury .tier-ko-sub{color:var(--cream-deep);border-bottom-color:rgba(255,255,255,.18)}
+
+  .tier-bullets{
+    list-style:none;
+    margin-bottom:10px;
+  }
+  .tier-bullets li{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--ink);
+    line-height:1.5;
+    padding-left:11px;
+    position:relative;
+    margin-bottom:3px;
+    letter-spacing:-.01em;
+  }
+  .tier-bullets li:last-child{margin-bottom:0}
+  .tier-bullets li::before{
+    content:'·';
+    position:absolute;left:0;top:-3px;
+    color:var(--gold);font-weight:700;font-size:14px;
+  }
+  .tier-bullets li strong{color:var(--navy);font-weight:700}
+  .tier-card.luxury .tier-bullets li{color:var(--cream-deep)}
+  .tier-card.luxury .tier-bullets li::before{color:var(--gold-soft)}
+  .tier-card.luxury .tier-bullets li strong{color:var(--gold-soft)}
+
+  .pkg-block{
+    padding:9px 12px 10px;
+    background:var(--cream);
+    margin-bottom:9px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .tier-card.luxury .pkg-block{background:rgba(255,255,255,.05)}
+
+  .pkg-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gold);text-transform:uppercase;font-weight:700;
+    margin-bottom:6px;
+  }
+  .tier-card.luxury .pkg-label{color:var(--gold-soft)}
+
+  .pkg-list{list-style:none;flex:1}
+  .pkg-list li{
+    font-family:'Noto Sans KR';
+    font-size:10px;
+    color:var(--ink);
+    line-height:1.4;
+    padding-left:12px;
+    position:relative;
+    margin-bottom:3px;
+    letter-spacing:-.01em;
+  }
+  .pkg-list li:last-child{margin-bottom:0}
+  .pkg-list li::before{
+    content:'+';
+    position:absolute;left:0;top:0;
+    color:var(--gold);font-weight:600;font-size:11px;
+  }
+  .pkg-list li strong{font-family:'Inter';font-size:8px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;display:inline-block;margin-right:5px}
+  .tier-card.luxury .pkg-list li{color:var(--cream-deep)}
+  .tier-card.luxury .pkg-list li::before{color:var(--gold-soft)}
+  .tier-card.luxury .pkg-list li strong{color:var(--gold-soft)}
+
+  .campaign-tags{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    padding-top:9px;
+    border-top:1px solid var(--line);
+  }
+  .tier-card.luxury .campaign-tags{border-top-color:rgba(255,255,255,.18)}
+
+  .camp-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gray);text-transform:uppercase;font-weight:600;
+  }
+  .tier-card.luxury .camp-label{color:var(--gray-light)}
+
+  .camp-tag{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:14px;
+    color:var(--navy);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .camp-tag.star::after{content:' ★';color:var(--gold);font-style:normal;font-size:9.5px}
+  .camp-sep{color:var(--gray-light);font-size:11px}
+  .tier-card.luxury .camp-tag{color:var(--cream)}
+  .tier-card.luxury .camp-tag.star::after{color:var(--gold-soft)}
+
+  /* operation note */
+  .op-note{
+    font-family:'Noto Sans KR';
+    font-size:10px;
+    color:var(--gray);
+    text-align:center;
+    font-style:italic;
+    letter-spacing:-.01em;
+    margin-bottom:6px;
+  }
+  .op-note span{color:var(--gold);font-weight:600;font-style:normal}
+
+  /* Closing */
+  .closing-line{
+    padding:9px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 17 : POOL ROOMS — TWO TIERS ========== -->
+<div class="slide" id="s17">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Marketing Strategy ④ Pool Rooms</div>
+      <h2 class="slide-title">두 타입의 풀 객실.</h2>
+      <p class="slide-subtitle">Family Premium과 Luxury Tier — <strong>같은 자산을 두 티어로 운영해 가격 방어와 잠재 확장을 동시에</strong>.</p>
+    </div>
+
+    <!-- Zone 1: 5 핵심 체험 -->
+    <div class="essence-band">
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">01</span>
+          <span class="essence-en">Hot Water</span>
+        </div>
+        <div class="essence-ko">온수 유지</div>
+        <div class="essence-desc">사계절 운영 · 야간 조명·차양</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">02</span>
+          <span class="essence-en">Privacy</span>
+        </div>
+        <div class="essence-ko">프라이빗</div>
+        <div class="essence-desc">단독 테라스 · 외부 시선 차단</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">03</span>
+          <span class="essence-en">Lounge</span>
+        </div>
+        <div class="essence-ko">라운지 결합</div>
+        <div class="essence-desc">Premier 해피아워 · 티타임</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">04</span>
+          <span class="essence-en">Floating Dining</span>
+        </div>
+        <div class="essence-ko">플로팅 다이닝</div>
+        <div class="essence-desc">조식·디너 · 사진 가치 ↑</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">05</span>
+          <span class="essence-en">Moment</span>
+        </div>
+        <div class="essence-ko">기념일 자산</div>
+        <div class="essence-desc">프로포즈 · 인생 모먼트</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 2 tier cards -->
+    <div class="tier-grid">
+
+      <!-- Family Premium -->
+      <div class="tier-card family">
+        <div class="tier-hero hero-family">
+          <span class="tier-label-top">Family Premium</span>
+          <span class="tier-inventory">4 ROOMS</span>
+          <div class="tier-name"><em>Pool Room.</em></div>
+          <div class="tier-ko-hook">도심에서 가능한 패밀리 풀빌라.</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-en-hook"><em>Splash, Play, Stay.</em></div>
+          <div class="tier-ko-sub">강남 도심에서 아이와 즐기는 호캉스 — 같은 층 풀과 키즈 라운지가 하나로 연결.</div>
+
+          <ul class="tier-bullets">
+            <li><strong>사계절 온수</strong> · 아이도 안전한 수온 유지</li>
+            <li><strong>같은 층 키즈 라운지</strong> · 풀 ↔ 라운지 자유 동선</li>
+            <li>패밀리 플로팅 조식 + Class Pass 결합</li>
+          </ul>
+
+          <div class="pkg-block">
+            <div class="pkg-label">Package · Family Floor Day</div>
+            <ul class="pkg-list">
+              <li><strong>Pool</strong>사계절 온수 풀 + 패밀리 플로팅 조식</li>
+              <li><strong>Floor</strong>키즈라운지 Class Pass · 풀 ↔ 라운지 동선</li>
+              <li><strong>Lounge</strong>Premier 라운지 해피아워 · 티타임</li>
+              <li><strong>Take-home</strong>Polaroid Card + 키즈 굿즈</li>
+            </ul>
+          </div>
+
+          <div class="campaign-tags">
+            <span class="camp-label">Campaign</span>
+            <span class="camp-tag star"><em>Family Floor Pool Day</em></span>
+            <span class="camp-sep">·</span>
+            <span class="camp-tag"><em>Terrace Hours</em></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Luxury Tier -->
+      <div class="tier-card luxury">
+        <div class="tier-hero hero-luxury">
+          <span class="tier-label-top">Luxury Tier ★</span>
+          <span class="tier-inventory">1 SUITE ONLY</span>
+          <div class="tier-name"><em>Pool Suite.</em></div>
+          <div class="tier-ko-hook">강남 도심의 단 하나뿐인 럭셔리 풀빌라.</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-en-hook"><em>Your Private Sky.</em></div>
+          <div class="tier-ko-sub">서울 도심 호텔 최초 · 단 1실 한정 — 인생 단발 모먼트의 시그니처.</div>
+
+          <ul class="tier-bullets">
+            <li>침실+거실+다이닝+전용 풀 · <strong>풀빌라 스위트</strong></li>
+            <li><strong>프로포즈 디렉터</strong> + 인룸 셰프 디너 + KLOUD 곡 신청</li>
+            <li>단 1실 한정 · 서울 도심 호텔 최초</li>
+          </ul>
+
+          <div class="pkg-block">
+            <div class="pkg-label">Package · The First Page Suite</div>
+            <ul class="pkg-list">
+              <li><strong>Suite</strong>1실 한정 · 침실+거실+다이닝+전용 풀</li>
+              <li><strong>Concierge</strong>프로포즈 디렉터 + Late Check-out 17시</li>
+              <li><strong>Dining</strong>플로팅 조식 + AC Kitchen 인룸 셰프 디너</li>
+              <li><strong>Celebration</strong>기념일 데코 + KLOUD 곡 신청 + 샴페인</li>
+              <li><strong>Take-home</strong>Atelier 시즌 Drop + Polaroid + KORRES</li>
+            </ul>
+          </div>
+
+          <div class="campaign-tags">
+            <span class="camp-label">Campaign</span>
+            <span class="camp-tag star"><em>The First Page</em></span>
+            <span class="camp-sep">·</span>
+            <span class="camp-tag"><em>Private Hosting</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Op note -->
+    <div class="op-note">
+      <span>⚠ Pool 운영</span> · 2026.5 재오픈 — 캠페인 launch 전 최종 운영 일정 확인 필수.
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Two Tiers, One Address."</span>
+      <span class="sep">—</span>
+      <strong>강남 도심의 두 풀, 두 카테고리.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">17</div>
+</div>
+
+</div>
+</body>
+</html>

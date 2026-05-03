@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 14 · Live Curation · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .slide-title{font-family:'Noto Sans KR';font-size:34px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:14px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:10px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:14px}
+
+  /* Zone 1 — 3 categories band */
+  .cat-band{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:14px;
+  }
+  .cat-item{padding:0 6px}
+  .cat-header{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+  .cat-num{font-family:'Cormorant Garamond';font-size:18px;font-weight:400;color:var(--gold);line-height:1}
+  .cat-en{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600}
+  .cat-ko{font-family:'Noto Sans KR';font-size:14px;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:3px}
+  .cat-def{font-family:'Noto Sans KR';font-size:11px;color:var(--gray);line-height:1.45;letter-spacing:-.01em;margin-bottom:4px}
+  .cat-cadence{font-family:'Inter';font-size:9.5px;color:var(--gray-light);font-style:italic;letter-spacing:.05em}
+
+  /* Zone 2 — 3 program cards */
+  .prog-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+    height:380px;
+    margin-bottom:14px;
+  }
+
+  .prog-card{
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .prog-hero{
+    position:relative;
+    height:128px;
+    padding:14px 18px;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    flex-shrink:0;
+  }
+  .hero-1{background:linear-gradient(135deg,#f5b88c 0%,#e88a72 55%,#a8584a 100%)}
+  .hero-2{background:linear-gradient(135deg,#5a3a78 0%,#3a2858 55%,#1a1838 100%)}
+  .hero-3{background:linear-gradient(135deg,#cdc5a5 0%,#a8b890 55%,#5a6e4a 100%)}
+
+  .prog-cat-tag{
+    position:absolute;
+    top:14px;left:18px;
+    font-family:'Inter';font-size:9px;letter-spacing:.22em;
+    color:rgba(255,255,255,.95);
+    text-transform:uppercase;font-weight:700;
+  }
+  .prog-cadence-top{
+    position:absolute;
+    top:14px;right:18px;
+    font-family:'Inter';font-size:9px;letter-spacing:.15em;
+    color:rgba(255,255,255,.85);
+    font-weight:500;
+  }
+  .prog-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:24px;
+    font-weight:500;
+    line-height:1.15;
+    color:#fff;
+    letter-spacing:-.01em;
+  }
+
+  .prog-body{padding:14px 18px 12px;flex:1;display:flex;flex-direction:column}
+  .prog-ko-title{
+    font-family:'Noto Sans KR';
+    font-size:13px;font-weight:700;color:var(--navy);
+    letter-spacing:-.01em;margin-bottom:5px;
+  }
+  .prog-concept{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;color:var(--gray);
+    line-height:1.5;letter-spacing:-.01em;
+    margin-bottom:12px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--line);
+  }
+
+  .prog-details{display:flex;flex-direction:column;gap:6px;flex:1}
+  .prog-row{display:grid;grid-template-columns:48px 1fr;gap:8px;align-items:start}
+  .prog-label{
+    font-family:'Inter';font-size:8.5px;letter-spacing:.18em;
+    color:var(--gray);text-transform:uppercase;font-weight:600;
+    padding-top:1px;
+  }
+  .prog-val{
+    font-family:'Noto Sans KR';font-size:10.5px;
+    color:var(--ink);line-height:1.4;letter-spacing:-.01em;
+  }
+
+  .prog-badge{
+    padding:9px 18px 11px;
+    font-family:'Inter';font-size:10px;letter-spacing:.2em;
+    color:var(--gold);text-transform:uppercase;font-weight:700;
+    border-top:1px solid var(--line);
+    background:var(--cream);
+  }
+  .prog-badge .sep{margin:0 6px;color:var(--gray-light);font-weight:300}
+
+  /* Closing line */
+  .closing-line{
+    padding:12px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 14 : LIVE CURATION ========== -->
+<div class="slide" id="s14">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Marketing Strategy ② Live Curation</div>
+      <h2 class="slide-title">다시 오게 만드는, 큐레이션.</h2>
+      <p class="slide-subtitle">시즌 이벤트 · 콜라보 팝업 · 컬처 클래스 — 호텔이 <strong>매 시즌 다시 열린다</strong>.</p>
+    </div>
+
+    <!-- Zone 1 — 3 카테고리 -->
+    <div class="cat-band">
+      <div class="cat-item">
+        <div class="cat-header">
+          <span class="cat-num">01</span>
+          <span class="cat-en">Seasonal Wellness</span>
+        </div>
+        <div class="cat-ko">시즌 웰니스</div>
+        <div class="cat-def">시즌·시간대를 활용한 비일상 웰니스 큐레이션</div>
+        <div class="cat-cadence">Cadence · 분기 1~2회 · 시즌 한정</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-header">
+          <span class="cat-num">02</span>
+          <span class="cat-en">Collab Pop-up</span>
+        </div>
+        <div class="cat-ko">콜라보 팝업</div>
+        <div class="cat-def">트렌디 브랜드와의 단발 이벤트 — UGC + PR 동시 노림</div>
+        <div class="cat-cadence">Cadence · 분기 1회 · 한정 회차</div>
+      </div>
+      <div class="cat-item">
+        <div class="cat-header">
+          <span class="cat-num">03</span>
+          <span class="cat-en">Culture Class</span>
+        </div>
+        <div class="cat-ko">컬처 클래스</div>
+        <div class="cat-def">외국인·프리미엄 고객 대상 한국 컬처 체험</div>
+        <div class="cat-cadence">Cadence · 월 1~2회 · 라운지 프라이빗</div>
+      </div>
+    </div>
+
+    <!-- Zone 2 — 3 program cards -->
+    <div class="prog-grid">
+
+      <!-- Card 1: Sunrise Yoga -->
+      <div class="prog-card">
+        <div class="prog-hero hero-1">
+          <div class="prog-cat-tag">Seasonal Wellness</div>
+          <div class="prog-cadence-top">SPRING · FALL</div>
+          <div class="prog-name"><em>Sunrise Yoga<br>at KLOUD.</em></div>
+        </div>
+        <div class="prog-body">
+          <div class="prog-ko-title">일출 요가 · KLOUD 21F</div>
+          <div class="prog-concept">새벽 6~7시 21F 루프탑에서 진행되는 일출 요가 + 시즌 웰니스 음료.</div>
+          <div class="prog-details">
+            <div class="prog-row">
+              <div class="prog-label">케이던스</div>
+              <div class="prog-val">분기 1회 · 4주 시즌 · 총 8회</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">타깃</div>
+              <div class="prog-val">강남 30~40대 라이프스타일 · 외국인 블레저</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">콜라보</div>
+              <div class="prog-val">lululemon Korea · 매트 + 요가복 키트</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">객단가</div>
+              <div class="prog-val">1인 8~12만 · 음료 + 키트 포함</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-badge">UGC <span class="sep">·</span> 잠재고객 확장</div>
+      </div>
+
+      <!-- Card 2: Silent Party -->
+      <div class="prog-card">
+        <div class="prog-hero hero-2">
+          <div class="prog-cat-tag">Collab Pop-up</div>
+          <div class="prog-cadence-top">QUARTERLY · FRI</div>
+          <div class="prog-name"><em>Silent Party<br>at KLOUD.</em></div>
+        </div>
+        <div class="prog-body">
+          <div class="prog-ko-title">사일런트 파티 · KLOUD 21F</div>
+          <div class="prog-concept">3채널 헤드셋 사일런트 디스코 — 재즈 / 신스팝 / 라운지 동시 송출.</div>
+          <div class="prog-details">
+            <div class="prog-row">
+              <div class="prog-label">케이던스</div>
+              <div class="prog-val">분기 1회 · Friday Night · 80~100인 한정</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">타깃</div>
+              <div class="prog-val">30~40대 트렌디 · SNS 콘텐츠 갈증 세그먼트</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">콜라보</div>
+              <div class="prog-val">Marshall · Bose · LiveS 헤드셋 브랜드</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">객단가</div>
+              <div class="prog-val">1인 9~13만 · 입장 + 칵테일 + 굿즈</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-badge">PR <span class="sep">·</span> 객단가</div>
+      </div>
+
+      <!-- Card 3: Tea Ceremony -->
+      <div class="prog-card">
+        <div class="prog-hero hero-3">
+          <div class="prog-cat-tag">Culture Class</div>
+          <div class="prog-cadence-top">MONTHLY · 2X</div>
+          <div class="prog-name"><em>Korean Tea<br>Ceremony.</em></div>
+        </div>
+        <div class="prog-body">
+          <div class="prog-ko-title">다도 클래스 · Premier Lounge</div>
+          <div class="prog-concept">Premier 라운지 프라이빗 다도 클래스 + 한국 차 페어링 디저트.</div>
+          <div class="prog-details">
+            <div class="prog-row">
+              <div class="prog-label">케이던스</div>
+              <div class="prog-val">월 2회 · 평일 오후 · 회당 6~8인</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">타깃</div>
+              <div class="prog-val">외국인 블레저 (Bonvoy) · 강남 30~40대 컬처</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">콜라보</div>
+              <div class="prog-val">오설록 · 티컬렉티브 · 한국 차 브랜드</div>
+            </div>
+            <div class="prog-row">
+              <div class="prog-label">객단가</div>
+              <div class="prog-val">1인 7~9만 · 클래스 + Take-home 키트</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-badge">외국인 인바운드 <span class="sep">·</span> 재방문</div>
+      </div>
+
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Always Reopening."</span>
+      <span class="sep">—</span>
+      <strong>Live Curation이 만드는 한 흐름.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">14</div>
+</div>
+
+</div>
+</body>
+</html>

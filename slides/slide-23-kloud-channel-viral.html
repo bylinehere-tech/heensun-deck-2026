@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 23 · KLOUD Channel & Viral · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --cream-warm:#F5EBD8;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:30px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:40px 56px}
+  .header-block{margin-bottom:12px}
+
+  /* Zone 1: 별도 채널 운영 (IG / Threads) */
+  .channel-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  .channel-card{
+    background:#fff;
+    padding:14px 18px;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+  }
+  .channel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:6px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  .channel-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:22px;
+    color:var(--navy);
+    font-weight:500;
+    letter-spacing:-.01em;
+    line-height:1;
+  }
+  .channel-handle{
+    font-family:'Inter';
+    font-size:10px;
+    color:var(--gold);
+    letter-spacing:.15em;
+    font-weight:600;
+  }
+  .channel-rows{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+  .channel-row{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start}
+  .channel-row-label{font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;padding-top:1px}
+  .channel-row-val{font-family:'Noto Sans KR';font-size:10.5px;color:var(--ink);line-height:1.45;letter-spacing:-.01em}
+  .channel-row-val strong{color:var(--navy);font-weight:700}
+
+  /* Zone 2: 콘텐츠 4 카테고리 */
+  .content-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .content-card{
+    background:#fff;
+    padding:13px 16px 14px;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+  }
+  .content-card.ugc{border-top:3px solid var(--gold)}
+  .content-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:5px;
+  }
+  .content-num{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);font-weight:600}
+  .content-share{font-family:'Cormorant Garamond';font-style:italic;font-size:18px;color:var(--gold);font-weight:500;line-height:1}
+  .content-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:19px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1.1;
+    margin-bottom:4px;
+    letter-spacing:-.01em;
+  }
+  .content-ko{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:6px;
+    letter-spacing:-.01em;
+    padding-bottom:6px;
+    border-bottom:1px dashed var(--line);
+  }
+  .content-desc{
+    font-family:'Noto Sans KR';
+    font-size:10px;
+    color:var(--gray);
+    line-height:1.45;
+    letter-spacing:-.01em;
+  }
+  .content-desc strong{color:var(--navy);font-weight:600}
+
+  /* Zone 3: 인증샷 바이럴 장치 */
+  .viral-band{
+    background:var(--cream-warm);
+    padding:13px 22px 14px;
+    border-top:2px solid var(--gold);
+    border-bottom:2px solid var(--gold);
+    margin-bottom:8px;
+    position:relative;
+  }
+  .viral-band::before{
+    content:'';
+    position:absolute;
+    top:5px;left:5px;right:5px;bottom:5px;
+    border:1px dashed rgba(184,148,90,.3);
+    pointer-events:none;
+  }
+  .viral-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:11px;
+    padding-bottom:9px;
+    border-bottom:1px dashed var(--gold-soft);
+    position:relative;
+    z-index:1;
+  }
+  .viral-label{
+    font-family:'Inter';
+    font-size:11px;
+    letter-spacing:.28em;
+    color:var(--gold);
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .viral-label .star{color:var(--navy);font-size:13px;margin-left:3px}
+  .viral-label .ko{color:var(--navy);font-weight:600;letter-spacing:-.01em;font-size:11px;margin-left:8px;text-transform:none;font-family:'Noto Sans KR'}
+  .viral-sub{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:14px;
+    color:var(--navy);
+    font-weight:500;
+  }
+  .viral-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    position:relative;
+    z-index:1;
+  }
+  .viral-item{display:flex;flex-direction:column}
+  .viral-item-top{display:flex;align-items:baseline;gap:6px;margin-bottom:3px}
+  .viral-num{font-family:'Cormorant Garamond';font-size:16px;font-weight:400;color:var(--gold);line-height:1}
+  .viral-en{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .viral-name{font-family:'Noto Sans KR';font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px;letter-spacing:-.01em}
+  .viral-desc{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em}
+  .viral-desc strong{color:var(--navy);font-weight:600}
+
+  /* Closing */
+  .closing-line{
+    padding:9px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 23 : KLOUD CHANNEL & VIRAL ========== -->
+<div class="slide" id="s23">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">03 · F&B Brief — KLOUD · Channel & Viral</div>
+      <h2 class="slide-title">발신은 큐레이션으로, 확산은 바이럴로.</h2>
+      <p class="slide-subtitle">단독 IG·Threads의 큐레이션 발신 + 인증샷 바이럴 장치 — <strong>채널이 스스로 자라는 두 엔진</strong>.</p>
+    </div>
+
+    <!-- Zone 1: 별도 채널 운영 -->
+    <div class="channel-grid">
+
+      <!-- Instagram -->
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-name"><em>Instagram.</em></div>
+          <div class="channel-handle">@KLOUD.SEOUL</div>
+        </div>
+        <div class="channel-rows">
+          <div class="channel-row">
+            <div class="channel-row-label">발행</div>
+            <div class="channel-row-val"><strong>주 4회</strong> · 라인업 2 + 무드 1 + UGC 1</div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-row-label">톤</div>
+            <div class="channel-row-val">무드 큐레이션 — 야경 · 칵테일 · 라이브 컷</div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-row-label">KPI</div>
+            <div class="channel-row-val">팔로워 · 외국인 인바운드 후크 · UGC 발생량</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Threads -->
+      <div class="channel-card">
+        <div class="channel-header">
+          <div class="channel-name"><em>Threads.</em></div>
+          <div class="channel-handle">@KLOUD.SEOUL</div>
+        </div>
+        <div class="channel-rows">
+          <div class="channel-row">
+            <div class="channel-row-label">발행</div>
+            <div class="channel-row-val"><strong>주 2회</strong> · 라이브 후기 + 음악 큐레이션</div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-row-label">톤</div>
+            <div class="channel-row-val">텍스트 중심 — 음악 감각 · 디깅 · 단골 소통</div>
+          </div>
+          <div class="channel-row">
+            <div class="channel-row-label">KPI</div>
+            <div class="channel-row-val">단골 · 매니아 커뮤니티 자산화</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zone 2: 콘텐츠 4 카테고리 -->
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-top">
+          <span class="content-num">01</span>
+          <span class="content-share">30%</span>
+        </div>
+        <div class="content-name"><em>Live Lineup.</em></div>
+        <div class="content-ko">라이브 라인업</div>
+        <div class="content-desc">매주 라인업 공지 + <strong>뮤지션 인터뷰</strong> · 라이브 카운트다운</div>
+      </div>
+
+      <div class="content-card">
+        <div class="content-top">
+          <span class="content-num">02</span>
+          <span class="content-share">30%</span>
+        </div>
+        <div class="content-name"><em>Mood Cuts.</em></div>
+        <div class="content-ko">무드 컷</div>
+        <div class="content-desc">21F <strong>야경 · 칵테일 · 사람 컷</strong> — 시각 큐레이션</div>
+      </div>
+
+      <div class="content-card">
+        <div class="content-top">
+          <span class="content-num">03</span>
+          <span class="content-share">20%</span>
+        </div>
+        <div class="content-name"><em>Themed Nights.</em></div>
+        <div class="content-ko">테마 페스타</div>
+        <div class="content-desc">시즌 페스타 <strong>launch + 후기</strong> · 콜라보 발신</div>
+      </div>
+
+      <div class="content-card ugc">
+        <div class="content-top">
+          <span class="content-num">04 ★</span>
+          <span class="content-share">20%</span>
+        </div>
+        <div class="content-name"><em>UGC Repost.</em></div>
+        <div class="content-ko">손님 리포스트</div>
+        <div class="content-desc">인증샷 리포스트 + <strong>매주 1 Best Moment</strong> 선정</div>
+      </div>
+    </div>
+
+    <!-- Zone 3: 인증샷 바이럴 장치 -->
+    <div class="viral-band">
+      <div class="viral-header">
+        <span class="viral-label">Viral Toolkit<span class="star">★</span><span class="ko">· 인증샷 바이럴 장치</span></span>
+        <span class="viral-sub"><em>Loudly Shared.</em></span>
+      </div>
+      <div class="viral-grid">
+        <div class="viral-item">
+          <div class="viral-item-top">
+            <span class="viral-num">01</span>
+            <span class="viral-en">Hashtag</span>
+          </div>
+          <div class="viral-name">#KLOUDmoment</div>
+          <div class="viral-desc">인증 시 <strong>칵테일 1잔 무료</strong> · 매주 Best Moment 선정</div>
+        </div>
+
+        <div class="viral-item">
+          <div class="viral-item-top">
+            <span class="viral-num">02</span>
+            <span class="viral-en">Photo Wall</span>
+          </div>
+          <div class="viral-name">Polaroid Wall</div>
+          <div class="viral-desc">21F 입구 <strong>즉석 사진</strong> + 벽 부착 · 외국인 인기 자산</div>
+        </div>
+
+        <div class="viral-item">
+          <div class="viral-item-top">
+            <span class="viral-num">03</span>
+            <span class="viral-en">Frame</span>
+          </div>
+          <div class="viral-name">Themed Frame</div>
+          <div class="viral-desc">시즌 페스타 <strong>한정 포토프레임</strong> · 4 시즌 컬렉팅</div>
+        </div>
+
+        <div class="viral-item">
+          <div class="viral-item-top">
+            <span class="viral-num">04</span>
+            <span class="viral-en">Goods</span>
+          </div>
+          <div class="viral-name">Atelier Drop</div>
+          <div class="viral-desc">한정 굿즈 결합 · <strong>LP · 위스키 잔</strong> · 인증 + 굿즈</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Loud by KLOUD."</span>
+      <span class="sep">—</span>
+      <strong>스스로 말하는 루프탑.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">23</div>
+</div>
+
+</div>
+</body>
+</html>

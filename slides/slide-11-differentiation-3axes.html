@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 11 · Differentiation v2 · 희앤썬 Total Hospitality Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  /* Slide chrome */
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:14px}
+  .slide-title{font-family:'Noto Sans KR';font-size:36px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:15px;font-weight:400;color:var(--gray);line-height:1.6;margin-top:14px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:48px 80px}
+  .header-block{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+
+  /* ===== Differentiation grid ===== */
+  .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;height:402px}
+
+  .diff-card{background:#fff;padding:22px 22px 18px;display:flex;flex-direction:column;border-top:3px solid var(--line);position:relative}
+  .diff-card.highlight{border-top:3px solid var(--gold)}
+  .diff-card.hero{background:var(--navy);color:var(--cream);border-top:3px solid var(--gold)}
+
+  /* Card top: number + axis name tag */
+  .card-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .card-num{font-family:'Cormorant Garamond';font-size:32px;font-weight:300;color:var(--gold);line-height:1}
+  .diff-card.hero .card-num{color:var(--gold-soft)}
+  .card-axis-tag{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gray);text-transform:uppercase;font-weight:600}
+  .diff-card.highlight .card-axis-tag{color:var(--gold)}
+  .diff-card.hero .card-axis-tag{color:var(--gold-soft)}
+
+  /* Hero block — outcome keyword */
+  .card-hero{margin:14px 0 18px}
+  .hero-en{font-family:'Cormorant Garamond';font-style:italic;font-size:48px;font-weight:400;color:var(--navy);line-height:1;letter-spacing:-.02em}
+  .diff-card.hero .hero-en{color:var(--cream)}
+  .hero-divider{width:36px;height:1px;background:var(--gold);margin:10px 0 8px}
+  .diff-card.hero .hero-divider{background:var(--gold-soft)}
+  .hero-ko{font-family:'Noto Sans KR';font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-.01em}
+  .diff-card.hero .hero-ko{color:var(--gold-soft)}
+
+  /* Axis sub-info (hook + 한글 title) */
+  .card-axis-info{margin-bottom:14px;padding-top:14px;border-top:1px dashed var(--line)}
+  .diff-card.hero .card-axis-info{border-top:1px dashed rgba(255,255,255,.18)}
+  .axis-hook{font-family:'Cormorant Garamond';font-style:italic;font-size:15.5px;color:var(--navy);line-height:1.3;margin-bottom:5px;font-weight:500}
+  .diff-card.hero .axis-hook{color:var(--cream)}
+  .axis-title{font-family:'Noto Sans KR';font-size:12.5px;font-weight:500;color:var(--gray);line-height:1.45;letter-spacing:-.01em}
+  .diff-card.hero .axis-title{color:var(--cream-deep)}
+
+  /* Body bullets */
+  .card-body{list-style:none;flex:1}
+  .card-body li{font-size:11px;line-height:1.5;color:var(--ink);padding-left:11px;position:relative;margin-bottom:7px}
+  .card-body li:last-child{margin-bottom:0}
+  .card-body li::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:14px;top:-2px}
+  .diff-card.hero .card-body li{color:var(--cream-deep)}
+  .diff-card.hero .card-body li::before{color:var(--gold-soft)}
+  .card-body li strong{color:var(--navy);font-weight:700}
+  .diff-card.hero .card-body li strong{color:var(--gold-soft)}
+
+  /* Proof footer */
+  .card-proof{padding:9px 12px;font-family:'Noto Sans KR';font-size:10.5px;line-height:1.5;color:var(--gray);font-style:italic;margin-top:12px;border-left:2px solid var(--gold-soft);background:var(--cream)}
+  .card-proof strong{color:var(--navy);font-style:normal;font-weight:700}
+  .diff-card.hero .card-proof{background:rgba(255,255,255,.05);color:var(--cream-deep);border-left-color:var(--gold)}
+  .diff-card.hero .card-proof strong{color:var(--gold-soft)}
+
+  /* Closing line */
+  .closing-line{
+    margin-top:20px;
+    padding:14px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13.5px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 11 v2 : DIFFERENTIATION ========== -->
+<div class="slide" id="s11">
+  <div class="pad" style="height:100%">
+
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Differentiation</div>
+      <h2 class="slide-title">Premium Select를 만드는 3 축.</h2>
+      <p class="slide-subtitle">Premium Select를 짓는 세 가지 차별화 — <strong>고객 확장에서 로열티 자산화까지</strong>.</p>
+    </div>
+
+    <div class="diff-grid">
+
+      <!-- Card 01 — Reach -->
+      <div class="diff-card">
+        <div class="card-top">
+          <span class="card-num">01</span>
+          <span class="card-axis-tag">TPO-Fit Architecture</span>
+        </div>
+        <div class="card-hero">
+          <div class="hero-en"><em>Every.</em></div>
+          <div class="hero-divider"></div>
+          <div class="hero-ko">모든 모먼트</div>
+        </div>
+        <div class="card-axis-info">
+          <div class="axis-hook"><em>Built for every moment.</em></div>
+          <div class="axis-title">모먼트마다 럭셔리가 갖춰진 공간.</div>
+        </div>
+        <ul class="card-body">
+          <li><strong>키즈패밀리</strong> · 키즈라운지 · Pool Room · 패밀리 큐레이션</li>
+          <li><strong>커플 · 기념일</strong> · Pool Suite ★ · KLOUD · Premier 라운지</li>
+          <li><strong>외국인 블레저</strong> · AC 라운지 · MICE · KLOUD 저녁 후크</li>
+        </ul>
+        <div class="card-proof">강남 비교군 중 <strong>5종 동시 보유</strong> — AC 유일.</div>
+      </div>
+
+      <!-- Card 02 — Define -->
+      <div class="diff-card highlight">
+        <div class="card-top">
+          <span class="card-num">02</span>
+          <span class="card-axis-tag">Signature Three ★</span>
+        </div>
+        <div class="card-hero">
+          <div class="hero-en"><em>Only.</em></div>
+          <div class="hero-divider"></div>
+          <div class="hero-ko">오직 AC</div>
+        </div>
+        <div class="card-axis-info">
+          <div class="axis-hook"><em>Three signatures. Only at AC.</em></div>
+          <div class="axis-title">강남에서 AC만이 가진 세 시그니처.</div>
+        </div>
+        <ul class="card-body">
+          <li><strong>Pool Suite ★</strong> · 서울 도심 호텔 최초 · 단 1실 한정</li>
+          <li><strong>KLOUD 21F</strong> · Live Jazz · Tourscanner Top 50</li>
+          <li><strong>AC Palace</strong> · Long Stay, Light Life · Living 카테고리</li>
+        </ul>
+        <div class="card-proof">세 자산 모두 강남 코어 동시 운영 — <strong>비교군에 없는 카테고리</strong>.</div>
+      </div>
+
+      <!-- Card 03 — Loyalty (HERO) -->
+      <div class="diff-card hero">
+        <div class="card-top">
+          <span class="card-num">03</span>
+          <span class="card-axis-tag">Live Curation ★</span>
+        </div>
+        <div class="card-hero">
+          <div class="hero-en"><em>Always.</em></div>
+          <div class="hero-divider"></div>
+          <div class="hero-ko">매 시즌</div>
+        </div>
+        <div class="card-axis-info">
+          <div class="axis-hook"><em>Always reopening.</em></div>
+          <div class="axis-title">시즌마다 새로 펼쳐지는 호텔.</div>
+        </div>
+        <ul class="card-body">
+          <li><strong>KLOUD</strong> · 라이브 재즈 매주 회전 · 4 Layer 사운드</li>
+          <li><strong>AC Kitchen</strong> · 분기 4 챕터 European Culinary Journey</li>
+          <li><strong>Always Celebrated</strong> · 4 단 시즌 모먼트 시리즈</li>
+        </ul>
+        <div class="card-proof">정적 럭셔리가 아닌 <strong>동적 라이프스타일</strong> — 다시 올 이유가 매 시즌 생긴다.</div>
+      </div>
+
+    </div>
+
+    <!-- Closing line -->
+    <div class="closing-line">
+      <span class="quote">"Every. Only. Always."</span>
+      <span class="sep">—</span>
+      <strong>Premium Select가 만드는 한 흐름.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">11</div>
+</div>
+
+</div>
+</body>
+</html>

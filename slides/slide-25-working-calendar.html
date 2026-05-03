@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 25 · Working Calendar · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:38px 56px}
+  .header-block{margin-bottom:12px}
+
+  /* Gantt */
+  .gantt{
+    background:#fff;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+    margin-bottom:12px;
+  }
+
+  .gantt-header{
+    display:grid;
+    grid-template-columns:130px repeat(7,1fr);
+    background:var(--cream-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .gantt-header-label{
+    padding:10px 14px;
+    font-family:'Inter';
+    font-size:9.5px;
+    letter-spacing:.22em;
+    color:var(--gray);
+    font-weight:700;
+    text-transform:uppercase;
+    border-right:1px solid var(--line);
+  }
+  .gantt-month{
+    padding:10px 0;
+    text-align:center;
+    font-family:'Inter';
+    font-size:11px;
+    letter-spacing:.18em;
+    color:var(--gold);
+    font-weight:700;
+    text-transform:uppercase;
+    border-right:1px solid var(--line);
+  }
+  .gantt-month:last-child{border-right:none}
+
+  .gantt-row{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    border-bottom:1px solid var(--line);
+    height:82px;
+  }
+  .gantt-row:last-child{border-bottom:none}
+
+  .lane-label-cell{
+    padding:0 14px;
+    background:var(--cream);
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .lane-en{
+    font-family:'Inter';
+    font-size:11px;
+    letter-spacing:.22em;
+    color:var(--navy);
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:3px;
+  }
+  .lane-en .star{color:var(--gold);margin-left:2px}
+  .lane-ko{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    font-weight:500;
+    letter-spacing:-.01em;
+  }
+
+  .lane-content{
+    position:relative;
+    padding:14px 14px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .lane-vis{
+    position:relative;
+    height:24px;
+    margin-bottom:8px;
+  }
+
+  /* Daily — continuous gradient band */
+  .daily-band{
+    position:absolute;
+    left:0;right:0;top:50%;
+    height:8px;
+    background:linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 50%, var(--gold) 100%);
+    transform:translateY(-50%);
+    border-radius:4px;
+  }
+  .daily-band::before, .daily-band::after{
+    content:'';
+    position:absolute;
+    top:50%;transform:translateY(-50%);
+    width:14px;height:14px;
+    background:var(--gold);
+    border-radius:50%;
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--gold-soft);
+  }
+  .daily-band::before{left:-7px}
+  .daily-band::after{right:-7px}
+
+  /* Weekly — dashed pattern */
+  .weekly-band{
+    position:absolute;
+    left:0;right:0;top:50%;
+    height:3px;
+    background:repeating-linear-gradient(
+      90deg,
+      var(--gold) 0,
+      var(--gold) 5px,
+      transparent 5px,
+      transparent 10px
+    );
+    transform:translateY(-50%);
+  }
+  /* Weekly tick markers — every week */
+  .weekly-ticks{
+    position:absolute;
+    left:0;right:0;top:50%;
+    display:flex;
+    justify-content:space-between;
+    transform:translateY(-50%);
+    pointer-events:none;
+  }
+  .weekly-tick{
+    width:1px;height:14px;
+    background:var(--gold-soft);
+  }
+
+  /* Monthly — 7 diamond markers */
+  .monthly-markers-row{
+    position:absolute;
+    left:0;right:0;top:50%;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    align-items:center;
+    transform:translateY(-50%);
+  }
+  .monthly-marker{
+    width:11px;
+    height:11px;
+    background:var(--gold);
+    transform:rotate(45deg);
+    margin:0 auto;
+    border:1px solid #fff;
+    box-shadow:0 0 0 1px var(--gold);
+  }
+
+  /* Seasonal — colored bars */
+  .seasonal-grid{
+    position:absolute;
+    left:0;right:0;top:50%;
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    align-items:center;
+    transform:translateY(-50%);
+    gap:0;
+    height:24px;
+  }
+  .season-bar{
+    height:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    font-weight:600;
+    color:var(--cream);
+    letter-spacing:-.01em;
+    padding:0 8px;
+    margin:0 2px;
+  }
+  .bar-summer{
+    grid-column:2 / 4;
+    background:linear-gradient(90deg,#5a8aa8 0%,#2a4a68 100%);
+  }
+  .bar-autumn{
+    grid-column:4 / 6;
+    background:linear-gradient(90deg,#a86848 0%,#5a3828 100%);
+  }
+  .bar-yearend{
+    grid-column:6 / 8;
+    background:linear-gradient(90deg,#6a3a48 0%,#382028 100%);
+  }
+
+  .lane-actions{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.4;
+    letter-spacing:-.01em;
+  }
+  .lane-actions strong{color:var(--navy);font-weight:600}
+
+  /* Signals band */
+  .signals-band{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    background:var(--cream-deep);
+    border-top:1px solid var(--gold-soft);
+    border-bottom:1px solid var(--gold-soft);
+    margin-bottom:10px;
+  }
+  .signal-item{
+    padding:11px 16px;
+    border-right:1px solid var(--line);
+  }
+  .signal-item:last-child{border-right:none}
+  .signal-label{
+    font-family:'Inter';
+    font-size:9px;
+    letter-spacing:.25em;
+    color:var(--gold);
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .signal-val{
+    font-family:'Noto Sans KR';
+    font-size:11px;
+    color:var(--navy);
+    font-weight:600;
+    line-height:1.4;
+    letter-spacing:-.01em;
+  }
+
+  /* Closing */
+  .closing-line{
+    padding:8px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 25 : WORKING CALENDAR ========== -->
+<div class="slide" id="s25">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">05 · Execution — Working Calendar</div>
+      <h2 class="slide-title">워킹 캘린더 · 6월 → 12월.</h2>
+      <p class="slide-subtitle">일일 · 주간 · 월간 · 시즌 — <strong>한 사람의 4 cadence가 운영 결과물로 직접 연결된다</strong>.</p>
+    </div>
+
+    <!-- Gantt Calendar -->
+    <div class="gantt">
+
+      <!-- Month header -->
+      <div class="gantt-header">
+        <div class="gantt-header-label">Cadence</div>
+        <div class="gantt-month">Jun</div>
+        <div class="gantt-month">Jul</div>
+        <div class="gantt-month">Aug</div>
+        <div class="gantt-month">Sep</div>
+        <div class="gantt-month">Oct</div>
+        <div class="gantt-month">Nov</div>
+        <div class="gantt-month">Dec</div>
+      </div>
+
+      <!-- Daily lane -->
+      <div class="gantt-row">
+        <div class="lane-label-cell">
+          <div class="lane-en">Daily</div>
+          <div class="lane-ko">일일 업무</div>
+        </div>
+        <div class="lane-content">
+          <div class="lane-vis">
+            <div class="daily-band"></div>
+          </div>
+          <div class="lane-actions"><strong>IG · Threads 모니터</strong> · UGC 점검 · 데이터 일일 확인 · 응대</div>
+        </div>
+      </div>
+
+      <!-- Weekly lane -->
+      <div class="gantt-row">
+        <div class="lane-label-cell">
+          <div class="lane-en">Weekly</div>
+          <div class="lane-ko">주간 업무</div>
+        </div>
+        <div class="lane-content">
+          <div class="lane-vis">
+            <div class="weekly-band"></div>
+          </div>
+          <div class="lane-actions"><strong>발행</strong> (IG 4·Threads 2·AC IG 2-3) · 라인업 공지 · Best Moment · 주간 데이터 보고</div>
+        </div>
+      </div>
+
+      <!-- Monthly lane -->
+      <div class="gantt-row">
+        <div class="lane-label-cell">
+          <div class="lane-en">Monthly</div>
+          <div class="lane-ko">월간 업무</div>
+        </div>
+        <div class="lane-content">
+          <div class="lane-vis">
+            <div class="monthly-markers-row">
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+              <div class="monthly-marker"></div>
+            </div>
+          </div>
+          <div class="lane-actions"><strong>Folio EDM 발행</strong> · 월 KPI 보고 · 콘텐츠 캘린더 · 광고 운영 점검</div>
+        </div>
+      </div>
+
+      <!-- Seasonal lane -->
+      <div class="gantt-row">
+        <div class="lane-label-cell">
+          <div class="lane-en">Seasonal <span class="star">★</span></div>
+          <div class="lane-ko">시즌 업무</div>
+        </div>
+        <div class="lane-content">
+          <div class="lane-vis">
+            <div class="seasonal-grid">
+              <div class="season-bar bar-summer"><em>Splash</em></div>
+              <div class="season-bar bar-autumn"><em>Encore</em></div>
+              <div class="season-bar bar-yearend"><em>Toast</em></div>
+            </div>
+          </div>
+          <div class="lane-actions"><strong>Festa launch</strong> · Atelier Drop · Folio Mini-Book · KOL 1박2일 · Always Celebrated</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Signals -->
+    <div class="signals-band">
+      <div class="signal-item">
+        <div class="signal-label">Operator</div>
+        <div class="signal-val">인하우스 솔로 (Jay Moon)</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-label">Hours</div>
+        <div class="signal-val">주 4-6h · launch 주 8-10h</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-label">Tools</div>
+        <div class="signal-val">Buffer · Notion · Canva · Marriott CMS</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-label">External</div>
+        <div class="signal-val">Folio 디자인 · KOL · PR (분기 결합)</div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Daily to Seasonal, Same Calendar."</span>
+      <span class="sep">—</span>
+      <strong>한 캘린더, 4 cadence.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">25</div>
+</div>
+
+</div>
+</body>
+</html>

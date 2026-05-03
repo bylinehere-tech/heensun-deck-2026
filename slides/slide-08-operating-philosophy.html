@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 08 · Operating Philosophy · 희앤썬 Total Hospitality Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  /* Slide chrome */
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:14px}
+  .slide-title{font-family:'Noto Sans KR';font-size:36px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:15px;font-weight:400;color:var(--gray);line-height:1.6;margin-top:14px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:60px 80px}
+  .header-block{margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+
+  /* ===== Philosophy 3 cards ===== */
+  .philo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:28px}
+  .philo-card{background:#fff;padding:30px 28px;border-top:3px solid var(--gold);display:flex;flex-direction:column;height:330px}
+  .philo-num{font-family:'Cormorant Garamond';font-size:56px;color:var(--gold);font-weight:300;line-height:.9}
+  .philo-title{font-family:'Cormorant Garamond';font-size:24px;color:var(--navy);font-weight:600;margin-top:14px;line-height:1.2;letter-spacing:-.01em}
+  .philo-title em{font-style:italic;color:var(--gold)}
+  .philo-kor{font-size:12px;color:var(--navy);font-weight:700;margin-top:10px;letter-spacing:-.01em}
+  .philo-desc{font-size:11.5px;line-height:1.75;color:var(--ink);margin-top:14px;flex:1;padding-top:14px;border-top:1px solid var(--line)}
+  .philo-desc strong{color:var(--navy);font-weight:700}
+
+  /* ===== Examples bar — 3 cards' practical keywords ===== */
+  .examples-bar{margin-top:22px;background:var(--navy);color:var(--cream);padding:18px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:center}
+  .examples-col{padding:0 22px;position:relative}
+  .examples-col:first-child{padding-left:0}
+  .examples-col:last-child{padding-right:0}
+  .examples-col:not(:last-child)::after{content:'';position:absolute;right:0;top:6px;bottom:6px;width:1px;background:rgba(255,255,255,.18)}
+  .examples-tag{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .examples-tag .num{color:var(--gold);margin-right:8px;font-family:'Cormorant Garamond';font-style:italic;font-weight:500;letter-spacing:0;font-size:15px;vertical-align:-1px;text-transform:none}
+  .examples-keywords{font-family:'Noto Sans KR';font-size:11.5px;color:var(--cream-deep);line-height:1.55;font-weight:400}
+  .examples-keywords strong{color:var(--gold-soft);font-weight:600}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 08 : OPERATING PHILOSOPHY ========== -->
+<div class="slide" id="s8">
+  <div class="pad" style="height:100%">
+
+    <div class="header-block">
+      <div class="section-tag">01 · Group Brief — Operating Philosophy</div>
+      <h2 class="slide-title">고객 정의가, 콘텐츠 운영의 출발점이다.</h2>
+      <p class="slide-subtitle"><strong>타겟 해독 · 라이프스타일 번역 · 경험 아카이브</strong> — 단기 캠페인이 아닌, 한 사이클을 운영한다.</p>
+    </div>
+
+    <div class="philo-grid">
+
+      <!-- Philosophy 01 -->
+      <div class="philo-card">
+        <div class="philo-num">01</div>
+        <h3 class="philo-title"><em>Decode</em><br>the Audience.</h3>
+        <p class="philo-kor">타겟의 일상을 해독한다</p>
+        <p class="philo-desc">소비력·합리적 럭셔리 선호 소비자의 <strong>일상·취향·관심사</strong>를 먼저 해독한다. 타겟이 정의되지 않은 콘텐츠는 <strong>알고리즘 위에서 통하지 않고</strong>, 톤·매너도 표류한다. 모든 콘텐츠는 "누구의 일상에 닿는가"에서 출발한다.</p>
+      </div>
+
+      <!-- Philosophy 02 -->
+      <div class="philo-card">
+        <div class="philo-num">02</div>
+        <h3 class="philo-title"><em>Translate</em><br>the Lifestyle.</h3>
+        <p class="philo-kor">일상을 호텔로 번역한다</p>
+        <p class="philo-desc">타겟이 평소 즐기는 외부의 <strong>카페·음악·예술·여행·미식</strong> 트렌드를 호텔 경험으로 번역한다. 외부 <strong>브랜드 협업·시즌 큐레이션·라이프스타일 프로그램</strong>이, 호텔을 일상의 연장이 되는 자리로 만든다.</p>
+      </div>
+
+      <!-- Philosophy 03 -->
+      <div class="philo-card">
+        <div class="philo-num">03</div>
+        <h3 class="philo-title"><em>Archive</em><br>into Voice.</h3>
+        <p class="philo-kor">경험을 콘텐츠로, 콘텐츠를 발화로</p>
+        <p class="philo-desc">호텔 안의 경험을 <strong>콘텐츠로 아카이빙</strong>한다. 자체 콘텐츠는 다음 캠페인의 자산이 되고, <strong>경험 설계 단계부터 "공유될 만한가"</strong>를 묻는다. 고객의 직접 발화는 가장 신뢰받는 마케팅이다.</p>
+      </div>
+
+    </div>
+
+    <!-- Examples — 3 cards' practical keywords -->
+    <div class="examples-bar">
+      <div class="examples-col">
+        <div class="examples-tag"><span class="num">01</span>Persona · 타겟 페르소나</div>
+        <div class="examples-keywords"><strong>3040 비즈니스 트래블러</strong> · <strong>외국인 블레저</strong> · 키즈패밀리 · 커플·기념일</div>
+      </div>
+      <div class="examples-col">
+        <div class="examples-tag"><span class="num">02</span>Motif · 라이프스타일 모티프</div>
+        <div class="examples-keywords"><strong>갤러리 팝업</strong> · <strong>라이브 재즈</strong> · 웰니스 프로그램 · 와인 디너</div>
+      </div>
+      <div class="examples-col">
+        <div class="examples-tag"><span class="num">03</span>Asset · 콘텐츠 자산</div>
+        <div class="examples-keywords"><strong>에디토리얼·매거진</strong> · <strong>IG Reels</strong> · UGC 해시태그 · Folio EDM</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">08</div>
+</div>
+
+</div>
+</body>
+</html>

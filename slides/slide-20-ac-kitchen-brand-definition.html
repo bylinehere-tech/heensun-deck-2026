@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 20 · AC Kitchen Brand Definition · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:12px}
+
+  /* Zone 1: 3 Time Tracks band */
+  .time-band{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:12px;
+  }
+  .time-item{
+    padding:13px 20px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+  }
+  .time-item:last-child{border-right:none}
+
+  .time-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .time-en{font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .time-clock{font-family:'Inter';font-size:9px;letter-spacing:.1em;color:var(--gray);font-weight:500}
+
+  .time-usp{font-family:'Cormorant Garamond';font-style:italic;font-size:16px;color:var(--navy);font-weight:500;line-height:1.2;margin-bottom:5px;letter-spacing:-.01em}
+
+  .time-target{font-family:'Noto Sans KR';font-size:10.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em;margin-bottom:5px}
+  .time-target strong{color:var(--navy);font-weight:600}
+
+  .time-signal{font-family:'Inter';font-size:9.5px;letter-spacing:.05em;color:var(--gold);font-weight:600;font-style:italic}
+
+  /* Zone 2: 2 Signature cards */
+  .sig-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    height:340px;
+    margin-bottom:10px;
+  }
+
+  .sig-card{
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+    overflow:hidden;
+    border-top:2px solid var(--gold);
+  }
+  .sig-card.chapter{border-top:3px solid var(--gold)}
+
+  .sig-hero{
+    position:relative;
+    padding:14px 22px;
+    height:96px;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    flex-shrink:0;
+  }
+  .hero-daily{background:linear-gradient(135deg,#c8b898 0%,#9a8868 100%)}
+  .hero-festa{background:linear-gradient(135deg,#B8945A 0%,#8a3a4a 50%,#3a1828 100%)}
+
+  .sig-label-top{
+    position:absolute;top:13px;left:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.25em;
+    color:rgba(255,255,255,.95);text-transform:uppercase;font-weight:700;
+  }
+  .sig-rating{
+    position:absolute;top:13px;right:22px;
+    font-family:'Inter';font-size:9px;letter-spacing:.18em;
+    color:rgba(255,255,255,.85);font-weight:600;
+  }
+
+  .sig-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:30px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-.02em;
+    color:#fff;
+    margin-bottom:5px;
+  }
+  .sig-ko-hook{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:500;
+    color:rgba(255,255,255,.95);
+    letter-spacing:-.01em;
+    line-height:1.3;
+  }
+
+  .sig-body{
+    padding:13px 22px 12px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .sig-en-hook{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:18px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1.2;
+    margin-bottom:3px;
+  }
+  .sig-ko-sub{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.45;
+    letter-spacing:-.01em;
+    margin-bottom:9px;
+    padding-bottom:9px;
+    border-bottom:1px dashed var(--line);
+  }
+
+  .sig-rows{display:flex;flex-direction:column;gap:6px;flex:1}
+  .sig-row{display:grid;grid-template-columns:60px 1fr;gap:8px;align-items:start}
+  .sig-row-label{font-family:'Inter';font-size:8.5px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;padding-top:1px}
+  .sig-row-val{font-family:'Noto Sans KR';font-size:10.5px;color:var(--ink);line-height:1.45;letter-spacing:-.01em}
+  .sig-row-val em{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;color:var(--navy);font-size:11.5px}
+  .sig-row-val strong{color:var(--navy);font-weight:700}
+
+  .sig-chapters{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+  }
+  .chapter-badge{
+    background:var(--cream);
+    padding:6px 4px;
+    text-align:center;
+    border-top:1px solid var(--gold-soft);
+  }
+  .chapter-q{
+    font-family:'Cormorant Garamond';
+    font-size:14px;
+    color:var(--gold);
+    font-weight:500;
+    line-height:1;
+    font-style:italic;
+  }
+  .chapter-name{
+    font-family:'Noto Sans KR';
+    font-size:10px;
+    color:var(--navy);
+    font-weight:600;
+    margin-top:3px;
+    letter-spacing:-.01em;
+    line-height:1;
+  }
+
+  .sig-footer{
+    padding-top:9px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:9px;
+  }
+  .sig-footer-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gray);text-transform:uppercase;font-weight:600;
+  }
+  .sig-footer-tag{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    color:var(--navy);
+    font-weight:600;
+  }
+  .sig-footer-tag.star::after{content:' ★';color:var(--gold);font-style:normal;font-size:9.5px}
+
+  /* Closing */
+  .closing-line{
+    padding:9px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 20 : AC KITCHEN BRAND DEFINITION ========== -->
+<div class="slide" id="s20">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">03 · F&B Brief — AC Kitchen · Brand Definition</div>
+      <h2 class="slide-title">컨셉이 다른, 올 데이 키친.</h2>
+      <p class="slide-subtitle">시간대마다 다른 USP·타깃·운영 — <strong>데일리와 시즌 페스타가 한 매장에서 동시에 작동한다</strong>.</p>
+    </div>
+
+    <!-- Zone 1: 3 Time Tracks -->
+    <div class="time-band">
+      <div class="time-item">
+        <div class="time-header">
+          <span class="time-en">01 · Breakfast</span>
+          <span class="time-clock">07:00–10:00</span>
+        </div>
+        <div class="time-usp"><em>Move. Eat. Go.</em></div>
+        <div class="time-target">호텔 투숙객 + <strong>강남 직장인</strong> · Active Morning Pack</div>
+        <div class="time-signal">조식 59,000 · Active Pack 75,000</div>
+      </div>
+
+      <div class="time-item">
+        <div class="time-header">
+          <span class="time-en">02 · Lunch</span>
+          <span class="time-clock">11:30–14:30</span>
+        </div>
+        <div class="time-usp"><em>Daily, Affordable.</em></div>
+        <div class="time-target"><strong>강남 직장인</strong> · 주부·시니어 · 기념일</div>
+        <div class="time-signal">95,000 → 76,000 · 네이버 20%</div>
+      </div>
+
+      <div class="time-item">
+        <div class="time-header">
+          <span class="time-en">03 · Dinner ★</span>
+          <span class="time-clock">17:30–22:00</span>
+        </div>
+        <div class="time-usp"><em>Endless × Quarterly.</em></div>
+        <div class="time-target">기념일 패밀리 · <strong>외국인 블레저</strong> · 와인 애호</div>
+        <div class="time-signal">디너 150,000 · 페어링 200,000+</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 2 Signature -->
+    <div class="sig-grid">
+
+      <!-- Daily Anchor -->
+      <div class="sig-card">
+        <div class="sig-hero hero-daily">
+          <span class="sig-label-top">Daily Anchor</span>
+          <span class="sig-rating">Tripadvisor 5.0 ★</span>
+          <div class="sig-name"><em>Daily Anchor.</em></div>
+          <div class="sig-ko-hook">매일의 가성비 정점.</div>
+        </div>
+        <div class="sig-body">
+          <div class="sig-en-hook"><em>Every Day, Endless.</em></div>
+          <div class="sig-ko-sub">365일 일상 운영의 데일리 자산 — 시장에서 검증된 가성비 시푸드·랍스터 뷔페.</div>
+
+          <div class="sig-rows">
+            <div class="sig-row">
+              <div class="sig-row-label">시그니처</div>
+              <div class="sig-row-val">랍스터 그릴 · 시푸드 · 사시미 · 스시</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">무제한</div>
+              <div class="sig-row-val"><strong>레드·화이트 와인 6종 + 버드와이저 생맥주</strong></div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">운영</div>
+              <div class="sig-row-val">365일 · 평일 디너 + 주말 런치·디너</div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">가격</div>
+              <div class="sig-row-val">런치 95,000 · 디너 150,000</div>
+            </div>
+          </div>
+
+          <div class="sig-footer">
+            <span class="sig-footer-label">Outcome</span>
+            <span class="sig-footer-tag"><em>Volume × Daily ARPU</em></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seasonal Festa -->
+      <div class="sig-card chapter">
+        <div class="sig-hero hero-festa">
+          <span class="sig-label-top">Seasonal Festa ★</span>
+          <span class="sig-rating">Quarterly + Pop-up</span>
+          <div class="sig-name"><em>Seasonal Festa.</em></div>
+          <div class="sig-ko-hook">분기마다 새로 펼쳐지는 미식 페스티벌.</div>
+        </div>
+        <div class="sig-body">
+          <div class="sig-en-hook"><em>A Festa, Every Quarter.</em></div>
+          <div class="sig-ko-sub">분기 1회 시즌 페스티벌 + 분기 사이 팝업 — PR과 LTV를 동시에 짓는 이벤트 자산.</div>
+
+          <div class="sig-rows">
+            <div class="sig-row">
+              <div class="sig-row-label">3 Format</div>
+              <div class="sig-row-val" style="padding-top:0">
+                <div class="sig-chapters" style="grid-template-columns:repeat(3,1fr)">
+                  <div class="chapter-badge"><div class="chapter-q">Wine</div><div class="chapter-name">Festival</div></div>
+                  <div class="chapter-badge"><div class="chapter-q">World</div><div class="chapter-name">Dining Wk</div></div>
+                  <div class="chapter-badge"><div class="chapter-q">Brand</div><div class="chapter-name">Pop-up</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">콜라보</div>
+              <div class="sig-row-val">주류 브랜드 · 게스트 셰프 · <strong>대사관 협업</strong></div>
+            </div>
+            <div class="sig-row">
+              <div class="sig-row-label">결합</div>
+              <div class="sig-row-val">Folio <em>At AC</em> · Atelier 시즌 Drop · Always Celebrated</div>
+            </div>
+          </div>
+
+          <div class="sig-footer">
+            <span class="sig-footer-label">Outcome</span>
+            <span class="sig-footer-tag star"><em>PR × LTV × ARPU</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"All-Day, In Three Concepts."</span>
+      <span class="sep">—</span>
+      <strong>컨셉이 다른, 올 데이 키친.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">20</div>
+</div>
+
+</div>
+</body>
+</html>

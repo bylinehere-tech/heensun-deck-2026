@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 01 · Cover · 희앤썬 Total Hospitality Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+
+  /* COVER */
+  .cover{background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 70%,var(--navy-soft) 100%);color:var(--cream)}
+  .cover .grid{position:absolute;inset:0;background-image:linear-gradient(var(--cream) 1px,transparent 1px),linear-gradient(90deg,var(--cream) 1px,transparent 1px);background-size:80px 80px;opacity:.03}
+  .cover-inner{position:relative;height:100%;padding:80px 96px;display:flex;flex-direction:column;justify-content:space-between}
+  .cover-mark{display:flex;align-items:center;gap:12px;font-family:'Inter';font-size:11px;letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
+  .cover-mark::before{content:'';width:32px;height:1px;background:var(--gold)}
+  .cover-title-block{margin-top:auto}
+  .cover-eyebrow{font-family:'Inter';font-size:13px;letter-spacing:.3em;color:var(--gold-soft);text-transform:uppercase;margin-bottom:24px}
+  .cover-title{font-family:'Cormorant Garamond';font-size:88px;font-weight:300;line-height:1;letter-spacing:-.02em;color:var(--cream)}
+  .cover-title strong{font-weight:500;font-style:italic}
+  .cover-kor{font-family:'Noto Sans KR';font-size:34px;font-weight:300;line-height:1.4;margin-top:26px;color:var(--cream-deep);letter-spacing:-.02em}
+  .cover-kor strong{font-weight:600;color:var(--gold-soft)}
+
+  /* Brand list under KR */
+  .cover-brands{margin-top:32px;display:inline-flex;align-items:center;gap:14px;font-family:'Inter';font-size:11.5px;letter-spacing:.32em;color:var(--gold-soft);text-transform:uppercase;font-weight:500;padding:10px 0;border-top:1px solid rgba(184,148,90,.3);border-bottom:1px solid rgba(184,148,90,.3)}
+  .cover-brands span{position:relative;padding:0 4px}
+  .cover-brands em{font-style:normal;color:var(--gold);font-size:9px;opacity:.6}
+
+  .cover-meta{margin-top:56px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.15);padding-top:32px}
+  .cover-meta-item{font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);text-transform:uppercase}
+  .cover-meta-item span{display:block;font-family:'Noto Sans KR';font-size:18px;color:var(--cream);text-transform:none;margin-top:8px;letter-spacing:-.01em;font-weight:400}
+  .cover-meta-item span.large{font-size:24px;font-weight:500}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 1: COVER ========== -->
+<div class="slide cover" id="s1">
+  <div class="grid"></div>
+  <div class="cover-inner">
+    <div class="cover-mark">AC Hotel by Marriott Gangnam</div>
+
+    <div class="cover-title-block">
+      <div class="cover-eyebrow">Marketing Strategy Proposal · 2026</div>
+      <h1 class="cover-title">More Than <strong><em>Hotels.</em></strong></h1>
+      <p class="cover-kor">호텔이 아니라,<br><strong>라이프스타일</strong>을 운영합니다.</p>
+      <div class="cover-brands">
+        <span>AC Hotel</span><em>·</em>
+        <span>AC Palace</span><em>·</em>
+        <span>AC Kitchen</span><em>·</em>
+        <span>KLOUD</span>
+      </div>
+    </div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">Submitted to<span class="large">희앤썬 귀중</span></div>
+      <div class="cover-meta-item">Proposed by<span>Jay Moon · 문수진</span></div>
+      <div class="cover-meta-item">Date<span>May 2026</span></div>
+    </div>
+  </div>
+  <div class="page-num">01</div>
+</div>
+
+</div>
+</body>
+</html>

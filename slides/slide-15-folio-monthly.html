@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 15 · Folio Monthly · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:14px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:10px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:14px}
+
+  /* Layer band — 3 Layer */
+  .layer-band{
+    display:grid;
+    grid-template-columns:1fr 14px 1fr 14px 1fr;
+    align-items:center;
+    padding:13px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:14px;
+  }
+  .layer-item{padding:0 8px}
+  .layer-label{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600}
+  .layer-name{font-family:'Cormorant Garamond';font-style:italic;font-size:22px;color:var(--navy);font-weight:500;line-height:1.1;margin:4px 0;letter-spacing:-.01em}
+  .layer-desc{font-family:'Noto Sans KR';font-size:10.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em}
+  .layer-arrow{text-align:center;font-family:'Inter';font-size:16px;color:var(--gold-soft);font-weight:300}
+
+  /* 4 Column Curation grid */
+  .col-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    height:130px;
+    margin-bottom:14px;
+  }
+  .col-card{
+    background:#fff;
+    padding:13px 16px;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+  }
+  .col-num{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:5px}
+  .col-name{font-family:'Cormorant Garamond';font-style:italic;font-size:20px;color:var(--navy);font-weight:500;line-height:1.1;margin-bottom:5px;letter-spacing:-.01em}
+  .col-ko{font-family:'Noto Sans KR';font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px;letter-spacing:-.01em}
+  .col-desc{font-family:'Noto Sans KR';font-size:10.5px;color:var(--gray);line-height:1.45;letter-spacing:-.01em}
+
+  /* Mini-Book band */
+  .mini-band{
+    background:var(--navy);
+    padding:14px 22px 16px;
+    border-top:3px solid var(--gold);
+    margin-bottom:14px;
+  }
+  .mini-band-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:12px;
+  }
+  .mini-band-label{
+    font-family:'Inter';
+    font-size:9.5px;
+    letter-spacing:.22em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .mini-band-sub{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    color:var(--cream);
+    font-weight:500;
+  }
+  .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .mini-item{display:flex;align-items:center;gap:13px}
+  .mini-cover{
+    width:78px;
+    height:108px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:9px 8px;
+    flex-shrink:0;
+    box-shadow:0 4px 14px rgba(0,0,0,.45);
+  }
+  .cover-spring{background:linear-gradient(180deg,#f5cdcd 0%,#e8a8b2 100%);color:#5a3038}
+  .cover-summer{background:linear-gradient(180deg,#a8d5e8 0%,#5a8aa8 100%);color:#fff}
+  .cover-autumn{background:linear-gradient(180deg,#d8a888 0%,#a86848 100%);color:#4a2818}
+  .cover-winter{background:linear-gradient(180deg,#6a3a48 0%,#382028 100%);color:#f5e0c8}
+  .cover-season{font-family:'Inter';font-size:7px;letter-spacing:.25em;font-weight:700;line-height:1}
+  .cover-issue{font-family:'Cormorant Garamond';font-style:italic;font-size:18px;font-weight:500;margin-top:auto;line-height:1;letter-spacing:-.01em}
+  .cover-logo{font-family:'Inter';font-size:7px;letter-spacing:.18em;font-weight:600;margin-top:4px;opacity:.7}
+  .mini-meta{font-family:'Noto Sans KR';font-size:10px;color:var(--cream-deep);line-height:1.5;letter-spacing:-.01em}
+  .mini-meta strong{display:block;color:var(--cream);font-size:13px;font-weight:500;margin-bottom:2px;letter-spacing:-.01em;font-family:'Cormorant Garamond';font-style:italic}
+
+  /* Closing */
+  .closing-line{
+    padding:11px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 15 : FOLIO MONTHLY ========== -->
+<div class="slide" id="s15">
+  <div class="pad" style="height:100%">
+
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Marketing Strategy ③ Folio</div>
+      <h2 class="slide-title">호텔이 발행하는, 매월의 라이프스타일.</h2>
+      <p class="slide-subtitle">매월 1회 디지털 Folio · 분기마다 묶어 <strong>Seasonal Mini-Book</strong> — 그룹이 운영하는 자체 미디어 자산.</p>
+    </div>
+
+    <!-- Zone 1: 3 Layer -->
+    <div class="layer-band">
+      <div class="layer-item">
+        <div class="layer-label">01 · Monthly</div>
+        <div class="layer-name"><em>Folio EDM</em></div>
+        <div class="layer-desc">월 1회 · 디지털 (HTML EDM + PDF) · 멤버 발송</div>
+      </div>
+      <div class="layer-arrow">→</div>
+      <div class="layer-item">
+        <div class="layer-label">02 · Seasonal</div>
+        <div class="layer-name"><em>Mini-Book</em></div>
+        <div class="layer-desc">분기 1회 · 인쇄 (3 issue 묶음 + 시즌 에디터 글)</div>
+      </div>
+      <div class="layer-arrow">→</div>
+      <div class="layer-item">
+        <div class="layer-label">03 · Annual ★</div>
+        <div class="layer-name"><em>Year-End</em></div>
+        <div class="layer-desc">연 1회 · 한정 양장 · 12 issue Best-of</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 4 Curation Columns -->
+    <div class="col-grid">
+      <div class="col-card">
+        <div class="col-num">01</div>
+        <div class="col-name"><em>The Month.</em></div>
+        <div class="col-ko">시즌 노트</div>
+        <div class="col-desc">그룹 에디터의 시즌 칼럼 · 트렌드 · 관점</div>
+      </div>
+      <div class="col-card">
+        <div class="col-num">02</div>
+        <div class="col-name"><em>Curation.</em></div>
+        <div class="col-ko">도시 큐레이션</div>
+        <div class="col-desc">강남 코어 신규 매장 · 전시 · 공간</div>
+      </div>
+      <div class="col-card">
+        <div class="col-num">03</div>
+        <div class="col-name"><em>At AC.</em></div>
+        <div class="col-ko">호텔 인사이드</div>
+        <div class="col-desc">KLOUD 라인업 · Kitchen 챕터 · Pool 시즌</div>
+      </div>
+      <div class="col-card">
+        <div class="col-num">04</div>
+        <div class="col-name"><em>In Frame.</em></div>
+        <div class="col-ko">한 장의 사진</div>
+        <div class="col-desc">시즌 한 컷 + 게스트 작가 캡션</div>
+      </div>
+    </div>
+
+    <!-- Zone 3: Seasonal Mini-Book Mockup -->
+    <div class="mini-band">
+      <div class="mini-band-header">
+        <span class="mini-band-label">Seasonal Mini-Book — Quarterly Issues</span>
+        <span class="mini-band-sub"><em>Bound, sent, kept.</em></span>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-item">
+          <div class="mini-cover cover-spring">
+            <div class="cover-season">SPRING</div>
+            <div class="cover-issue"><em>Bloom</em></div>
+            <div class="cover-logo">FOLIO</div>
+          </div>
+          <div class="mini-meta">
+            <strong><em>Bloom Issue</em></strong>
+            가족 · 기념일
+          </div>
+        </div>
+        <div class="mini-item">
+          <div class="mini-cover cover-summer">
+            <div class="cover-season">SUMMER</div>
+            <div class="cover-issue"><em>Splash</em></div>
+            <div class="cover-logo">FOLIO</div>
+          </div>
+          <div class="mini-meta">
+            <strong><em>Splash Issue</em></strong>
+            Pool · 호캉스
+          </div>
+        </div>
+        <div class="mini-item">
+          <div class="mini-cover cover-autumn">
+            <div class="cover-season">AUTUMN</div>
+            <div class="cover-issue"><em>Encore</em></div>
+            <div class="cover-logo">FOLIO</div>
+          </div>
+          <div class="mini-meta">
+            <strong><em>Encore Issue</em></strong>
+            컬처 · 콜라보
+          </div>
+        </div>
+        <div class="mini-item">
+          <div class="mini-cover cover-winter">
+            <div class="cover-season">WINTER</div>
+            <div class="cover-issue"><em>Toast</em></div>
+            <div class="cover-logo">FOLIO</div>
+          </div>
+          <div class="mini-meta">
+            <strong><em>Toast Issue</em></strong>
+            송년 · 미식
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Hotel as Publisher."</span>
+      <span class="sep">—</span>
+      <strong>그룹이 직접 발신하는 미디어.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">15</div>
+</div>
+
+</div>
+</body>
+</html>

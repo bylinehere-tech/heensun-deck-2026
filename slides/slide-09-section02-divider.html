@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 02 Divider · Hotel Brief · Premium Select · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  /* Slide chrome */
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+
+  /* Section divider slide */
+  .divider{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%);color:var(--cream)}
+  .divider-inner{height:100%;display:flex;flex-direction:column;justify-content:center;padding:96px}
+  .divider-num{font-family:'Cormorant Garamond';font-size:160px;color:var(--gold-soft);font-weight:300;line-height:.9;opacity:.4}
+  .divider-tag{font-family:'Inter';font-size:12px;letter-spacing:.4em;color:var(--gold-soft);text-transform:uppercase;margin-top:24px;font-weight:500}
+  .divider-title{font-family:'Cormorant Garamond';font-size:64px;color:var(--cream);font-weight:300;line-height:1.1;margin-top:18px;letter-spacing:-.01em}
+  .divider-title em{font-style:italic;color:var(--gold-soft)}
+  .divider-kor{font-family:'Noto Sans KR';font-size:24px;font-weight:300;color:var(--cream-deep);margin-top:18px;line-height:1.5;letter-spacing:-.01em;max-width:880px}
+  .divider-line{width:64px;height:1px;background:var(--gold);margin-top:36px}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SECTION 02 DIVIDER : HOTEL BRIEF ========== -->
+<div class="slide divider" id="s-d02">
+  <div class="divider-inner">
+    <div class="divider-num">02</div>
+    <div class="divider-tag">Hotel Brief · 호텔 과제</div>
+    <h2 class="divider-title">Premium <em>Select</em></h2>
+    <p class="divider-kor">필요한 것만 최고의 컨디션으로 — AC가 정의하는 자리, Premium Select.<br>포지션 · 차별 · 마케팅 · 풀 객실 특화로 차례로 풀어낸다.</p>
+    <div class="divider-line"></div>
+  </div>
+  <div class="page-num">09</div>
+</div>
+
+</div>
+</body>
+</html>

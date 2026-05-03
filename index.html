@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>희앤썬 · Marketing Strategy 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0a0a;
+    --bg-soft:#161616;
+    --ink:#FAF7F2;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --gray:#a8a29a;
+    --gray-dim:#5a5550;
+    --line:rgba(184,148,90,.28);
+    --line-soft:rgba(184,148,90,.14);
+  }
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter','Noto Sans KR',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
+
+  /* ── Top nav ─────────────────────────────────────── */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,10,10,.88);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line-soft);
+    height:56px;
+    display:flex;align-items:center;
+    padding:0 18px;gap:14px;
+  }
+  .nav-brand{
+    display:flex;align-items:baseline;gap:14px;flex-shrink:0;
+  }
+  .nav-brand .eyebrow{
+    font-family:'Inter';font-size:9px;letter-spacing:.34em;color:var(--gold);
+    font-weight:600;text-transform:uppercase;
+  }
+  .nav-brand .name{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;
+    color:var(--ink);font-weight:500;letter-spacing:-.01em;
+  }
+  @media(max-width:640px){.nav-brand .eyebrow{display:none}.nav-brand .name{font-size:15px}}
+
+  .nav-toc{position:relative;flex:1;display:flex;justify-content:center;min-width:0}
+  .toc-button{
+    background:transparent;border:1px solid var(--line);color:var(--ink);
+    padding:7px 14px;font-size:11.5px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:12px;max-width:100%;
+    transition:border-color .15s,color .15s;
+  }
+  .toc-button:hover{border-color:var(--gold);color:var(--gold-soft)}
+  .toc-button .num{
+    font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--gold);
+    font-weight:600;flex-shrink:0;
+  }
+  .toc-button .title{
+    font-family:'Inter','Noto Sans KR',sans-serif;
+    color:var(--ink);font-weight:400;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    max-width:34vw;
+  }
+  .toc-button .caret{color:var(--gray);font-size:9px;flex-shrink:0}
+  .toc-panel{
+    position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);
+    background:var(--bg-soft);border:1px solid var(--line);
+    padding:10px 0;min-width:380px;max-width:92vw;
+    max-height:calc(100vh - 80px);overflow-y:auto;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);
+    display:none;
+  }
+  .toc-panel.open{display:block}
+  .toc-item{
+    display:flex;align-items:baseline;gap:14px;
+    padding:7px 22px;color:var(--gray);
+    font-family:'Inter','Noto Sans KR',sans-serif;font-size:12px;
+    cursor:pointer;transition:color .12s,background .12s;
+  }
+  .toc-item:hover{color:var(--ink);background:rgba(184,148,90,.07)}
+  .toc-item.current{color:var(--gold-soft)}
+  .toc-item .num{
+    font-family:'Inter';font-size:10px;letter-spacing:.18em;
+    color:var(--gray-dim);font-weight:600;min-width:24px;
+  }
+  .toc-item.current .num{color:var(--gold)}
+
+  .nav-controls{display:flex;gap:6px;flex-shrink:0;align-items:center}
+  .nav-btn{
+    background:transparent;border:1px solid var(--line);color:var(--ink);
+    width:34px;height:34px;cursor:pointer;font-size:14px;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:border-color .15s,color .15s;
+  }
+  .nav-btn:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
+  .nav-btn:disabled{opacity:.28;cursor:not-allowed}
+
+  .nav-example{
+    background:#FF3D2E;color:#fff;
+    font-family:'Inter','Noto Sans KR',sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:9px 16px;height:34px;
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid #FF3D2E;
+    box-shadow:0 0 0 0 rgba(255,61,46,.5);
+    transition:transform .15s,box-shadow .15s,background .15s;
+    margin-right:4px;
+  }
+  .nav-example:hover{
+    background:#ff5446;border-color:#ff5446;
+    transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(255,61,46,.45);
+  }
+  .nav-example::after{content:'↗';font-size:13px;font-weight:700;opacity:.9}
+  @media(max-width:640px){.nav-example{padding:8px 12px;font-size:11px;letter-spacing:.14em}}
+
+  /* ── Deck ────────────────────────────────────────── */
+  .deck{
+    display:flex;flex-direction:column;align-items:center;
+    gap:36px;padding:40px 16px 80px;
+  }
+  .stage-wrap{width:100%;max-width:1280px}
+  .stage-meta{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:8px;padding:0 4px;
+    font-family:'Inter',sans-serif;font-size:10px;
+    letter-spacing:.22em;text-transform:uppercase;
+  }
+  .stage-meta .num{color:var(--gray-dim);font-weight:600}
+  .stage-meta .title{color:var(--gray);font-weight:500;letter-spacing:.16em}
+  .slide-stage{
+    position:relative;width:100%;aspect-ratio:1280/720;overflow:hidden;
+    background:#0a1628;box-shadow:0 16px 48px rgba(0,0,0,.5);
+  }
+  .slide-stage::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,#0a1628 0%,#1a2540 100%);
+    opacity:1;transition:opacity .25s;
+  }
+  .slide-stage::after{
+    content:'';position:absolute;top:50%;left:50%;
+    width:22px;height:22px;margin:-11px 0 0 -11px;
+    border:2px solid rgba(184,148,90,.25);border-top-color:var(--gold);
+    border-radius:50%;animation:spin .9s linear infinite;
+    opacity:1;transition:opacity .25s;
+  }
+  .slide-stage.loaded::before,.slide-stage.loaded::after{opacity:0;pointer-events:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .slide-frame{
+    position:absolute;top:0;left:0;
+    width:1280px;height:720px;border:0;
+    transform-origin:top left;transform:scale(var(--scale,1));
+    background:transparent;
+    opacity:0;transition:opacity .25s;
+  }
+  .slide-stage.loaded .slide-frame{opacity:1}
+
+  .footer{
+    text-align:center;padding:32px 20px 60px;
+    font-family:'Inter';font-size:10px;letter-spacing:.28em;
+    color:var(--gray-dim);text-transform:uppercase;
+  }
+  .hint{
+    text-align:center;padding:0 20px 24px;
+    font-family:'Inter','Noto Sans KR',sans-serif;font-size:11px;
+    color:var(--gray-dim);letter-spacing:.04em;
+  }
+  .hint kbd{
+    font-family:'Inter';font-size:10px;
+    border:1px solid var(--line-soft);padding:2px 6px;
+    color:var(--gray);margin:0 2px;
+  }
+</style>
+</head>
+<body>
+  <nav class="nav" role="navigation">
+    <div class="nav-brand">
+      <span class="eyebrow">Heensun · 2026</span>
+      <span class="name">More Than Hotels.</span>
+    </div>
+    <div class="nav-toc" id="toc">
+      <button class="toc-button" id="toc-button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="num" id="current-num">01 / 22</span>
+        <span class="title" id="current-title">Cover</span>
+        <span class="caret">▾</span>
+      </button>
+      <div class="toc-panel" id="toc-panel" role="listbox"></div>
+    </div>
+    <div class="nav-controls">
+      <a class="nav-example" id="example-link" href="#" target="_blank" rel="noopener">Example</a>
+      <button class="nav-btn" id="prev-btn" aria-label="이전 슬라이드">←</button>
+      <button class="nav-btn" id="next-btn" aria-label="다음 슬라이드">→</button>
+    </div>
+  </nav>
+
+  <main class="deck" id="deck"></main>
+
+  <div class="hint">
+    <kbd>←</kbd> <kbd>→</kbd> 또는 <kbd>Page Up</kbd> <kbd>Page Down</kbd> 으로 슬라이드 이동
+  </div>
+  <div class="footer">희앤썬 · Marketing Strategy 2026 · Jay Moon</div>
+
+  <script>
+  (function(){
+    const SLIDES = [
+      ["slide-01-cover.html",                    "Cover · More Than Hotels."],
+      ["slide-03-the-brief.html",                "The Brief"],
+      ["slide-04-section01-divider.html",        "Section 01 · Operating Lifestyle"],
+      ["slide-05-mega-trends.html",              "Mega Trends"],
+      ["slide-06-group-architecture.html",       "Group Architecture"],
+      ["slide-07-four-channels.html",            "Communication 4 Channels"],
+      ["slide-08-operating-philosophy.html",     "Operating Philosophy"],
+      ["slide-09-section02-divider.html",        "Section 02 · Premium Select"],
+      ["slide-10-position-diagnosis.html",       "Position Diagnosis"],
+      ["slide-11-differentiation-3axes.html",    "Differentiation 3 Axes"],
+      ["slide-12-imc-blesure-journey.html",      "IMC · Blesure Journey"],
+      ["slide-13-imc-family-day.html",           "IMC · Family Day"],
+      ["slide-14-live-curation-programs.html",   "Live Curation"],
+      ["slide-15-folio-monthly.html",            "Folio Monthly"],
+      ["slide-16-ac-atelier.html",               "AC Atelier"],
+      ["slide-17-pool-rooms-two-tiers.html",     "Pool Rooms · Two Tiers"],
+      ["slide-18-ac-palace-living.html",         "AC Palace · Living"],
+      ["slide-20-ac-kitchen-brand-definition.html", "AC Kitchen · Brand Definition"],
+      ["slide-22-kloud-brand-definition.html",   "KLOUD · Brand Definition"],
+      ["slide-23-kloud-channel-viral.html",      "KLOUD · Channel & Viral"],
+      ["slide-24-recap-direction.html",          "Recap & Direction"],
+      ["slide-25-working-calendar.html",         "Working Calendar · Jun→Dec"],
+    ];
+    const TOTAL = SLIDES.length;
+    const pad = n => String(n).padStart(2, "0");
+
+    const deck = document.getElementById("deck");
+    const stages = [];
+
+    SLIDES.forEach(([file, title], i) => {
+      const idx = i + 1;
+      const wrap = document.createElement("div");
+      wrap.className = "stage-wrap";
+      wrap.id = `slide-${pad(idx)}`;
+      wrap.innerHTML = `
+        <div class="stage-meta">
+          <span class="num">${pad(idx)} / ${pad(TOTAL)}</span>
+          <span class="title">${title}</span>
+        </div>
+        <div class="slide-stage" data-idx="${i}" data-src="slides/${encodeURI(file)}">
+          <iframe class="slide-frame" title="Slide ${idx}: ${title}" loading="lazy" allow="autoplay" sandbox="allow-same-origin allow-scripts"></iframe>
+        </div>
+      `;
+      deck.appendChild(wrap);
+      stages.push(wrap.querySelector(".slide-stage"));
+    });
+
+    /* CSS injected into each slide iframe to neutralize its built-in
+       responsive scaling and edge gutters, so we can size the iframe
+       ourselves at native 1280x720 and scale via the parent. */
+    const OVERRIDE_CSS = `
+      html,body{background:transparent !important;overflow:hidden !important;margin:0 !important;padding:0 !important}
+      .deck{padding:0 !important;gap:0 !important;background:transparent !important;align-items:flex-start !important}
+      .slide{transform:none !important;box-shadow:none !important;margin:0 !important;transform-origin:top left !important}
+    `;
+
+    const mounted = new Set();
+    const mountObserver = new IntersectionObserver(entries => {
+      for (const e of entries){
+        if (!e.isIntersecting) continue;
+        const stage = e.target;
+        const i = Number(stage.dataset.idx);
+        if (mounted.has(i)) continue;
+        mounted.add(i);
+        const iframe = stage.querySelector("iframe");
+        iframe.addEventListener("load", () => {
+          try {
+            const doc = iframe.contentDocument;
+            if (doc && doc.head){
+              const s = doc.createElement("style");
+              s.textContent = OVERRIDE_CSS;
+              doc.head.appendChild(s);
+            }
+          } catch(_){ /* cross-origin or detached: render raw */ }
+          stage.classList.add("loaded");
+        }, { once: true });
+        iframe.src = stage.dataset.src;
+      }
+    }, { rootMargin: "150% 0px 200% 0px" });
+    stages.forEach(s => mountObserver.observe(s));
+
+    /* Scaling: keep iframe at native 1280x720, scale to fit container width */
+    const scaleStage = el => {
+      const w = el.clientWidth;
+      if (w > 0) el.style.setProperty("--scale", w / 1280);
+    };
+    const ro = new ResizeObserver(entries => {
+      for (const e of entries) scaleStage(e.target);
+    });
+    stages.forEach(s => { scaleStage(s); ro.observe(s); });
+
+    /* Current slide tracking */
+    const currentNum = document.getElementById("current-num");
+    const currentTitle = document.getElementById("current-title");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    let currentIdx = 0;
+
+    function setCurrent(i){
+      if (i === currentIdx) return;
+      currentIdx = i;
+      currentNum.textContent = `${pad(i+1)} / ${pad(TOTAL)}`;
+      currentTitle.textContent = SLIDES[i][1];
+      tocItems.forEach((el, idx) => el.classList.toggle("current", idx === i));
+      prevBtn.disabled = (i === 0);
+      nextBtn.disabled = (i === TOTAL - 1);
+    }
+
+    const trackObserver = new IntersectionObserver(entries => {
+      let bestIdx = -1, bestRatio = 0;
+      for (const e of entries){
+        if (e.intersectionRatio > bestRatio){
+          bestRatio = e.intersectionRatio;
+          bestIdx = Number(e.target.dataset.idx);
+        }
+      }
+      if (bestIdx >= 0 && bestRatio > 0.35) setCurrent(bestIdx);
+    }, { threshold: [0.25, 0.5, 0.75] });
+    stages.forEach(s => trackObserver.observe(s));
+
+    /* Navigation */
+    function goTo(i){
+      i = Math.max(0, Math.min(TOTAL - 1, i));
+      stages[i].parentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    prevBtn.addEventListener("click", () => goTo(currentIdx - 1));
+    nextBtn.addEventListener("click", () => goTo(currentIdx + 1));
+
+    /* TOC dropdown */
+    const tocPanel = document.getElementById("toc-panel");
+    const tocButton = document.getElementById("toc-button");
+    const tocItems = SLIDES.map(([_, title], i) => {
+      const a = document.createElement("a");
+      a.className = "toc-item";
+      a.href = `#slide-${pad(i+1)}`;
+      a.setAttribute("role", "option");
+      a.innerHTML = `<span class="num">${pad(i+1)}</span><span>${title}</span>`;
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        closeToc();
+        goTo(i);
+      });
+      tocPanel.appendChild(a);
+      return a;
+    });
+    function openToc(){
+      tocPanel.classList.add("open");
+      tocButton.setAttribute("aria-expanded", "true");
+      const cur = tocPanel.querySelector(".toc-item.current");
+      if (cur) cur.scrollIntoView({ block: "nearest" });
+    }
+    function closeToc(){
+      tocPanel.classList.remove("open");
+      tocButton.setAttribute("aria-expanded", "false");
+    }
+    tocButton.addEventListener("click", () => {
+      tocPanel.classList.contains("open") ? closeToc() : openToc();
+    });
+    document.addEventListener("click", e => {
+      if (!document.getElementById("toc").contains(e.target)) closeToc();
+    });
+
+    /* Keyboard */
+    document.addEventListener("keydown", e => {
+      const t = e.target;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+      switch(e.key){
+        case "ArrowLeft": case "ArrowUp": case "PageUp": case "k":
+          e.preventDefault(); goTo(currentIdx - 1); break;
+        case "ArrowRight": case "ArrowDown": case "PageDown": case "j":
+          e.preventDefault(); goTo(currentIdx + 1); break;
+        case "Home":
+          e.preventDefault(); goTo(0); break;
+        case "End":
+          e.preventDefault(); goTo(TOTAL - 1); break;
+        case "Escape":
+          closeToc(); break;
+      }
+    });
+
+    /* Init */
+    setCurrent(0);
+    prevBtn.disabled = true;
+    if (location.hash){
+      const m = location.hash.match(/slide-(\d+)/);
+      if (m){
+        const i = Number(m[1]) - 1;
+        if (i >= 0 && i < TOTAL) requestAnimationFrame(() => goTo(i));
+      }
+    }
+  })();
+  </script>
+</body>
+</html>

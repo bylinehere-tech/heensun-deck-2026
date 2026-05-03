@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 18 · AC Palace · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --cream-warm:#F5EBD8;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+  .slide-subtitle em{font-family:'Cormorant Garamond';font-style:italic;color:var(--navy);font-weight:600;font-size:15px}
+
+  .pad{padding:38px 56px}
+  .header-block{margin-bottom:10px}
+
+  /* Zone 1 — 5 essence band */
+  .essence-band{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:10px;
+  }
+  .essence-item{
+    padding:11px 14px;
+    border-right:1px solid var(--line);
+  }
+  .essence-item:last-child{border-right:none}
+  .essence-num{font-family:'Cormorant Garamond';font-size:20px;font-weight:300;color:var(--gold);line-height:1;display:inline-block;margin-right:7px;vertical-align:baseline}
+  .essence-en{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;display:inline-block}
+  .essence-ko{font-family:'Noto Sans KR';font-size:12.5px;font-weight:700;color:var(--navy);margin-top:5px;letter-spacing:-.01em}
+  .essence-desc{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em;margin-top:2px}
+  .essence-ko .star{color:var(--gold);font-weight:700}
+
+  /* Zone 2 — 2 tier cards */
+  .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;height:284px;margin-bottom:11px}
+
+  .tier-card{display:flex;flex-direction:column;overflow:hidden;background:#fff}
+  .tier-card.light{border-top:2px solid var(--gold)}
+  .tier-card.long{border-top:3px solid var(--gold)}
+
+  .tier-hero{
+    position:relative;
+    padding:13px 20px 13px;
+    height:90px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    flex-shrink:0;
+  }
+  .hero-light{background:linear-gradient(135deg,#e8d8b8 0%,#c8a878 100%)}
+  .hero-long{background:linear-gradient(135deg,#c8a878 0%,#8a6848 60%,#5a3a28 100%)}
+
+  .tier-label-top{
+    position:absolute;top:12px;left:20px;
+    font-family:'Inter';font-size:9px;letter-spacing:.25em;
+    text-transform:uppercase;font-weight:700;
+  }
+  .hero-light .tier-label-top{color:var(--navy)}
+  .hero-long .tier-label-top{color:var(--cream)}
+
+  .tier-inventory{
+    position:absolute;top:12px;right:20px;
+    font-family:'Inter';font-size:9px;letter-spacing:.18em;
+    font-weight:600;
+  }
+  .hero-light .tier-inventory{color:var(--navy);opacity:.7}
+  .hero-long .tier-inventory{color:var(--cream);opacity:.85}
+
+  .tier-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:28px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:-.02em;
+    margin-bottom:4px;
+  }
+  .hero-light .tier-name{color:var(--navy)}
+  .hero-long .tier-name{color:var(--cream)}
+
+  .tier-ko-hook{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:-.01em;
+    line-height:1.3;
+  }
+  .hero-light .tier-ko-hook{color:var(--navy);opacity:.85}
+  .hero-long .tier-ko-hook{color:var(--cream);opacity:.95}
+
+  .tier-body{
+    padding:12px 18px 12px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .tier-en-hook{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:17px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1.2;
+    letter-spacing:-.01em;
+    margin-bottom:3px;
+  }
+
+  .tier-ko-sub{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    line-height:1.4;
+    letter-spacing:-.01em;
+    margin-bottom:8px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+
+  .tier-bullets{
+    list-style:none;
+    margin-bottom:8px;
+  }
+  .tier-bullets li{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--ink);
+    line-height:1.45;
+    padding-left:11px;
+    position:relative;
+    margin-bottom:3px;
+    letter-spacing:-.01em;
+  }
+  .tier-bullets li:last-child{margin-bottom:0}
+  .tier-bullets li::before{
+    content:'·';
+    position:absolute;left:0;top:-3px;
+    color:var(--gold);font-weight:700;font-size:14px;
+  }
+  .tier-bullets li strong{color:var(--navy);font-weight:700}
+
+  .pkg-block{
+    padding:8px 11px 9px;
+    background:var(--cream);
+    margin-bottom:8px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .pkg-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gold);text-transform:uppercase;font-weight:700;
+    margin-bottom:5px;
+  }
+
+  .pkg-list{list-style:none;flex:1}
+  .pkg-list li{
+    font-family:'Noto Sans KR';
+    font-size:10px;
+    color:var(--ink);
+    line-height:1.4;
+    padding-left:12px;
+    position:relative;
+    margin-bottom:2px;
+    letter-spacing:-.01em;
+  }
+  .pkg-list li:last-child{margin-bottom:0}
+  .pkg-list li::before{
+    content:'+';
+    position:absolute;left:0;top:0;
+    color:var(--gold);font-weight:600;font-size:11px;
+  }
+  .pkg-list li strong{font-family:'Inter';font-size:8px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;display:inline-block;margin-right:5px}
+
+  .campaign-tags{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+    padding-top:8px;
+    border-top:1px solid var(--line);
+  }
+  .camp-label{
+    font-family:'Inter';
+    font-size:8.5px;letter-spacing:.22em;
+    color:var(--gray);text-transform:uppercase;font-weight:600;
+  }
+  .camp-tag{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:13px;
+    color:var(--navy);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .camp-tag.star::after{content:' ★';color:var(--gold);font-style:normal;font-size:9.5px}
+  .camp-sep{color:var(--gray-light);font-size:11px}
+
+  /* Zone 3 — Welcome to Gangnam Pass ★ */
+  .pass-band{
+    background:var(--cream-warm);
+    padding:13px 22px 14px;
+    border-top:2px solid var(--gold);
+    border-bottom:2px solid var(--gold);
+    margin-bottom:8px;
+    position:relative;
+  }
+  .pass-band::before{
+    content:'';
+    position:absolute;
+    top:5px;left:5px;right:5px;bottom:5px;
+    border:1px dashed rgba(184,148,90,.3);
+    pointer-events:none;
+  }
+  .pass-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:11px;
+    padding-bottom:9px;
+    border-bottom:1px dashed var(--gold-soft);
+    position:relative;
+    z-index:1;
+  }
+  .pass-label{
+    font-family:'Inter';
+    font-size:11px;
+    letter-spacing:.28em;
+    color:var(--gold);
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .pass-label .star{color:var(--navy);font-size:13px;margin-left:3px}
+  .pass-label .ko{color:var(--navy);font-weight:600;letter-spacing:-.01em;font-size:11px;margin-left:8px;text-transform:none;font-family:'Noto Sans KR'}
+  .pass-sub{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:14px;
+    color:var(--navy);
+    font-weight:500;
+  }
+  .pass-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    position:relative;
+    z-index:1;
+  }
+  .pass-item{display:flex;flex-direction:column}
+  .pass-item-top{display:flex;align-items:baseline;gap:6px;margin-bottom:3px}
+  .pass-num{font-family:'Cormorant Garamond';font-size:16px;font-weight:400;color:var(--gold);line-height:1}
+  .pass-en{font-family:'Inter';font-size:9px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:700}
+  .pass-ko{font-family:'Noto Sans KR';font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px;letter-spacing:-.01em}
+  .pass-desc{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em}
+
+  /* Closing */
+  .closing-line{
+    padding:8px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 18 : AC PALACE ========== -->
+<div class="slide" id="s18">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — AC Palace</div>
+      <h2 class="slide-title">강남에 사는, 두 가지 방식.</h2>
+      <p class="slide-subtitle"><em>Long Stay, Light Life.</em> — 빌트인 레지던스 + 외국인 FIT 특화. 짐 없이 가볍게, <strong>강남에 사는 일</strong>.</p>
+    </div>
+
+    <!-- Zone 1: 5 Living Essentials -->
+    <div class="essence-band">
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">01</span>
+          <span class="essence-en">Full Kitchen</span>
+        </div>
+        <div class="essence-ko">풀 키친</div>
+        <div class="essence-desc">인덕션 · 식기 · 식기세척기</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">02</span>
+          <span class="essence-en">Laundry+</span>
+        </div>
+        <div class="essence-ko">세탁 · 스타일러 <span class="star">★</span></div>
+        <div class="essence-desc">세탁기 · 건조기 · 스타일러</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">03</span>
+          <span class="essence-en">Wi-Fi</span>
+        </div>
+        <div class="essence-ko">초고속 Wi-Fi</div>
+        <div class="essence-desc">업무 가능 · 노마드 환경</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">04</span>
+          <span class="essence-en">Quiet Address</span>
+        </div>
+        <div class="essence-ko">조용한 입지</div>
+        <div class="essence-desc">테헤란로 한 블럭 안쪽</div>
+      </div>
+      <div class="essence-item">
+        <div>
+          <span class="essence-num">05</span>
+          <span class="essence-en">Hotel Access</span>
+        </div>
+        <div class="essence-ko">호텔 공유 <span class="star">★</span></div>
+        <div class="essence-desc">AC Hotel 풀 · 라운지 · F&amp;B</div>
+      </div>
+    </div>
+
+    <!-- Zone 2: 2 tier cards -->
+    <div class="tier-grid">
+
+      <!-- Light Stay -->
+      <div class="tier-card light">
+        <div class="tier-hero hero-light">
+          <span class="tier-label-top">Light Stay</span>
+          <span class="tier-inventory">STUDIO · 1BED</span>
+          <div class="tier-name"><em>Light Stay.</em></div>
+          <div class="tier-ko-hook">짐 없이 머무는 강남의 두 번째 집.</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-en-hook"><em>Land. Live. Leave Light.</em></div>
+          <div class="tier-ko-sub">1주~1개월 단기 거주 — 풀 빌트인과 외국인 FIT 특화 서비스로 짐 없이 가볍게.</div>
+
+          <ul class="tier-bullets">
+            <li><strong>풀 빌트인</strong> · 키친 · 세탁 · 스타일러 · Wi-Fi</li>
+            <li><strong>외국인 FIT 특화</strong> · 영문 가이드 + 24h 영문 채팅 컨시어지</li>
+            <li>AC Hotel 풀 · 라운지 · F&amp;B 공유</li>
+          </ul>
+
+          <div class="pkg-block">
+            <div class="pkg-label">Package · Light Stay Welcome Pack</div>
+            <ul class="pkg-list">
+              <li><strong>Stay</strong>STUDIO · 1BED · 1주~1개월</li>
+              <li><strong>Welcome</strong>Welcome to Gangnam Pass ★</li>
+              <li><strong>Service</strong>Cleaning 주 2회 + 영문 컨시어지</li>
+              <li><strong>Hotel</strong>AC Hotel 시설 공유</li>
+            </ul>
+          </div>
+
+          <div class="campaign-tags">
+            <span class="camp-label">Campaign</span>
+            <span class="camp-tag star"><em>Light Stay Welcome Pack</em></span>
+            <span class="camp-sep">·</span>
+            <span class="camp-tag"><em>Foreign FIT</em></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long Living ★ -->
+      <div class="tier-card long">
+        <div class="tier-hero hero-long">
+          <span class="tier-label-top">Long Living ★</span>
+          <span class="tier-inventory">2BED · 거실 + 다이닝</span>
+          <div class="tier-name"><em>Long Living.</em></div>
+          <div class="tier-ko-hook">길게 머무는 강남의 일상.</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-en-hook"><em>Live, Lightly. Long.</em></div>
+          <div class="tier-ko-sub">1개월+ 장기 거주 — 외국인 주재원 · 패밀리 · 노마드를 위한 영문 멤버십 시스템.</div>
+
+          <ul class="tier-bullets">
+            <li><strong>2bed 거실+다이닝</strong> · 풀 빌트인</li>
+            <li><strong>영문 멤버십</strong> · 외국인 주재원 · 패밀리 · 노마드</li>
+            <li>Folio 자동 멤버 + Atelier 우선 구매권</li>
+          </ul>
+
+          <div class="pkg-block">
+            <div class="pkg-label">Package · Long Living Membership</div>
+            <ul class="pkg-list">
+              <li><strong>Apartment</strong>2bed + 거실 + 풀 빌트인</li>
+              <li><strong>Welcome</strong>Welcome to Gangnam Pass ★</li>
+              <li><strong>Members</strong>Members Lounge + Hotel 프리빌리지</li>
+              <li><strong>Group</strong>Folio 자동 멤버 + Atelier 우선 구매권</li>
+            </ul>
+          </div>
+
+          <div class="campaign-tags">
+            <span class="camp-label">Campaign</span>
+            <span class="camp-tag star"><em>Long Living Membership</em></span>
+            <span class="camp-sep">·</span>
+            <span class="camp-tag"><em>Expat / Nomad</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zone 3: Welcome to Gangnam Pass ★ -->
+    <div class="pass-band">
+      <div class="pass-header">
+        <span class="pass-label">Welcome to Gangnam Pass<span class="star">★</span><span class="ko">· 입주 키트 · For International Guests</span></span>
+        <span class="pass-sub"><em>Issued at Check-in.</em></span>
+      </div>
+      <div class="pass-grid">
+        <div class="pass-item">
+          <div class="pass-item-top">
+            <span class="pass-num">01</span>
+            <span class="pass-en">Dining</span>
+          </div>
+          <div class="pass-ko">식음료</div>
+          <div class="pass-desc">강남 셀렉트 레스토랑·카페 10% 할인</div>
+        </div>
+        <div class="pass-item">
+          <div class="pass-item-top">
+            <span class="pass-num">02</span>
+            <span class="pass-en">Shopping</span>
+          </div>
+          <div class="pass-ko">쇼핑</div>
+          <div class="pass-desc">가로수길·도산 라이프스타일 VIP 할인</div>
+        </div>
+        <div class="pass-item">
+          <div class="pass-item-top">
+            <span class="pass-num">03</span>
+            <span class="pass-en">Wellness</span>
+          </div>
+          <div class="pass-ko">웰니스</div>
+          <div class="pass-desc">스파·요가·한방 1회 무료 체험</div>
+        </div>
+        <div class="pass-item">
+          <div class="pass-item-top">
+            <span class="pass-num">04</span>
+            <span class="pass-en">Culture</span>
+          </div>
+          <div class="pass-ko">컬처</div>
+          <div class="pass-desc">DDP · Leeum · 갤러리 패스트트랙</div>
+        </div>
+        <div class="pass-item">
+          <div class="pass-item-top">
+            <span class="pass-num">05</span>
+            <span class="pass-en">Transport</span>
+          </div>
+          <div class="pass-ko">이동</div>
+          <div class="pass-desc">T-money 카드 + 영문 강남 지도</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"Welcome to Gangnam."</span>
+      <span class="sep">—</span>
+      <strong>짐 없이 가볍게, 강남에 사는 일.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">18</div>
+</div>
+
+</div>
+</body>
+</html>

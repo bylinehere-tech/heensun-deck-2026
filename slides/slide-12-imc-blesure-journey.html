@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 12 · Marketing Strategy ① IMC · 희앤썬 Total Hospitality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  /* Slide chrome */
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .slide-title{font-family:'Noto Sans KR';font-size:32px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:14px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:10px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:14px}
+
+  /* ===== Zone 1 — IMC Flow ===== */
+  .imc-flow{
+    display:grid;
+    grid-template-columns:1fr 16px 1fr 16px 1fr 16px 1fr;
+    align-items:center;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:16px;
+  }
+  .imc-step{padding:0 8px;text-align:left}
+  .imc-step-top{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+  .imc-step-num{font-family:'Cormorant Garamond';font-size:24px;font-weight:300;color:var(--gold);line-height:1}
+  .imc-step-title{font-family:'Noto Sans KR';font-size:13px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
+  .imc-step-desc{font-family:'Noto Sans KR';font-size:10.5px;color:var(--gray);line-height:1.4;letter-spacing:-.01em}
+  .imc-arrow{font-family:'Inter';font-size:18px;color:var(--gold-soft);font-weight:300;text-align:center}
+
+  /* ===== Zone 2/3 row ===== */
+  .case-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:14px;height:285px;margin-bottom:14px}
+
+  /* Zone 2 — Case Definition */
+  .case-def{background:#fff;padding:20px 22px;border-top:3px solid var(--gold);display:flex;flex-direction:column}
+  .case-def-tag{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:10px}
+  .case-def-title{font-family:'Cormorant Garamond';font-style:italic;font-size:21px;font-weight:500;color:var(--navy);line-height:1.25;margin-bottom:14px;letter-spacing:-.01em}
+  .case-def-divider{width:30px;height:1px;background:var(--gold);margin-bottom:12px}
+  .case-def-rows{display:flex;flex-direction:column;gap:10px;flex:1}
+  .case-row-item{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:start;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+  .case-row-item:last-child{border-bottom:none}
+  .case-row-label{font-family:'Inter';font-size:9.5px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600;padding-top:2px}
+  .case-row-val{font-family:'Noto Sans KR';font-size:11px;color:var(--ink);line-height:1.55;letter-spacing:-.01em}
+  .case-row-val em{font-style:italic;font-family:'Cormorant Garamond';font-weight:600;color:var(--navy);font-size:12px}
+  .case-row-val .num{color:var(--gold);font-weight:700;margin-right:3px}
+
+  /* Zone 3 — Hero Asset Mockup */
+  .case-mockup{background:var(--navy);padding:18px 22px;color:var(--cream);display:flex;flex-direction:column;border-top:3px solid var(--gold)}
+  .mockup-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+  .mockup-label{font-family:'Inter';font-size:9.5px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase;font-weight:600}
+  .mockup-headline{font-family:'Cormorant Garamond';font-style:italic;font-size:16px;color:var(--cream);font-weight:500;letter-spacing:-.01em}
+
+  .scenes-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;flex:1;margin-bottom:12px}
+  .scene-card{
+    position:relative;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:2px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:8px 7px;
+    min-height:0;
+  }
+  .scene-bg{position:absolute;inset:0;z-index:0}
+  .scene-bg.s1{background:linear-gradient(180deg,#3a5a45 0%,#1f3528 100%)}
+  .scene-bg.s2{background:linear-gradient(180deg,#7a6248 0%,#4a3a28 100%)}
+  .scene-bg.s3{background:linear-gradient(180deg,#2a3858 0%,#15203a 100%)}
+  .scene-bg.s4{background:linear-gradient(180deg,#3d6a78 0%,#1f3a45 100%)}
+  .scene-bg.s5{background:linear-gradient(180deg,#4a3855 0%,#2a1f35 100%)}
+
+  .scene-num{position:absolute;top:6px;left:8px;font-family:'Cormorant Garamond';font-size:18px;font-weight:300;color:rgba(255,255,255,.55);z-index:1;line-height:1}
+  .scene-time{position:absolute;top:8px;right:8px;font-family:'Inter';font-size:9px;letter-spacing:.1em;color:rgba(197,165,114,.85);z-index:1;font-weight:600}
+  .scene-info{position:relative;z-index:1}
+  .scene-name{font-family:'Noto Sans KR';font-size:10.5px;color:#fff;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+  .scene-name small{display:block;font-family:'Inter';font-size:9px;color:rgba(255,255,255,.6);font-weight:400;margin-top:2px;letter-spacing:.05em}
+
+  .mockup-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:10px;border-top:1px dashed rgba(255,255,255,.18);
+    font-family:'Noto Sans KR';font-size:10px;color:var(--cream-deep)
+  }
+  .mockup-bottom .end-label{font-family:'Inter';font-size:9px;letter-spacing:.2em;color:var(--gold-soft);text-transform:uppercase;font-weight:600;margin-right:8px}
+  .mockup-bottom em{font-family:'Cormorant Garamond';font-style:italic;color:var(--cream);font-size:12px;font-weight:500}
+
+  /* ===== Zone 4 — Channel Band ===== */
+  .channel-band{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;height:128px}
+  .channel-card{background:#fff;padding:12px 11px;border-top:2px solid var(--line);display:flex;flex-direction:column}
+  .channel-card.highlight{border-top:2px solid var(--gold);background:var(--cream-deep)}
+  .ch-num{font-family:'Inter';font-size:9px;letter-spacing:.2em;color:var(--gray-light);font-weight:600;margin-bottom:5px}
+  .channel-card.highlight .ch-num{color:var(--gold)}
+  .ch-name{font-family:'Noto Sans KR';font-size:12px;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:4px}
+  .ch-format{font-family:'Inter';font-size:9.5px;color:var(--gray);font-style:italic;line-height:1.3;margin-bottom:6px;flex:1}
+  .ch-echo{font-family:'Noto Sans KR';font-size:9.5px;color:var(--gold);font-weight:600;line-height:1.35;letter-spacing:-.01em}
+  .channel-card.highlight .ch-echo{color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 12 : MARKETING STRATEGY ① IMC ========== -->
+<div class="slide" id="s12">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Marketing Strategy ① IMC</div>
+      <h2 class="slide-title">한 USP, 모든 채널에 같은 메시지로.</h2>
+      <p class="slide-subtitle">USP를 정의하고 · 콘텐츠로 짓고 · 모든 채널에 같은 톤으로 풀고 · <strong>현장에서 몰입으로 봉인한다</strong>.</p>
+    </div>
+
+    <!-- Zone 1 — IMC 4-Step Flow -->
+    <div class="imc-flow">
+      <div class="imc-step">
+        <div class="imc-step-top">
+          <span class="imc-step-num">01</span>
+          <span class="imc-step-title">USP 정의</span>
+        </div>
+        <div class="imc-step-desc">한 메시지, 한 라인</div>
+      </div>
+      <div class="imc-arrow">→</div>
+      <div class="imc-step">
+        <div class="imc-step-top">
+          <span class="imc-step-num">02</span>
+          <span class="imc-step-title">콘텐츠 자산</span>
+        </div>
+        <div class="imc-step-desc">Hero · 9:16 Shorts · Scene 콘티</div>
+      </div>
+      <div class="imc-arrow">→</div>
+      <div class="imc-step">
+        <div class="imc-step-top">
+          <span class="imc-step-num">03</span>
+          <span class="imc-step-title">채널 통합</span>
+        </div>
+        <div class="imc-step-desc">7 채널 동시 배포 · 같은 톤</div>
+      </div>
+      <div class="imc-arrow">→</div>
+      <div class="imc-step">
+        <div class="imc-step-top">
+          <span class="imc-step-num">04</span>
+          <span class="imc-step-title">현장 몰입</span>
+        </div>
+        <div class="imc-step-desc">Map · Program · Goods</div>
+      </div>
+    </div>
+
+    <!-- Zone 2 + Zone 3 -->
+    <div class="case-row">
+
+      <!-- Zone 2 — Case Definition -->
+      <div class="case-def">
+        <div class="case-def-tag">Case · Blesure Gangnam Journey</div>
+        <div class="case-def-title"><em>"Half a Day in Gangnam,<br>A Night at AC."</em></div>
+        <div class="case-def-divider"></div>
+        <div class="case-def-rows">
+          <div class="case-row-item">
+            <div class="case-row-label">타깃</div>
+            <div class="case-row-val">외국인 블레저 · 체류 7.9일 · 비즈니스 사이 컬처 갭 수요</div>
+          </div>
+          <div class="case-row-item">
+            <div class="case-row-label">USP 적용</div>
+            <div class="case-row-val"><em>Stay European, in Gangnam.</em> · AC Hotel</div>
+          </div>
+          <div class="case-row-item">
+            <div class="case-row-label">3 Sub-<br>Route</div>
+            <div class="case-row-val">
+              <span class="num">①</span> Art &amp; Architecture · DDP · Leeum · 국제갤러리<br>
+              <span class="num">②</span> Modern Korea Breakfast · 광장시장 · 통인시장 · 서촌<br>
+              <span class="num">③</span> Gangnam Lifestyle Night · 도산 → KLOUD → Pool Suite
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone 3 — Hero Asset Mockup -->
+      <div class="case-mockup">
+        <div class="mockup-top">
+          <div class="mockup-label">Hero Asset · 9:16 Shorts · 30~60s</div>
+          <div class="mockup-headline"><em>Stay European, in Gangnam.</em></div>
+        </div>
+
+        <div class="scenes-strip">
+          <div class="scene-card">
+            <div class="scene-bg s1"></div>
+            <div class="scene-num">01</div>
+            <div class="scene-time">5s</div>
+            <div class="scene-info">
+              <div class="scene-name">도산공원<small>WALK</small></div>
+            </div>
+          </div>
+          <div class="scene-card">
+            <div class="scene-bg s2"></div>
+            <div class="scene-num">02</div>
+            <div class="scene-time">5s</div>
+            <div class="scene-info">
+              <div class="scene-name">갤러리<small>CULTURE</small></div>
+            </div>
+          </div>
+          <div class="scene-card">
+            <div class="scene-bg s3"></div>
+            <div class="scene-num">03</div>
+            <div class="scene-time">5s</div>
+            <div class="scene-info">
+              <div class="scene-name">AC Lobby<small>CHECK-IN</small></div>
+            </div>
+          </div>
+          <div class="scene-card">
+            <div class="scene-bg s4"></div>
+            <div class="scene-num">04</div>
+            <div class="scene-time">8s</div>
+            <div class="scene-info">
+              <div class="scene-name">Pool Suite<small>BREAKFAST</small></div>
+            </div>
+          </div>
+          <div class="scene-card">
+            <div class="scene-bg s5"></div>
+            <div class="scene-num">05</div>
+            <div class="scene-time">10s</div>
+            <div class="scene-info">
+              <div class="scene-name">KLOUD<small>LIVE JAZZ</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-bottom">
+          <span><span class="end-label">End Card</span><em>"Stay European, in Gangnam."</em></span>
+          <span style="font-family:'Inter';font-size:9.5px;letter-spacing:.18em;color:var(--gold-soft);font-weight:600">+ AC LOGO</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zone 4 — Channel Deployment Band -->
+    <div class="channel-band">
+      <div class="channel-card">
+        <div class="ch-num">01</div>
+        <div class="ch-name">Web Hero</div>
+        <div class="ch-format">16:9 · 1min<br>호텔 메인</div>
+        <div class="ch-echo">"Stay European, in Gangnam."</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-num">02</div>
+        <div class="ch-name">Micro-site</div>
+        <div class="ch-format">인터랙티브<br>맵 · 패키지 예약</div>
+        <div class="ch-echo">"Plan your Half-Day."</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-num">03</div>
+        <div class="ch-name">Instagram</div>
+        <div class="ch-format">9:16 Reels<br>+ 1:1 Carousel</div>
+        <div class="ch-echo">큐레이션 톤</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-num">04</div>
+        <div class="ch-name">Shorts</div>
+        <div class="ch-format">9:16 · 30/60s<br>YouTube · IG</div>
+        <div class="ch-echo">빠른 컷 · 음악 hook</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-num">05</div>
+        <div class="ch-name">Xiaohongshu</div>
+        <div class="ch-format">笔记 + 视频<br>中文 자막</div>
+        <div class="ch-echo">"首尔江南半日"</div>
+      </div>
+      <div class="channel-card">
+        <div class="ch-num">06</div>
+        <div class="ch-name">Influencer</div>
+        <div class="ch-format">외국인 KOL<br>1박2일 vlog</div>
+        <div class="ch-echo">1인칭 체험 톤</div>
+      </div>
+      <div class="channel-card highlight">
+        <div class="ch-num">07 ★</div>
+        <div class="ch-name">Onsite Kit</div>
+        <div class="ch-format">Map · Program<br>· Goods</div>
+        <div class="ch-echo">손에 쥐는 컬렉션</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">12</div>
+</div>
+
+</div>
+</body>
+</html>

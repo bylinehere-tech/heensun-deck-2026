@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 10 · Position Diagnosis · 희앤썬 Total Hospitality Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --navy-soft:#1a2540;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+    --green:#2D7A3E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  /* Slide chrome */
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:14px}
+  .slide-title{font-family:'Noto Sans KR';font-size:36px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:15px;font-weight:400;color:var(--gray);line-height:1.6;margin-top:14px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:56px 80px}
+  .header-block{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+
+  /* ===== Position diagnosis grid ===== */
+  .position-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:22px;height:430px}
+
+  /* ----- Position map (left) ----- */
+  .pos-map{background:#fff;padding:36px 44px;position:relative;height:100%}
+  .pos-map-header{position:absolute;top:18px;left:36px;font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600}
+  .pos-axis-x{position:absolute;left:64px;right:44px;bottom:54px;height:1px;background:var(--navy)}
+  .pos-axis-y{position:absolute;left:64px;top:54px;bottom:54px;width:1px;background:var(--navy)}
+  .pos-axis-label{position:absolute;font-family:'Inter';font-size:10px;letter-spacing:.18em;color:var(--gray);text-transform:uppercase;font-weight:600}
+  .pos-x-left{bottom:30px;left:74px}
+  .pos-x-right{bottom:30px;right:50px}
+  .pos-y-top{top:30px;left:24px;writing-mode:vertical-rl;transform:rotate(180deg)}
+  .pos-y-bottom{bottom:64px;left:24px;writing-mode:vertical-rl;transform:rotate(180deg)}
+
+  .pos-dot{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;font-weight:600;line-height:1.2;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(184,148,90,.10);border:1px solid var(--gold-soft);color:var(--ink);padding:6px}
+  .pos-dot.us{background:var(--navy);color:var(--cream);border:none;width:118px;height:118px;font-size:13px;font-weight:700;box-shadow:0 12px 32px rgba(15,30,61,.35);z-index:2}
+  .pos-dot.us small{display:block;font-size:9.5px;font-weight:500;color:var(--gold-soft);letter-spacing:.05em;margin-top:5px;text-transform:none}
+
+  /* ----- Side panel (right) ----- */
+  .diag-side{display:flex;flex-direction:column;gap:14px;height:100%}
+
+  .diag-demand{background:#fff;padding:20px 24px;border-top:3px solid var(--gold)}
+  .diag-demand h4{font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .diag-demand h4 .source{color:var(--gray-light);font-weight:400;letter-spacing:.1em;font-size:9px;margin-left:6px}
+  .demand-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:11px;align-items:center}
+  .demand-row:last-child{border-bottom:none}
+  .demand-row .seg{color:var(--ink);font-weight:500;letter-spacing:-.01em}
+  .demand-row .pct{color:var(--navy);font-weight:600;font-family:'Cormorant Garamond';font-size:18px;text-align:right;line-height:1}
+  .demand-row .yoy{color:var(--gray);font-size:10.5px;font-weight:600;text-align:right;min-width:40px;font-family:'Inter'}
+  .demand-row .yoy.up{color:var(--green)}
+
+  .diag-insight{background:var(--navy);color:var(--cream);padding:22px 24px;flex:1;display:flex;flex-direction:column;justify-content:center}
+  .diag-insight h4{font-family:'Inter';font-size:10px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .diag-insight ul{list-style:none}
+  .diag-insight li{font-size:11.5px;line-height:1.65;color:var(--cream-deep);padding-left:16px;position:relative;margin-bottom:10px}
+  .diag-insight li:last-child{margin-bottom:0}
+  .diag-insight li::before{content:'→';position:absolute;left:0;color:var(--gold-soft);font-weight:600}
+  .diag-insight li strong{color:var(--gold-soft);font-weight:700}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 10 : POSITION DIAGNOSIS ========== -->
+<div class="slide" id="s10">
+  <div class="pad" style="height:100%">
+
+    <div class="header-block">
+      <div class="section-tag">02 · Hotel Brief — Position Diagnosis</div>
+      <h2 class="slide-title">강남 호텔 시장 포지션 진단.</h2>
+      <p class="slide-subtitle">수요 구조와 경쟁 호텔 포지션이 가리키는 자리 — <strong>합리적 럭셔리 × Lifestyle+Business 결합</strong>.</p>
+    </div>
+
+    <div class="position-grid">
+
+      <!-- Position Map (left) -->
+      <div class="pos-map">
+        <div class="pos-map-header">Competitive Positioning</div>
+        <div class="pos-axis-x"></div>
+        <div class="pos-axis-y"></div>
+
+        <div class="pos-axis-label pos-x-left">← Mid-Upscale (15~25)</div>
+        <div class="pos-axis-label pos-x-right">Luxury (50~85) →</div>
+        <div class="pos-axis-label pos-y-top">↑ Lifestyle</div>
+        <div class="pos-axis-label pos-y-bottom">Business ↓</div>
+
+        <!-- Mid-Upscale (셀렉트 비즈니스) -->
+        <div class="pos-dot" style="top:42%;left:24%">L7<br>Gangnam</div>
+        <div class="pos-dot" style="top:68%;left:22%">신라<br>스테이</div>
+        <div class="pos-dot" style="top:72%;left:34%">Novotel<br>Ambassador</div>
+
+        <!-- Luxury -->
+        <div class="pos-dot" style="top:24%;left:80%">시그니엘<br>Seoul</div>
+        <div class="pos-dot" style="top:46%;left:80%">조선팰리스<br>Gangnam</div>
+        <div class="pos-dot" style="top:72%;left:80%">웨스틴<br>파르나스</div>
+
+        <!-- AC Hotel — sweet spot -->
+        <div class="pos-dot us" style="top:48%;left:50%">AC Hotel<br><small>★ Premium Select</small></div>
+      </div>
+
+      <!-- Side Panel (right) -->
+      <div class="diag-side">
+
+        <!-- Demand Mix -->
+        <div class="diag-demand">
+          <h4>Demand Mix · 강남 4-5성<span class="source">(추정)</span></h4>
+          <div class="demand-row">
+            <div class="seg">글로벌 비즈니스</div>
+            <div class="pct">38%</div>
+            <div class="yoy up">+5%p</div>
+          </div>
+          <div class="demand-row">
+            <div class="seg">FIT 인바운드</div>
+            <div class="pct">26%</div>
+            <div class="yoy up">+8%p</div>
+          </div>
+          <div class="demand-row">
+            <div class="seg">라이프스타일 호캉스</div>
+            <div class="pct">22%</div>
+            <div class="yoy up">+3%p</div>
+          </div>
+          <div class="demand-row">
+            <div class="seg">MICE / 단체</div>
+            <div class="pct">14%</div>
+            <div class="yoy">─</div>
+          </div>
+        </div>
+
+        <!-- Diagnosis -->
+        <div class="diag-insight">
+          <h4>Diagnosis · 진단</h4>
+          <ul>
+            <li><strong>30~50만원</strong> 합리적 럭셔리 가격대 — 강남에서 <strong>빈자리</strong></li>
+            <li>비즈니스 + Lifestyle + <strong>미식</strong> 3박자 결합이 <strong>ADR·RevPAR 우위</strong></li>
+            <li>내국인 라이프스타일 — 작지만 <strong>빠른 성장</strong>, <strong>SNS 콘텐츠 자산</strong> 세그먼트</li>
+            <li>AC의 자리 = <strong>Premium Select</strong> · 두 빈자리의 교집합</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">10</div>
+</div>
+
+</div>
+</body>
+</html>

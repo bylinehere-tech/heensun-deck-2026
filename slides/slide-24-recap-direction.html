@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide 24 · Recap & Direction · 희앤썬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1E3D;
+    --navy-deep:#0a1628;
+    --gold:#B8945A;
+    --gold-soft:#C5A572;
+    --cream:#FAF7F2;
+    --cream-deep:#F0EBE0;
+    --line:#D9D3C5;
+    --ink:#1A1A1A;
+    --gray:#6B6B6B;
+    --gray-light:#A8A29A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Noto Sans KR','Inter',sans-serif;background:#2a2a2a;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px}
+  .slide{
+    width:1280px;height:720px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    transform-origin:top center;
+  }
+  @media (max-width:1340px){.slide{transform:scale(.72)}.deck{gap:0}}
+  @media (max-width:900px){.slide{transform:scale(.45)}}
+  @media (max-width:600px){.slide{transform:scale(.28)}}
+
+  .page-num{position:absolute;bottom:32px;right:48px;font-family:'Inter';font-size:11px;letter-spacing:.2em;color:var(--gray-light);font-weight:500}
+  .footer-brand{position:absolute;bottom:32px;left:48px;font-family:'Inter';font-size:10px;letter-spacing:.25em;color:var(--gray-light);text-transform:uppercase}
+  .section-tag{font-family:'Inter';font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:11px}
+  .slide-title{font-family:'Noto Sans KR';font-size:34px;font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-.02em}
+  .slide-subtitle{font-family:'Noto Sans KR';font-size:13.5px;font-weight:400;color:var(--gray);line-height:1.55;margin-top:9px;letter-spacing:-.01em}
+  .slide-subtitle strong{color:var(--navy);font-weight:600}
+
+  .pad{padding:42px 56px}
+  .header-block{margin-bottom:14px}
+
+  /* Philosophy band */
+  .philosophy-band{
+    background:var(--navy);
+    color:var(--cream);
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    margin-bottom:14px;
+    border-top:2px solid var(--gold);
+    border-bottom:2px solid var(--gold);
+  }
+  .phil-tag{
+    font-family:'Inter';
+    font-size:10px;
+    letter-spacing:.28em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .phil-hero{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:38px;
+    color:var(--cream);
+    font-weight:500;
+    letter-spacing:-.02em;
+    line-height:1;
+  }
+  .phil-ko{
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gold-soft);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+
+  /* Assets grid */
+  .assets-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    height:212px;
+    margin-bottom:14px;
+  }
+  .asset-card{
+    background:#fff;
+    padding:18px 14px 16px;
+    border-top:2px solid var(--gold);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .asset-icon{
+    width:48px;
+    height:48px;
+    margin:6px 0 14px;
+  }
+  .asset-icon svg{
+    width:100%;
+    height:100%;
+  }
+  .asset-icon svg *{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.3;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .asset-num{
+    font-family:'Inter';
+    font-size:9px;
+    letter-spacing:.25em;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .asset-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:18px;
+    color:var(--navy);
+    font-weight:600;
+    letter-spacing:-.01em;
+    margin-bottom:6px;
+    line-height:1.1;
+  }
+  .asset-keyword{
+    font-family:'Noto Sans KR';
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--navy);
+    letter-spacing:-.01em;
+    margin-bottom:6px;
+  }
+  .asset-tag{
+    font-family:'Inter';
+    font-size:9px;
+    color:var(--gray);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-top:auto;
+    font-weight:500;
+  }
+
+  /* Domains band */
+  .domains-band{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:10px;
+  }
+  .domain-item{
+    padding:14px 18px;
+    border-right:1px solid var(--line);
+  }
+  .domain-item:last-child{border-right:none}
+  .domain-en{
+    font-family:'Inter';
+    font-size:9px;
+    letter-spacing:.25em;
+    color:var(--gold);
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .domain-name{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    line-height:1;
+    margin-top:5px;
+    letter-spacing:-.01em;
+  }
+  .domain-ko{
+    font-family:'Noto Sans KR';
+    font-size:10.5px;
+    color:var(--gray);
+    font-weight:500;
+    margin-top:4px;
+    letter-spacing:-.01em;
+    line-height:1.3;
+  }
+
+  /* Closing */
+  .closing-line{
+    padding:9px 0 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    font-family:'Noto Sans KR';
+    font-size:13px;
+    color:var(--gray);
+    letter-spacing:-.01em;
+    font-weight:400;
+  }
+  .closing-line .quote{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:500;
+    margin-right:12px;
+  }
+  .closing-line strong{color:var(--navy);font-weight:700}
+  .closing-line .sep{color:var(--gold);margin:0 6px;font-weight:300}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ========== SLIDE 24 : RECAP & DIRECTION ========== -->
+<div class="slide" id="s24">
+  <div class="pad" style="height:100%">
+
+    <!-- Header -->
+    <div class="header-block">
+      <div class="section-tag">04 · Recap — Direction</div>
+      <h2 class="slide-title">한 철학, 다섯 자산, 모든 채널.</h2>
+      <p class="slide-subtitle">한 운영 철학이 다섯 자산을 짓고 — <strong>자산이 영역 경계를 넘어 함께 운영된다</strong>.</p>
+    </div>
+
+    <!-- Zone 1: Philosophy band -->
+    <div class="philosophy-band">
+      <span class="phil-tag">Operating Philosophy</span>
+      <span class="phil-hero"><em>Lifestyle.</em></span>
+      <span class="phil-ko">호텔이 아니라, 라이프스타일을 운영합니다.</span>
+    </div>
+
+    <!-- Zone 2: Five Assets -->
+    <div class="assets-grid">
+
+      <!-- 01 Folio -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M6 12 L24 8 L42 12 L42 40 L24 36 L6 40 Z"/>
+            <line x1="24" y1="8" x2="24" y2="36"/>
+            <line x1="11" y1="18" x2="20" y2="17"/>
+            <line x1="11" y1="24" x2="20" y2="23"/>
+            <line x1="28" y1="17" x2="37" y2="18"/>
+            <line x1="28" y1="23" x2="37" y2="24"/>
+          </svg>
+        </div>
+        <div class="asset-num">01</div>
+        <div class="asset-name"><em>Folio.</em></div>
+        <div class="asset-keyword">발신</div>
+        <div class="asset-tag">Monthly · Seasonal · Annual</div>
+      </div>
+
+      <!-- 02 Atelier -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M8 18 L24 10 L40 18 L40 38 L8 38 Z"/>
+            <line x1="8" y1="18" x2="40" y2="18"/>
+            <line x1="24" y1="10" x2="24" y2="38"/>
+            <path d="M18 18 L18 14 L30 14 L30 18"/>
+          </svg>
+        </div>
+        <div class="asset-num">02</div>
+        <div class="asset-name"><em>Atelier.</em></div>
+        <div class="asset-keyword">굿즈</div>
+        <div class="asset-tag">Annual · Seasonal · Collab</div>
+      </div>
+
+      <!-- 03 Always Celebrated -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <svg viewBox="0 0 48 48">
+            <polygon points="24,7 28.5,18 40,18.5 31,26 34,38 24,31 14,38 17,26 8,18.5 19.5,18"/>
+          </svg>
+        </div>
+        <div class="asset-num">03</div>
+        <div class="asset-name"><em>Celebrated.</em></div>
+        <div class="asset-keyword">시즌</div>
+        <div class="asset-tag">Bloom · Splash · Encore · Toast</div>
+      </div>
+
+      <!-- 04 Welcome Pass -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <svg viewBox="0 0 48 48">
+            <rect x="7" y="14" width="34" height="22"/>
+            <polyline points="7,14 24,28 41,14"/>
+            <line x1="7" y1="36" x2="20" y2="24"/>
+            <line x1="41" y1="36" x2="28" y2="24"/>
+          </svg>
+        </div>
+        <div class="asset-num">04</div>
+        <div class="asset-name"><em>Pass.</em></div>
+        <div class="asset-keyword">환영</div>
+        <div class="asset-tag">Welcome to Gangnam Kit</div>
+      </div>
+
+      <!-- 05 Viral Toolkit -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <svg viewBox="0 0 48 48">
+            <line x1="18" y1="8" x2="14" y2="40"/>
+            <line x1="34" y1="8" x2="30" y2="40"/>
+            <line x1="9" y1="18" x2="40" y2="18"/>
+            <line x1="8" y1="30" x2="39" y2="30"/>
+          </svg>
+        </div>
+        <div class="asset-num">05</div>
+        <div class="asset-name"><em>Viral.</em></div>
+        <div class="asset-keyword">자생</div>
+        <div class="asset-tag">UGC · Photo · Frame · Drop</div>
+      </div>
+
+    </div>
+
+    <!-- Zone 3: Four Domains -->
+    <div class="domains-band">
+      <div class="domain-item">
+        <div class="domain-en">01 · Group</div>
+        <div class="domain-name"><em>More Than Hotels.</em></div>
+        <div class="domain-ko">호텔이 아니라, 라이프스타일을 운영.</div>
+      </div>
+      <div class="domain-item">
+        <div class="domain-en">02 · Hotel</div>
+        <div class="domain-name"><em>Premium Select.</em></div>
+        <div class="domain-ko">Every. Only. Always.</div>
+      </div>
+      <div class="domain-item">
+        <div class="domain-en">03 · Palace</div>
+        <div class="domain-name"><em>Long Stay, Light Life.</em></div>
+        <div class="domain-ko">강남에 사는, 두 가지 방식.</div>
+      </div>
+      <div class="domain-item">
+        <div class="domain-en">04 · F&amp;B</div>
+        <div class="domain-name"><em>Daily × Festa.</em></div>
+        <div class="domain-ko">데일리 운영과 시즌 페스타.</div>
+      </div>
+    </div>
+
+    <!-- Closing -->
+    <div class="closing-line">
+      <span class="quote">"One Philosophy, Five Assets, All Channels."</span>
+      <span class="sep">—</span>
+      <strong>한 철학으로, 모두 운영된다.</strong>
+    </div>
+
+  </div>
+  <div class="footer-brand">희앤썬 · Marketing Strategy 2026</div>
+  <div class="page-num">24</div>
+</div>
+
+</div>
+</body>
+</html>
