@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC Hotel Gangnam × Magpie&amp;Tiger — Seoul Tea Hour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F1EA;
+    --bg-card: #FBF8F3;
+    --bg-soft: #EFE9DD;
+    --ink: #1A1614;
+    --ink-soft: #4A4239;
+    --muted: #8A8073;
+    --line: #E5DFD3;
+    --line-strong: #C9C0B0;
+    --accent: #8C6B3F;
+    --accent-soft: #B79566;
+
+    --font-display: "Cormorant Garamond", "Noto Serif KR", serif;
+    --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "tnum";
+    background-image:
+      radial-gradient(circle at 15% 5%, rgba(140, 107, 63, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 85% 95%, rgba(140, 107, 63, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 32px 96px;
+  }
+
+  /* ── Type system ─────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .display-italic { font-style: italic; color: var(--ink-soft); }
+  h1.display { font-size: 44px; }
+  h2.display { font-size: 30px; }
+  h3 {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  p { color: var(--ink-soft); }
+  .muted { color: var(--muted); font-size: 13px; }
+
+  /* ── COVER ─────────────────────────── */
+  .cover {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 56px;
+    margin-bottom: 56px;
+  }
+  .cover .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 48px;
+  }
+  .cover .partner {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .cover h1 {
+    margin-bottom: 14px;
+  }
+  .cover .sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .cover .lead {
+    font-size: 14.5px;
+    max-width: 580px;
+  }
+
+  /* ── COVER 4-grid ─────────────────────────── */
+  .cover-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 44px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .cover-grid > div {
+    padding: 22px 18px;
+    border-right: 1px solid var(--line);
+  }
+  .cover-grid > div:last-child { border-right: none; }
+  .cover-grid .label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .cover-grid .val {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .cover-grid .note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .cover-foot {
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* ── FIGURE (shared photo block) ─────────────────────────── */
+  .figure {
+    margin: 36px 0 8px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .figure .cap {
+    display: block;
+    padding: 10px 14px 12px;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+  }
+
+  /* ── SECTION ─────────────────────────── */
+  section {
+    margin-bottom: 72px;
+  }
+  .section-head {
+    margin-bottom: 32px;
+  }
+  .section-head .eyebrow { display: block; margin-bottom: 10px; }
+  .section-head h2 { margin-bottom: 10px; }
+  .section-head .lead {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 600px;
+  }
+
+  /* ── 3-column box (Section 02) ─────────────────────────── */
+  .col-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .col-3 .box {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 22px 20px;
+    border-radius: 2px;
+  }
+  .col-3 h3 { margin-bottom: 12px; }
+  .col-3 p { font-size: 13.5px; line-height: 1.55; }
+
+  .insight {
+    background: var(--ink);
+    color: #EDE7DA;
+    padding: 24px 28px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .insight .tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .insight p {
+    color: #EDE7DA;
+    font-family: var(--font-display);
+    font-size: 18px;
+    line-height: 1.45;
+    font-style: italic;
+  }
+  .source {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* ── Two-col layout (Section 03) ─────────────────────────── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .panel-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pkg-list { list-style: none; }
+  .pkg-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pkg-list li:last-child { border-bottom: none; }
+  .pkg-list .pkg-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .pkg-list .pkg-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .journey { list-style: none; }
+  .journey li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .journey li:last-child { border-bottom: none; }
+  .journey .num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+  .journey .step-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .journey .step-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── TABLE (Section 04) ─────────────────────────── */
+  .flow-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+  .flow-table thead th {
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .flow-table tbody td {
+    padding: 13px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  .flow-table tbody tr:last-child td { border-bottom: none; }
+  .flow-table .t-time {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .flow-table .t-session {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .flow-table .t-owner {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* R&R */
+  .rnr {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .rnr .box {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 18px 16px;
+  }
+  .rnr h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+  }
+  .rnr p { font-size: 12.5px; line-height: 1.55; }
+
+  /* ── Section 05 — Numbers + Tables ─────────────────────────── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 32px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat-row > div {
+    padding: 22px 16px;
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .stat-row > div:last-child { border-right: none; }
+  .stat-row .num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-row .label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-row .sub {
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
+  .price-kpi {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 28px;
+  }
+  .pk-list {
+    list-style: none;
+  }
+  .pk-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 12px;
+  }
+  .pk-list li:last-child { border-bottom: none; }
+  .pk-list .pk-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .pk-list .pk-sub {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .pk-list .pk-val {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--accent);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .next-steps {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 22px 26px;
+    margin-top: 12px;
+  }
+  .next-steps .ns-head {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .next-steps ol {
+    list-style: none;
+    counter-reset: ns;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .next-steps li {
+    counter-increment: ns;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .next-steps li::before {
+    content: counter(ns, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ─────────────────────────── */
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer .mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 720px) {
+    .wrap { padding: 56px 22px 72px; }
+    h1.display { font-size: 32px; }
+    h2.display { font-size: 24px; }
+    .cover-grid { grid-template-columns: repeat(2, 1fr); }
+    .cover-grid > div:nth-child(2) { border-right: none; }
+    .cover-grid > div:nth-child(1),
+    .cover-grid > div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .col-3 { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 28px; }
+    .rnr { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-row > div:nth-child(2) { border-right: none; }
+    .stat-row > div:nth-child(1),
+    .stat-row > div:nth-child(2) { border-bottom: 1px solid var(--line); }
+    .price-kpi { grid-template-columns: 1fr; gap: 28px; }
+    .next-steps ol { grid-template-columns: 1fr; gap: 12px; }
+    .flow-table { font-size: 12px; }
+    .flow-table thead th, .flow-table tbody td { padding: 10px 8px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .wrap { max-width: 100%; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- ═══════ COVER ═══════ -->
+  <section class="cover">
+    <div class="meta">
+      <span>Internal Brief · 2026.05</span>
+      <span>Pilot Proposal</span>
+    </div>
+
+    <div class="partner">AC Hotel Gangnam &nbsp;×&nbsp; Magpie&amp;Tiger</div>
+    <h1 class="display">Seoul Tea Hour</h1>
+    <p class="sub">강남에서 보내는 1시간의 차분한 서울</p>
+    <p class="lead">블레저 외국인 투숙객을 위한 호텔 내 프리미엄 로컬 차 경험 패키지 — 파일럿 제안.</p>
+
+    <figure class="figure">
+      <img src="tea/03-skyline.jpg" alt="강남 야경을 배경으로 차를 따르는 호텔 룸" />
+      <span class="cap">Gangnam · Tea Hour</span>
+    </figure>
+
+    <div class="cover-grid">
+      <div>
+        <div class="label">Target</div>
+        <div class="val">블레저</div>
+        <div class="note">Business + leisure 외국인 투숙객</div>
+      </div>
+      <div>
+        <div class="label">Format</div>
+        <div class="val">60 min</div>
+        <div class="note">회차당 6–10명</div>
+      </div>
+      <div>
+        <div class="label">Pairing</div>
+        <div class="val">Seasonal</div>
+        <div class="note">AC F&amp;B 공동 개발 한국식 디저트</div>
+      </div>
+      <div>
+        <div class="label">Take-home</div>
+        <div class="val">Tea Kit</div>
+        <div class="note">맥파이앤타이거 미니 키트</div>
+      </div>
+    </div>
+
+    <p class="cover-foot">호텔은 객실 외 부대매출과 로컬 브랜드 경험을, 고객은 짧은 시간 안에 한국적 휴식과 선물 가치를 얻는다.</p>
+  </section>
+
+  <!-- ═══════ SECTION 02 ═══════ -->
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Section 02</span>
+      <h2 class="display">왜 지금, 누구를 위한 패키지인가</h2>
+      <p class="lead">블레저 외국인 투숙객 × 호텔 내 완결형 로컬 경험 × 현대적 한국 차 브랜드 — 세 흐름의 교집합.</p>
+    </div>
+
+    <div class="col-3">
+      <div class="box">
+        <h3>블레저 투숙객</h3>
+        <p>출장 일정 사이의 짧고 밀도 있는 로컬 경험을 선호한다. 관광지 이동보다 호텔 안에서 안전하게 즐기고 사진으로 기록할 수 있는 콘텐츠를 원한다.</p>
+      </div>
+      <div class="box">
+        <h3>호텔 내 프리미엄 로컬</h3>
+        <p>AC 호텔 강남은 모던 유러피언 디자인, AC 라운지, 루프탑 바를 갖춘 도심 체류형 호텔. 라운지·미팅룸을 활용한 인하우스 프리미엄 운영에 적합하다.</p>
+      </div>
+      <div class="box">
+        <h3>맥파이앤타이거</h3>
+        <p>동아시아 차를 현대적으로 소개하는 브랜드. 신사 티룸은 티 소믈리에 우림과 감각 회복을 강조 — 한국 차 문화를 외국인 고객에게 접근성 있게 전달한다.</p>
+      </div>
+    </div>
+
+    <div class="insight">
+      <span class="tag">Insight</span>
+      <p>비즈니스 고객의 1시간을 한국 차 리추얼로 채운다 — 호텔의 로컬 큐레이션 역량을 가장 작게 시작해 검증할 수 있는 진입점.</p>
+    </div>
+    <p class="source">Source · Marriott, Klairs Seoul</p>
+  </section>
+
+  <!-- ═══════ SECTION 03 ═══════ -->
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Section 03</span>
+      <h2 class="display">패키지 구성과 고객 여정</h2>
+      <p class="lead">Seoul Tea Hour: A Calm Taste of Gangnam — 1시간 안에 완결되는 인지부터 사후까지의 흐름.</p>
+    </div>
+
+    <figure class="figure">
+      <img src="tea/01-still-life.jpg" alt="다기 · 시즌 페어링 디저트 · 미니 티 키트" />
+      <span class="cap">Tea · Pairing · Take-home</span>
+    </figure>
+
+    <div class="two-col">
+      <div>
+        <div class="panel-title">패키지 구성</div>
+        <ul class="pkg-list">
+          <li>
+            <div class="pkg-name">다도 클래스</div>
+            <div class="pkg-desc">맥파이앤타이거 진행자 · 영어 스크립트</div>
+          </li>
+          <li>
+            <div class="pkg-name">티 테이스팅</div>
+            <div class="pkg-desc">하동차 1 · 동아시아 발효차 1 · 시즌 시그니처 1</div>
+          </li>
+          <li>
+            <div class="pkg-name">F&amp;B 페어링</div>
+            <div class="pkg-desc">Seasonal Korean Pairing Plate (3피스 미니)</div>
+          </li>
+          <li>
+            <div class="pkg-name">제품 증정</div>
+            <div class="pkg-desc">티백 또는 미니 잎차 키트 + 우림 가이드</div>
+          </li>
+          <li>
+            <div class="pkg-name">기념 콘텐츠</div>
+            <div class="pkg-desc">테이블 카드 · 포토 스팟 · 수료 카드</div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="panel-title">고객 여정 · Awareness → Post</div>
+        <ul class="journey">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <div class="step-name">인지 (Awareness)</div>
+              <div class="step-desc">예약 페이지 · 체크인 안내 · 객실 QR 카드 · 컨시어지 추천</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <div class="step-name">예약 (Booking)</div>
+              <div class="step-desc">프론트 또는 QR 예약폼 · 알레르기·정원 사전 확인</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <div class="step-name">참여 전 (Pre-class)</div>
+              <div class="step-desc">시작 2시간 전 객실 카드 또는 메일 리마인드</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <div>
+              <div class="step-name">클래스 (Experience)</div>
+              <div class="step-desc">60분: 다도 → 테이스팅 → 디저트 페어링 → 기프트</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">05</span>
+            <div>
+              <div class="step-name">참여 후 (Post-class)</div>
+              <div class="step-desc">제품 증정 · 후기 요청 · 바/F&amp;B 업셀 · UGC 유도</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTION 04 ═══════ -->
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Section 04</span>
+      <h2 class="display">60분 운영 플로우와 R&amp;R</h2>
+      <p class="lead">AC 호텔 · 맥파이앤타이거 · 공동 영역의 명확한 책임 분담으로 매끄러운 1시간 운영.</p>
+    </div>
+
+    <figure class="figure">
+      <img src="tea/02-class.jpg" alt="티 소믈리에가 외국인 투숙객에게 차를 우려 내어주는 클래스 장면" />
+      <span class="cap">60 Minutes · Tea Sommelier</span>
+    </figure>
+
+    <table class="flow-table">
+      <thead>
+        <tr>
+          <th>시간</th>
+          <th>세션</th>
+          <th>세부</th>
+          <th>담당</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="t-time">0–5</td>
+          <td class="t-session">Welcome</td>
+          <td>호텔 호스트 인사 · 알레르기/카페인 최종 확인</td>
+          <td class="t-owner">AC 호텔</td>
+        </tr>
+        <tr>
+          <td class="t-time">5–12</td>
+          <td class="t-session">Tea Story</td>
+          <td>맥파이앤타이거 브랜드 · 동아시아 차 문화 소개</td>
+          <td class="t-owner">M&amp;T</td>
+        </tr>
+        <tr>
+          <td class="t-time">12–25</td>
+          <td class="t-session">Brewing Ritual</td>
+          <td>차도구 · 물 온도 · 우림 시간 · 향 맡기 시연</td>
+          <td class="t-owner">M&amp;T</td>
+        </tr>
+        <tr>
+          <td class="t-time">25–38</td>
+          <td class="t-session">Tea Tasting</td>
+          <td>티 2종 테이스팅 · 향미 노트 기록</td>
+          <td class="t-owner">M&amp;T</td>
+        </tr>
+        <tr>
+          <td class="t-time">38–50</td>
+          <td class="t-session">Dessert Pairing</td>
+          <td>AC F&amp;B 페어링 디저트 · 맛 조합 설명</td>
+          <td class="t-owner">AC F&amp;B</td>
+        </tr>
+        <tr>
+          <td class="t-time">50–55</td>
+          <td class="t-session">Gift Moment</td>
+          <td>제품 증정 · 집에서 마시는 방법 안내</td>
+          <td class="t-owner">공동</td>
+        </tr>
+        <tr>
+          <td class="t-time">55–60</td>
+          <td class="t-session">Photo &amp; Close</td>
+          <td>포토 타임 · 후기 요청 · 다음 이용 혜택 안내</td>
+          <td class="t-owner">AC 호텔</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rnr">
+      <div class="box">
+        <h3>AC 호텔 강남</h3>
+        <p>판매 구조·장소·가격 정책 · 호텔 호스트 · 예약/CS 1차 · F&amp;B 디저트 운영 · 호텔 채널 마케팅</p>
+      </div>
+      <div class="box">
+        <h3>맥파이앤타이거</h3>
+        <p>클래스 콘텐츠 · 티 라인업 · 진행자 파견 · 제품 증정 구성 · 브랜드 채널 노출</p>
+      </div>
+      <div class="box">
+        <h3>공동</h3>
+        <p>콘셉트와 톤앤매너 · 리허설 검수 · 메뉴/사진 가이드 · 공동 SNS · VOC 리뷰</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTION 05 ═══════ -->
+  <section>
+    <div class="section-head">
+      <span class="eyebrow">Section 05</span>
+      <h2 class="display">파일럿 운영안 · 가격 · KPI</h2>
+      <p class="lead">가장 작게 시작해 가격 민감도 · 시간대 · 디저트 · 증정 만족도를 4주 안에 검증한다.</p>
+    </div>
+
+    <div class="stat-row">
+      <div>
+        <div class="num">4주</div>
+        <div class="label">파일럿 기간</div>
+      </div>
+      <div>
+        <div class="num">8회</div>
+        <div class="label">주 2회 × 4주</div>
+      </div>
+      <div>
+        <div class="num">8명</div>
+        <div class="label">회차당 정원</div>
+      </div>
+      <div>
+        <div class="num">38석+</div>
+        <div class="label">판매 목표</div>
+        <div class="sub">총 64석 기준</div>
+      </div>
+    </div>
+
+    <div class="price-kpi">
+      <div>
+        <div class="panel-title">가격 가이드</div>
+        <ul class="pk-list">
+          <li>
+            <div>
+              <div class="pk-label">투숙객 애드온</div>
+              <div class="pk-sub">기본 입장권</div>
+            </div>
+            <div class="pk-val">65,000–85,000원 / 1인</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">객실 패키지 포함형</div>
+              <div class="pk-sub">2인 기준</div>
+            </div>
+            <div class="pk-val">+120,000–150,000원</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">프리미엄 소규모</div>
+              <div class="pk-sub">큐레이티드 라인업</div>
+            </div>
+            <div class="pk-val">95,000–120,000원 / 1인</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">B2B / MICE</div>
+              <div class="pk-sub">단체 견적</div>
+            </div>
+            <div class="pk-val">별도 견적</div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="panel-title">KPI 목표</div>
+        <ul class="pk-list">
+          <li>
+            <div>
+              <div class="pk-label">판매 검증</div>
+              <div class="pk-sub">정원 대비 예약률</div>
+            </div>
+            <div class="pk-val">60%+</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">수익성</div>
+              <div class="pk-sub">원가율 관리</div>
+            </div>
+            <div class="pk-val">35–45%</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">고객 만족</div>
+              <div class="pk-sub">클래스 만족도</div>
+            </div>
+            <div class="pk-val">4.5 / 5+</div>
+          </li>
+          <li>
+            <div>
+              <div class="pk-label">UGC 확산</div>
+              <div class="pk-sub">SNS 게시 빈도</div>
+            </div>
+            <div class="pk-val">회차당 1건+</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="next-steps">
+      <div class="ns-head">Next Steps</div>
+      <ol>
+        <li>파트너 협업 조건 협의</li>
+        <li>티 라인업 · 디저트 샘플링</li>
+        <li>4주 파일럿 일정 확정</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <span>AC Hotel Gangnam × Magpie&amp;Tiger · Internal</span>
+    <span class="mark">Seoul Tea Hour.</span>
+  </footer>
+
+</main>
+</body>
+</html>
